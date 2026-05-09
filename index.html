@@ -969,6 +969,62 @@ footer{background:var(--ink);padding:80px 56px 36px;color:var(--cream);}
 <div class="toast" id="toastEl"></div>
 
 <script>
+// ════════ SUPABASE ════════
+const SB_URL='https://twtjsnvjvbvetqfdmszl.supabase.co';
+const SB_KEY='eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InR3dGpzbnZqdmJ2ZXRxZmRtc3psIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NzgzMTEzNTcsImV4cCI6MjA5Mzg4NzM1N30.jKJ-ZtJgWBbKuN0TcNWZ90oX5SvtXK0THzF8x1odoXI';
+async function sb(table,opts={}){
+  const{method='GET',body,filters=[],order=''}=opts;
+  let url=SB_URL+'/rest/v1/'+table+'?select=*';
+  filters.forEach(f=>url+='&'+f);
+  if(order)url+='&order='+order;
+  const r=await fetch(url,{method,headers:{'apikey':SB_KEY,'Authorization':'Bearer '+SB_KEY,'Content-Type':'application/json','Prefer':method==='POST'?'return=representation':''},body:body?JSON.stringify(body):undefined});
+  if(!r.ok)return null;
+  return method==='DELETE'?[]:await r.json();
+}
+async function loadDB(){
+  const[pd,rv]=await Promise.all([sb('products',{filters:['status=neq.draft'],order:'id.asc'}),sb('reviews',{filters:['status=eq.active'],order:'id.asc'})]);
+  if(pd){prods=pd.map(p=>({id:p.id,nm:p.name,ds:p.description||'',in:p.ingredients||'',us:p.how_to_use||'',pr:p.price,op:p.original_price||'',ct:p.category,st:p.status,vr:p.variants||[],tag:p.tag||'',img:p.img_url||'',img2:p.img2_url||''}));renderFeat();renderShop();}
+  if(rv){revs=rv.map(r=>({id:r.id,nm:r.customer_name,lc:r.location||'',tx:r.review_text,st:r.stars,sv:r.status}));renderTestis();}
+}
+async function dbSaveProd(d,eid){
+  const b={name:d.nm,description:d.ds,ingredients:d.in,how_to_use:d.us,price:d.pr,original_price:d.op,category:d.ct,status:d.st,variants:d.vr,tag:d.tag,img_url:d.img,img2_url:d.img2,updated_at:new Date().toISOString()};
+  if(eid)await sb('products',{method:'PATCH',body:b,filters:['id=eq.'+eid]});
+  else await sb('products',{method:'POST',body:b});
+  const pd=await sb('products',{filters:['status=neq.draft'],order:'id.asc'});
+  if(pd){prods=pd.map(p=>({id:p.id,nm:p.name,ds:p.description||'',in:p.ingredients||'',us:p.how_to_use||'',pr:p.price,op:p.original_price||'',ct:p.category,st:p.status,vr:p.variants||[],tag:p.tag||'',img:p.img_url||'',img2:p.img2_url||''}));renderFeat();renderShop();renderAdPr();updDash();}
+}
+async function dbDelProd(id){
+  await sb('products',{method:'DELETE',filters:['id=eq.'+id]});
+  prods=prods.filter(p=>p.id!==id);renderFeat();renderShop();renderAdPr();updDash();
+}
+async function dbSaveRev(d,eid){
+  const b={customer_name:d.nm,location:d.lc,review_text:d.tx,stars:d.st,status:d.sv};
+  if(eid)await sb('reviews',{method:'PATCH',body:b,filters:['id=eq.'+eid]});
+  else await sb('reviews',{method:'POST',body:b});
+  const rv=await sb('reviews',{filters:['status=eq.active'],order:'id.asc'});
+  if(rv){revs=rv.map(r=>({id:r.id,nm:r.customer_name,lc:r.location||'',tx:r.review_text,st:r.stars,sv:r.status}));renderTestis();renderAdRv();}
+}
+async function dbDelRev(id){await sb('reviews',{method:'DELETE',filters:['id=eq.'+id]});revs=revs.filter(r=>r.id!==id);renderTestis();renderAdRv();}
+async function dbSaveOrder(ord){await sb('orders',{method:'POST',body:{id:ord.id,customer_name:ord.nm,phone:ord.ph,email:ord.em,address:ord.ad,note:ord.no,items:ord.items,total:ord.tot,status:'pending'}});}
+async function dbLoadOrders(){
+  const data=await sb('orders',{order:'created_at.desc'});
+  if(!data)return;
+  orders=data.map(o=>({id:o.id,nm:o.customer_name,ph:o.phone,em:o.email,ad:o.address,no:o.note,items:o.items,tot:o.total,ss:null,st:o.status,time:new Date(o.created_at).toLocaleString('en-IN')}));
+  renderAdOrds();updDash();
+}
+async function dbUpdOrdStatus(id,st){await sb('orders',{method:'PATCH',body:{status:st,updated_at:new Date().toISOString()},filters:['id=eq.'+id]});await dbLoadOrders();}
+async function dbLoadSettings(){
+  const data=await sb('settings');if(!data)return;
+  const map={'upi_id':'s-upi','upi_name':'s-unm','whatsapp':'s-wa','phone':'s-ph','email':'s-em','instagram':'s-ig'};
+  data.forEach(s=>{const el=document.getElementById(map[s.key]);if(el)el.value=s.value;});
+  const u=data.find(s=>s.key==='upi_id');const n=data.find(s=>s.key==='upi_name');
+  if(u)localStorage.setItem('gp_upi',u.value);if(n)localStorage.setItem('gp_unm',n.value);
+}
+async function dbSaveSettings(){
+  const fields=[['upi_id','s-upi'],['upi_name','s-unm'],['whatsapp','s-wa'],['phone','s-ph'],['email','s-em'],['instagram','s-ig']];
+  for(const[k,eid]of fields){const el=document.getElementById(eid);if(el)await sb('settings',{method:'PATCH',body:{value:el.value,updated_at:new Date().toISOString()},filters:['key=eq.'+k]});}
+}
+
 // ════════ DATA ════════
 const DEFAULT_PW = 'greenpetal2024';
 let nid = 20;
@@ -1425,6 +1481,7 @@ function saveSettings(){
   if(upi) localStorage.setItem('gp_upi', upi);
   if(uname) localStorage.setItem('gp_uname', uname);
   toast('Settings saved. ✅');
+  saveSettToDB();
 }
 
 function uploadQR(input){
