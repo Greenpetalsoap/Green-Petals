@@ -14,6 +14,7 @@
   --ink:#1a1714;--cream:#f5f0e8;--cream2:#ede8dc;
   --sage:#7a9e7e;--sage-d:#4a6b4e;--muted:#7a7570;
   --border:rgba(26,23,20,0.1);--white:#fff;
+  --hero-img:linear-gradient(160deg,#2d4a2f,#1a1714);
 }
 html{scroll-behavior:smooth;}
 html{background:#f5f0e8}body{font-family:'Jost',sans-serif;background:#f5f0e8;background:var(--cream);color:#1a1714;color:var(--ink);overflow-x:hidden}
@@ -42,13 +43,13 @@ li:hover .ddrop{opacity:1;pointer-events:all;}
 
 /* ───── HERO ───── */
 .hero{height:100vh;position:relative;overflow:hidden;display:flex;align-items:flex-end;background:var(--ink);}
-.hero-bg{position:absolute;inset:0;background:url('https://mudandmoon.com/2.webp') center/cover no-repeat;opacity:0.38;transition:transform 10s ease;}
+.hero-bg{position:absolute;inset:0;background:var(--hero-img,linear-gradient(160deg,#2d4a2f,#1a1714)) center/cover no-repeat;opacity:0.55;transition:transform 10s ease;}
 body:hover .hero-bg{transform:scale(1.03);}
-.hero-txt{position:relative;z-index:2;padding:72px 60px;max-width:680px;}
+.hero-txt{position:relative;z-index:2;padding:72px 60px;max-width:680px;text-align:left;}
 .h-eyebrow{font-size:10px;letter-spacing:0.22em;text-transform:uppercase;color:rgba(245,240,232,0.5);margin-bottom:22px;font-weight:300;}
-.hero-txt h1{font-family:'Cormorant Garamond',serif;font-size:clamp(54px,7.5vw,100px);font-weight:300;line-height:0.93;color:var(--cream);margin-bottom:30px;}
+.hero-txt h1{font-family:'Cormorant Garamond',serif;font-size:clamp(48px,7vw,96px);font-weight:300;line-height:1.0;color:var(--cream);margin-bottom:30px;letter-spacing:-0.01em;}
 .hero-txt h1 em{font-style:italic;color:rgba(200,222,201,0.85);}
-.h-sub{font-size:11px;letter-spacing:0.11em;text-transform:uppercase;color:rgba(245,240,232,0.48);font-weight:300;max-width:360px;line-height:1.9;margin-bottom:44px;}
+.h-sub{font-size:12px;letter-spacing:0.08em;text-transform:uppercase;color:rgba(245,240,232,0.6);font-weight:300;max-width:420px;line-height:1.85;margin-bottom:44px;}
 .h-btns{display:flex;gap:18px;align-items:center;}
 .btn-light{padding:13px 34px;background:var(--cream);color:var(--ink);font-size:10px;font-weight:400;letter-spacing:0.16em;text-transform:uppercase;border:none;cursor:pointer;font-family:'Jost',sans-serif;transition:all .22s;}
 .btn-light:hover{background:#fff;}
@@ -332,9 +333,9 @@ footer{background:var(--ink);padding:80px 56px 36px;color:var(--cream);}
 .pay-header h2{font-family:'Cormorant Garamond',serif;font-size:24px;font-weight:300;letter-spacing:.05em;}
 .pay-x{background:none;border:none;color:rgba(245,240,232,.6);font-size:22px;cursor:pointer;}
 /* Steps */
-.pay-steps{display:flex;align-items:center;padding:0 36px;background:var(--cream2);border-bottom:1px solid var(--border);}
-.pay-step{display:flex;align-items:center;gap:8px;padding:14px 0;flex:1;opacity:.4;transition:opacity .3s;}
-.pay-step.on{opacity:1;}
+
+
+
 .pay-step.done{opacity:.7;}
 .step-num{width:24px;height:24px;border-radius:50%;background:var(--ink);color:var(--cream);font-size:10px;display:flex;align-items:center;justify-content:center;font-weight:400;flex-shrink:0;}
 .pay-step.done .step-num{background:var(--sage-d);}
@@ -439,7 +440,7 @@ footer{background:var(--ink);padding:80px 56px 36px;color:var(--cream);}
         <a href="#" onclick="filterCat('Candles');goShop();return false;">— Candles</a>
       </div>
     </li>
-    <li><a href="#" onclick="goPage('philosophy');return false;">Philosophy</a></li>
+    <li><a href="#" onclick="goPage('philosophy');return false;">Our Journey</a></li>
     <li><a href="#" onclick="goPage('contact');return false;">Connect</a></li>
   </ul>
   <div class="nav-r">
@@ -458,7 +459,7 @@ footer{background:var(--ink);padding:80px 56px 36px;color:var(--cream);}
       <p class="h-sub">Artisanal botanical soaps & beauty products formulated to elevate your daily ritual. Small batch. Zero chemicals.</p>
       <div class="h-btns">
         <button class="btn-light" onclick="goShop()">Shop The Collection →</button>
-        <button class="btn-ghost-w" onclick="goPage('philosophy')">Our Philosophy</button>
+        <button class="btn-ghost-w" onclick="goPage('philosophy')">Our Journey</button>
       </div>
     </div>
   </div>
@@ -494,7 +495,7 @@ footer{background:var(--ink);padding:80px 56px 36px;color:var(--cream);}
         <span class="sec-ey">The Collection</span>
         <h1 style="font-family:'Cormorant Garamond',serif;font-size:clamp(38px,4.5vw,58px);font-weight:300;">The <em style="font-style:italic;color:var(--sage-d)">Collection.</em></h1>
       </div>
-      <p>Artisanal botanical care formulated to elevate your daily ritual. Crafted with reverence in small batches.</p>
+      <p>Where nature meets artistry — handmade soaps created with pure ingredients and creative passion. Minimal. Botanical. Handcrafted.</p>
     </div>
     <div class="cat-row" id="catRow"></div>
     <div class="shop-ctrl">
@@ -552,7 +553,7 @@ footer{background:var(--ink);padding:80px 56px 36px;color:var(--cream);}
         </div>
         <div class="acc-item">
           <button class="acc-btn" onclick="toggleAcc(this)"><span>Shipping & Returns</span><span class="acc-icon">+</span></button>
-          <div class="acc-body">We ship across India within 5–7 business days. Express delivery available. Returns accepted within 7 days for unopened products. Contact us at greenpetals2296@gmail.com.</div>
+          <div class="acc-body">We ship across India within 5–7 business days. Express delivery available. Returns accepted within 7 days for unopened products. Contact us at Greenpetalsoapstore@gmail.com.</div>
         </div>
       </div>
     </div>
@@ -564,8 +565,8 @@ footer{background:var(--ink);padding:80px 56px 36px;color:var(--cream);}
   <div class="phil-wrap">
     <div class="phil-img"><img src="https://framerusercontent.com/images/Xp9C7zxahZmjWnCfuN9wcfnBk.png" alt="" onerror="this.style.background='#4a6b4e'"></div>
     <div class="phil-txt">
-      <span class="sec-ey">Our Heritage</span>
-      <h2 class="sec-ttl">Rooted in <em>Earth.</em><br>Perfected by Hand.</h2>
+      <span class="sec-ey">Our Journey</span>
+      <h2 class="sec-ttl">Our <em>Journey</em><br>Begins Here.</h2>
       <p>Green Petal was born from a desire to bring the raw, untamed beauty of nature into your daily ritual. Every botanical, every clay, every cold-pressed oil is chosen with intention and reverence.</p>
       <p style="margin-top:14px;">We are not just a brand; we are an atelier. A place where ancient earth minerals meet modern apothecary science to create rituals that nourish the skin and ground the spirit.</p>
       <div class="pillar"><span class="p-num">01</span><div class="p-ttl">Small Batch Craft</div><div class="p-desc">True alchemy cannot be rushed. We craft our botanical products using traditional methods, ensuring every batch retains its raw nourishing power.</div></div>
@@ -582,7 +583,7 @@ footer{background:var(--ink);padding:80px 56px 36px;color:var(--cream);}
     <div>
       <div class="ci-list">
         <div class="ci-row"><div class="ci-k">Phone</div><div class="ci-v"><a href="tel:9123533325">9123533325</a><br><span style="font-size:11px;color:var(--muted);">Mon–Sat, 8am–6pm</span></div></div>
-        <div class="ci-row"><div class="ci-k">Email</div><div class="ci-v"><a href="mailto:greenpetals2296@gmail.com">greenpetals2296@gmail.com</a></div></div>
+        <div class="ci-row"><div class="ci-k">Email</div><div class="ci-v"><a href="mailto:Greenpetalsoapstore@gmail.com">Greenpetalsoapstore@gmail.com</a></div></div>
         <div class="ci-row"><div class="ci-k">Address</div><div class="ci-v">14, Muthurangam Street,<br>Manikoondu, Erode – 638001</div></div>
         <div class="ci-row"><div class="ci-k">Instagram</div><div class="ci-v"><a href="https://instagram.com/_greenpetals__" target="_blank">@_greenpetals__</a></div></div>
         <div class="ci-row"><div class="ci-k">WhatsApp</div><div class="ci-v"><a href="https://wa.me/919123533325" target="_blank">Chat with us</a></div></div>
@@ -590,7 +591,7 @@ footer{background:var(--ink);padding:80px 56px 36px;color:var(--cream);}
     </div>
     <div class="cf-box">
       <h3>Send a Message</h3>
-      <div class="cf-f"><label>Name</label><input type="text" placeholder="Your name"></div>
+      <div class="cf-f"><label>Product Name</label><input type="text" placeholder="Your name"></div>
       <div class="cf-f"><label>Email or Phone</label><input type="text" placeholder="your@email.com"></div>
       <div class="cf-f"><label>Message</label><textarea placeholder="How can we help?"></textarea></div>
       <button class="cf-sub" onclick="toast('Message sent! We will get back to you soon.')">Submit →</button>
@@ -613,16 +614,11 @@ footer{background:var(--ink);padding:80px 56px 36px;color:var(--cream);}
       <a onclick="filterCat('Gift Boxes');goShop()">Gift Boxes</a>
       <a onclick="filterCat('Bath Accessories');goShop()">Bath Accessories</a>
     </div>
-    <div class="ft-col">
-      <h4>Maison</h4>
-      <a onclick="goPage('philosophy')">Our Heritage</a>
-      <a onclick="goPage('contact')">Client Care</a>
-      <a href="https://instagram.com/_greenpetals__" target="_blank">Instagram</a>
-    </div>
+
     <div class="ft-col">
       <h4>Contact</h4>
       <a href="tel:9123533325">9123533325</a>
-      <a href="mailto:greenpetals2296@gmail.com">Email Us</a>
+      <a href="mailto:Greenpetalsoapstore@gmail.com">Email Us</a>
       <a href="https://wa.me/919123533325" target="_blank">WhatsApp</a>
     </div>
   </div>
@@ -682,22 +678,18 @@ footer{background:var(--ink);padding:80px 56px 36px;color:var(--cream);}
     <!-- DASHBOARD -->
     <div class="asec on" id="asec-dash">
       <div class="a-stats">
-        <div class="a-stat" data-ic="📦"><div class="a-sv" id="ad-prod">0</div><div class="a-sl">Total Products</div></div>
-        <div class="a-stat" data-ic="🛒"><div class="a-sv" id="ad-orders">0</div><div class="a-sl">Total Orders</div></div>
-        <div class="a-stat" data-ic="⏳"><div class="a-sv" id="ad-pending">0</div><div class="a-sl">Pending Payment</div></div>
-        <div class="a-stat" data-ic="💰"><div class="a-sv" id="ad-revenue">₹0</div><div class="a-sl">Total Revenue</div></div>
+        <div class="a-stat" data-ic="📦"><div class="a-sv" id="ad-pr">0</div><div class="a-sl">Total Products</div></div>
+        <div class="a-stat" data-ic="🛒"><div class="a-sv" id="ad-or">0</div><div class="a-sl">Total Orders</div></div>
+        <div class="a-stat" data-ic="⏳"><div class="a-sv" id="ad-pe">0</div><div class="a-sl">Pending Orders</div></div>
+        <div class="a-stat" data-ic="💰"><div class="a-sv" id="ad-rv">₹0</div><div class="a-sl">Total Revenue</div></div>
       </div>
       <div class="acard">
-        <div class="acard-h"><div class="acard-t">Quick Actions</div></div>
-        <div style="display:grid;grid-template-columns:repeat(4,1fr);gap:14px;">
-          <div style="background:var(--cream2);padding:22px;text-align:center;cursor:pointer;" onclick="aTab('products',document.querySelectorAll('.atab')[1])"><div style="font-size:30px;margin-bottom:9px;">📦</div><div style="font-size:10px;letter-spacing:.14em;text-transform:uppercase;font-weight:300;">Products</div></div>
-          <div style="background:var(--ink);color:var(--cream);padding:22px;text-align:center;cursor:pointer;position:relative;" onclick="aTab('orders',document.querySelectorAll('.atab')[2])">
-            <div style="font-size:30px;margin-bottom:9px;">🛒</div>
-            <div style="font-size:10px;letter-spacing:.14em;text-transform:uppercase;font-weight:300;">Orders</div>
-            <div id="pendingBadge" style="display:none;position:absolute;top:10px;right:10px;background:#ba7517;color:white;border-radius:50%;width:20px;height:20px;font-size:11px;display:flex;align-items:center;justify-content:center;" id="pendingBadge"></div>
-          </div>
-          <div style="background:var(--cream2);padding:22px;text-align:center;cursor:pointer;" onclick="aTab('reviews',document.querySelectorAll('.atab')[3])"><div style="font-size:30px;margin-bottom:9px;">⭐</div><div style="font-size:10px;letter-spacing:.14em;text-transform:uppercase;font-weight:300;">Reviews</div></div>
-          <div style="background:var(--cream2);padding:22px;text-align:center;cursor:pointer;" onclick="aTab('settings',document.querySelectorAll('.atab')[4])"><div style="font-size:30px;margin-bottom:9px;">⚙️</div><div style="font-size:10px;letter-spacing:.14em;text-transform:uppercase;font-weight:300;">Settings</div></div>
+        <div class="acdh"><div class="acdt">Quick Actions</div></div>
+        <div style="display:grid;grid-template-columns:repeat(4,1fr);gap:12px">
+          <div style="background:var(--cr2);padding:20px;text-align:center;cursor:pointer" onclick="aTab('products',document.querySelectorAll('.atab')[1])"><div style="font-size:28px;margin-bottom:8px">📦</div><div style="font-size:11px;letter-spacing:.06em;font-weight:400">Products</div></div>
+          <div style="background:var(--ink);color:var(--cr);padding:20px;text-align:center;cursor:pointer" onclick="aTab('orders',document.querySelectorAll('.atab')[2])"><div style="font-size:28px;margin-bottom:8px">🛒</div><div style="font-size:11px;letter-spacing:.06em;font-weight:400">Orders</div></div>
+          <div style="background:var(--cr2);padding:20px;text-align:center;cursor:pointer" onclick="aTab('reviews',document.querySelectorAll('.atab')[3])"><div style="font-size:28px;margin-bottom:8px">⭐</div><div style="font-size:11px;letter-spacing:.06em;font-weight:400">Reviews</div></div>
+          <div style="background:var(--cr2);padding:20px;text-align:center;cursor:pointer" onclick="aTab('settings',document.querySelectorAll('.atab')[4])"><div style="font-size:28px;margin-bottom:8px">⚙️</div><div style="font-size:11px;letter-spacing:.06em;font-weight:400">Settings</div></div>
         </div>
       </div>
     </div>
@@ -705,7 +697,10 @@ footer{background:var(--ink);padding:80px 56px 36px;color:var(--cream);}
     <!-- PRODUCTS -->
     <div class="asec" id="asec-products">
       <div class="acard">
-        <div class="acard-h"><div class="acard-t">All Products</div><button class="a-add" onclick="openProdMod()">+ Add Product</button></div>
+        <div class="acdh">
+          <div class="acdt">All Products</div>
+          <button class="aadd" onclick="openProdMod()">+ Add Product</button>
+        </div>
         <table class="atbl">
           <thead><tr><th>Image</th><th>Product Name</th><th>Price</th><th>Category</th><th>Status</th><th>Actions</th></tr></thead>
           <tbody id="aProdBody"></tbody>
@@ -716,29 +711,28 @@ footer{background:var(--ink);padding:80px 56px 36px;color:var(--cream);}
     <!-- ORDERS -->
     <div class="asec" id="asec-orders">
       <div class="acard">
-        <div class="acard-h">
-          <div class="acard-t">All Orders</div>
-          <div style="display:flex;gap:10px;align-items:center;">
-            <select class="ord-act-sel" onchange="filterOrders(this.value)">
-              <option value="all">All Orders</option>
-              <option value="pending">⏳ Pending</option>
-              <option value="confirmed">✅ Confirmed</option>
-              <option value="shipped">🚚 Shipped</option>
-              <option value="delivered">📦 Delivered</option>
-              <option value="cancelled">❌ Cancelled</option>
-            </select>
-          </div>
+        <div class="acdh">
+          <div class="acdt">All Orders</div>
+          <select class="ostsel" onchange="filtOrds(this.value)">
+            <option value="all">All</option>
+            <option value="pending">⏳ Pending</option>
+            <option value="confirmed">✅ Confirmed</option>
+            <option value="shipped">🚚 Shipped</option>
+            <option value="delivered">📦 Delivered</option>
+            <option value="cancelled">❌ Cancelled</option>
+          </select>
         </div>
-        <div class="orders-grid" id="ordersGrid">
-          <div style="padding:48px;text-align:center;color:var(--muted);font-size:13px;font-weight:300;font-style:italic;">No orders yet. Orders will appear here when customers checkout.</div>
-        </div>
+        <div id="ordsGrid"><div style="padding:44px;text-align:center;color:var(--mu);font-size:14px;font-weight:300;font-style:italic">No orders yet. They will appear here when customers checkout.</div></div>
       </div>
     </div>
 
     <!-- REVIEWS -->
     <div class="asec" id="asec-reviews">
       <div class="acard">
-        <div class="acard-h"><div class="acard-t">Customer Reviews</div><button class="a-add" onclick="openRevMod()">+ Add Review</button></div>
+        <div class="acdh">
+          <div class="acdt">Customer Reviews</div>
+          <button class="aadd" onclick="openRevMod()">+ Add Review</button>
+        </div>
         <table class="atbl">
           <thead><tr><th>Customer</th><th>Review</th><th>Stars</th><th>Status</th><th>Actions</th></tr></thead>
           <tbody id="aRevBody"></tbody>
@@ -748,37 +742,78 @@ footer{background:var(--ink);padding:80px 56px 36px;color:var(--cream);}
 
     <!-- SETTINGS -->
     <div class="asec" id="asec-settings">
+
       <div class="sg">
-        <h3>💳 Payment Settings</h3>
-        <p class="pay-settings-note">இந்த details-ஐ வச்சு checkout-ல QR code generate ஆகும். உங்கள் UPI ID சரியா போடுங்க.</p>
-        <div class="sg-row">
-          <div class="mf"><label>UPI ID *</label><input type="text" id="s-upi" placeholder="yourname@paytm / @gpay / @ybl"></div>
-          <div class="mf"><label>Account Name (as in UPI)</label><input type="text" id="s-uname" placeholder="Green Petal / Your Name" value="Green Petal"></div>
+        <h3>🖼️ Hero Image (Homepage Banner)</h3>
+        <p class="snote">Change the homepage background image. Updates instantly on the website after saving.</p>
+        <div style="display:flex;gap:20px;align-items:flex-start;flex-wrap:wrap">
+          <div style="flex:1;min-width:200px">
+            <div class="mf"><label>Image URL (or upload below)</label><input type="text" id="s-hero-url" placeholder="https://your-image-url.jpg" oninput="previewHeroUrl(this.value)"></div>
+            <div class="imdrop" style="margin-top:8px"><input type="file" accept="image/*" onchange="uploadHeroImg(this)"><p>Click to upload hero image</p></div>
+          </div>
+          <div style="flex-shrink:0">
+            <div style="font-size:10px;letter-spacing:.1em;text-transform:uppercase;color:var(--mu);margin-bottom:7px;font-weight:300">Preview</div>
+            <img id="s-hero-preview" src="" style="width:180px;height:120px;object-fit:cover;border:1px solid var(--bd);display:none">
+            <div id="s-hero-placeholder" style="width:180px;height:120px;background:linear-gradient(160deg,#2d4a2f,#1a1714);display:flex;align-items:center;justify-content:center;font-size:11px;color:rgba(245,240,232,.4);letter-spacing:.1em">CURRENT</div>
+          </div>
         </div>
-        <div class="mf"><label>UPI QR Code Image (upload your QR)</label>
-          <div class="img-drop"><input type="file" accept="image/*" onchange="uploadQR(this)"><p>Upload your UPI QR code image — shown to customers at checkout</p></div>
-          <div id="qrPreviewWrap" style="margin-top:10px;"></div>
-        </div>
+        <button class="aadd" style="margin-top:16px" onclick="saveHeroImg()">Set as Hero Image →</button>
       </div>
       <div class="sg">
-        <h3>📱 WhatsApp & Contact</h3>
-        <div class="sg-row">
+        <h3>💳 UPI / QR Payment Settings</h3>
+        <p class="snote">Set your UPI ID and upload your QR code. Customers will see this at checkout to pay via GPay, PhonePe, Paytm etc.</p>
+        <div class="sgrow">
+          <div class="mf"><label>UPI ID *</label><input type="text" id="s-upi" placeholder="yourname@paytm / yourname@okaxis" value=""></div>
+          <div class="mf"><label>Account Name</label><input type="text" id="s-uname" placeholder="Green Petal" value="Green Petal"></div>
+        </div>
+        <div class="mf" style="margin-top:14px">
+          <label>QR Code Image</label>
+          <p class="snote">Upload your UPI QR from GPay/PhonePe → Profile → My QR Code</p>
+          <div class="imdrop"><input type="file" accept="image/*" onchange="uploadQRAdmin(this)"><p>📱 Click to upload UPI QR Code</p></div>
+          <div id="qr-admin-preview" style="margin-top:10px;display:none">
+            <img id="s-qr-preview" src="" style="width:150px;height:150px;object-fit:contain;border:1px solid var(--bd);display:block;margin-bottom:8px">
+            <button onclick="removeQR()" style="font-size:10px;color:#c0392b;background:none;border:1px solid rgba(192,57,43,.2);padding:5px 12px;cursor:pointer;font-family:'Jost',sans-serif;font-weight:300">Remove QR</button>
+          </div>
+        </div>
+      </div>
+
+
+
+      
+
+      <div class="sg">
+        <h3>📱 Contact & WhatsApp</h3>
+        <div class="sgrow">
           <div class="mf"><label>WhatsApp Number</label><input type="text" id="s-wa" value="919123533325"></div>
           <div class="mf"><label>Phone</label><input type="text" id="s-ph" value="9123533325"></div>
         </div>
-        <div class="sg-row">
-          <div class="mf"><label>Email</label><input type="text" id="s-em" value="greenpetals2296@gmail.com"></div>
+        <div class="sgrow">
+          <div class="mf"><label>Email</label><input type="text" id="s-em" value="Greenpetalsoapstore@gmail.com"></div>
           <div class="mf"><label>Instagram</label><input type="text" id="s-ig" value="@_greenpetals__"></div>
         </div>
       </div>
+
       <div class="sg">
         <h3>🔐 Change Admin Password</h3>
-        <div class="sg-row">
-          <div class="mf"><label>New Password</label><input type="password" id="s-np" placeholder="New password"></div>
+        <p class="snote">Change your admin panel password here.</p>
+        <div class="sgrow">
+          <div class="mf"><label>New Password</label><input type="password" id="s-np" placeholder="New Password"></div>
           <div class="mf"><label>Confirm</label><input type="password" id="s-cp" placeholder="Confirm password"></div>
         </div>
       </div>
-      <button class="a-add" onclick="saveSettings()">Save All Settings →</button>
+
+      <!-- CATEGORIES MANAGEMENT -->
+      <div class="sg" id="cat-mgmt-section">
+        <h3>🏷️ Product Categories</h3>
+        <p style="font-size:12px;color:var(--mu);font-weight:300;line-height:1.7;margin-bottom:16px">Add, rename or delete product categories. Changes update the shop filter and product form instantly.</p>
+        <div id="catListAdmin" style="margin-bottom:16px"></div>
+        <div style="display:flex;gap:10px;align-items:center">
+          <input type="text" id="newCatInput" placeholder="New category name..." style="flex:1;padding:10px 0;border:none;border-bottom:1px solid var(--bd);background:transparent;font-family:'Jost',sans-serif;font-size:14px;color:var(--ink);outline:none;font-weight:300" onkeydown="if(event.key==='Enter')addCat()">
+          <button class="aadd" onclick="addCat()">+ Add</button>
+        </div>
+      </div>
+
+      <button class="aadd" style="margin-top:8px" onclick="saveSett()">Save All Settings →</button>
     </div>
 
   </div>
@@ -800,10 +835,7 @@ footer{background:var(--ink);padding:80px 56px 36px;color:var(--cream);}
     </div>
     <div class="mrow">
       <div class="mf"><label>Category</label>
-        <select id="p-cat">
-          <option>Artisanal Soaps</option><option>Gift Boxes</option><option>Bath Accessories</option>
-          <option>Shampoo</option><option>Lipcare</option><option>Candles</option>
-        </select>
+        <select id="p-cat"></select>
       </div>
       <div class="mf"><label>Status</label>
         <select id="p-status"><option value="active">Active</option><option value="oos">Out of Stock</option><option value="draft">Draft</option></select>
@@ -816,7 +848,7 @@ footer{background:var(--ink);padding:80px 56px 36px;color:var(--cream);}
       <div class="img-prevs" id="pImgP"></div>
     </div>
     <div class="mf">
-      <label>Hover Image</label>
+      <label>hover Image</label>
       <div class="img-drop"><input type="file" accept="image/*" onchange="prevImg(this,'pImg2P','pImg2D')"><p>Click to upload hover image</p></div>
       <div class="img-prevs" id="pImg2P"></div>
     </div>
@@ -847,84 +879,94 @@ footer{background:var(--ink);padding:80px 56px 36px;color:var(--cream);}
   </div>
 </div>
 
-<!-- ═══════════ PAYMENT MODAL ═══════════ -->
-<div class="pay-ov" id="payOv">
-  <div class="pay-box">
-    <div class="pay-header">
-      <h2>Checkout</h2>
-      <button class="pay-x" onclick="closePayment()">✕</button>
-    </div>
-    <!-- Steps indicator -->
-    <div class="pay-steps">
-      <div class="pay-step on" id="st1"><div class="step-num" id="sn1">1</div><div class="step-lbl">Details</div></div>
-      <div class="step-div"></div>
-      <div class="pay-step" id="st2"><div class="step-num" id="sn2">2</div><div class="step-lbl">Payment</div></div>
-      <div class="step-div"></div>
-      <div class="pay-step" id="st3"><div class="step-num" id="sn3">3</div><div class="step-lbl">Confirm</div></div>
-    </div>
+<!-- ═══════════ QR / UPI PAYMENT MODAL ═══════════ -->
 
-    <!-- STEP 1: ADDRESS -->
-    <div class="pay-panel on" id="pp1">
-      <div class="ord-sum" id="checkoutSummary"></div>
-      <div class="pf2">
-        <div class="pf"><label>Full Name *</label><input type="text" id="o-name" placeholder="Your full name"></div>
-        <div class="pf"><label>Phone *</label><input type="text" id="o-phone" placeholder="10-digit mobile number"></div>
+<!-- Step 1: Address Modal -->
+<div class="pay-ov" id="addrOv">
+  <div class="pay-box" style="max-width:500px">
+    <div class="pay-header"><h2>Delivery Details</h2><button class="pay-x" onclick="closeAddr()">✕</button></div>
+    <div style="padding:26px 34px 34px">
+      <div id="addrOsum" style="background:var(--cr2);padding:14px 18px;margin-bottom:22px;font-size:13px;border-radius:2px"></div>
+      <div style="display:grid;grid-template-columns:1fr 1fr;gap:16px">
+        <div class="pf"><label>Full Name *</label><input type="text" id="on" placeholder="Your name"></div>
+        <div class="pf"><label>Phone *</label><input type="text" id="oph" placeholder="10-digit mobile"></div>
       </div>
-      <div class="pf"><label>Email (optional)</label><input type="text" id="o-email" placeholder="for order confirmation"></div>
-      <div class="pf"><label>Delivery Address *</label><textarea id="o-addr" style="min-height:64px;resize:none;" placeholder="House no, Street, Area"></textarea></div>
-      <div class="pf2">
-        <div class="pf"><label>City *</label><input type="text" id="o-city" placeholder="City"></div>
-        <div class="pf"><label>Pincode *</label><input type="text" id="o-pin" placeholder="6-digit pincode"></div>
+      <div class="pf"><label>Email (optional)</label><input type="text" id="oem" placeholder="for order updates"></div>
+      <div class="pf"><label>Delivery Address *</label><textarea id="oad" placeholder="House no, Street, Area" style="min-height:56px;resize:none"></textarea></div>
+      <div style="display:grid;grid-template-columns:1fr 1fr;gap:16px">
+        <div class="pf"><label>City *</label><input type="text" id="oci" placeholder="City"></div>
+        <div class="pf"><label>Pincode *</label><input type="text" id="opi" placeholder="6-digit pincode"></div>
       </div>
-      <div class="pf"><label>State *</label><input type="text" id="o-state" placeholder="State" value="Tamil Nadu"></div>
-      <div class="pf"><label>Order Note (optional)</label><textarea id="o-note" style="min-height:48px;resize:none;" placeholder="Any special instructions?"></textarea></div>
-      <button class="pay-btn" onclick="goToPayStep()">Proceed to Payment →</button>
-    </div>
-
-    <!-- STEP 2: QR PAYMENT -->
-    <div class="pay-panel" id="pp2">
-      <div class="qr-section">
-        <p style="font-size:11px;letter-spacing:.1em;text-transform:uppercase;color:var(--muted);font-weight:300;margin-bottom:4px;">Scan & Pay via UPI</p>
-        <div class="qr-wrap">
-          <img id="qrImg" src="" alt="QR Code">
-        </div>
-        <div class="qr-upi" id="qrUpiName">Green Petal</div>
-        <div class="qr-upi-id" id="qrUpiId">greenpetal@upi</div>
-        <div class="qr-amount" id="qrAmount">₹0</div>
-        <p class="qr-note">Scan this QR code using any UPI app.<br>Enter exact amount shown above.</p>
-        <div class="qr-apps">
-          <div class="qr-app" onclick="openUPI('gpay')"><span>🟡</span> GPay</div>
-          <div class="qr-app" onclick="openUPI('phonepe')"><span>🟣</span> PhonePe</div>
-          <div class="qr-app" onclick="openUPI('paytm')"><span>🔵</span> Paytm</div>
-          <div class="qr-app" onclick="openUPI('bhim')"><span>🟠</span> BHIM</div>
-        </div>
-      </div>
-      <p style="font-size:11px;letter-spacing:.08em;color:var(--muted);font-weight:300;margin-bottom:12px;text-align:center;">After payment, upload your payment screenshot below</p>
-      <div class="ss-upload" id="ssUploadBox">
-        <input type="file" accept="image/*" onchange="handleSSUpload(this)">
-        <div class="ss-upload-icon">📸</div>
-        <p>Click to upload payment screenshot</p>
-      </div>
-      <img class="ss-preview" id="ssPreview" alt="Payment screenshot">
-      <button class="pay-btn" id="confirmPayBtn" onclick="confirmPayment()" style="opacity:.4;cursor:not-allowed;">Upload Screenshot to Continue →</button>
-      <button class="pay-btn ghost" onclick="goStep(1)">← Back to Details</button>
-    </div>
-
-    <!-- STEP 3: SUCCESS -->
-    <div class="pay-panel" id="pp3">
-      <div class="success-screen">
-        <div class="success-icon">🌿</div>
-        <h3>Order Placed!</h3>
-        <p>Your order has been received. We will verify your payment and confirm your order via WhatsApp within a few minutes.</p>
-        <div class="order-id-box">
-          Order ID: <span id="successOrderId">#GP0001</span>
-        </div>
-        <button class="pay-btn wa" onclick="sendOrderWA()">View Order on WhatsApp →</button>
-        <button class="pay-btn ghost" onclick="closePayment();goHome()">Continue Shopping</button>
-      </div>
+      <div class="pf"><label>State</label><input type="text" id="ost" value="Tamil Nadu"></div>
+      <button onclick="goToQR()" style="width:100%;padding:15px;background:var(--ink);color:var(--cr);border:none;font-family:'Jost',sans-serif;font-size:11px;letter-spacing:.17em;text-transform:uppercase;cursor:pointer;margin-top:8px;transition:background .2s" onmouseover="this.style.background='var(--sgd)'" onmouseout="this.style.background='var(--ink)'">Proceed to Payment →</button>
     </div>
   </div>
 </div>
+
+<!-- Step 2: QR Payment Modal -->
+<div class="pay-ov" id="qrOv">
+  <div class="pay-box" style="max-width:460px">
+    <div class="pay-header"><h2>Pay via UPI / QR</h2><button class="pay-x" onclick="closeQR()">✕</button></div>
+    <div style="padding:24px 34px 32px">
+
+      <!-- Order summary -->
+      <div id="qrOsum" style="background:var(--cr2);padding:14px 18px;margin-bottom:20px;font-size:13px"></div>
+
+      <!-- QR Code display -->
+      <div style="text-align:center;margin-bottom:18px">
+        <p style="font-size:10px;letter-spacing:.14em;text-transform:uppercase;color:var(--mu);margin-bottom:12px;font-weight:300">Scan & Pay via UPI</p>
+        <div style="display:inline-block;padding:14px;background:#fff;border:1px solid var(--bd)" id="qrImgWrap">
+          <img id="qrCodeImg" src="" alt="QR Code" style="width:200px;height:200px;display:block" onerror="this.style.background='#eee'">
+        </div>
+        <div id="qrNoImg" style="display:none;width:200px;height:200px;background:var(--cr2);border:2px dashed var(--bd);display:flex;align-items:center;justify-content:center;margin:0 auto;font-size:12px;color:var(--mu);font-weight:300;text-align:center;padding:16px">No QR uploaded yet.<br>Set it in Admin → Settings</div>
+        <div style="margin-top:12px">
+          <div style="font-family:'Cormorant Garamond',serif;font-size:18px;font-weight:400" id="qrUpiName">Green Petal</div>
+          <div style="font-size:13px;color:var(--mu);font-weight:300;margin:3px 0 10px" id="qrUpiId">Set UPI ID in Admin Settings</div>
+          <div style="font-family:'Cormorant Garamond',serif;font-size:32px;color:var(--sgd);font-weight:300" id="qrPayAmt">₹0</div>
+        </div>
+      </div>
+
+      <!-- UPI App quick buttons -->
+      <p style="font-size:11px;color:var(--mu);text-align:center;margin-bottom:10px;font-weight:300">Or open directly in UPI app</p>
+      <div style="display:flex;justify-content:center;gap:10px;flex-wrap:wrap;margin-bottom:18px">
+        <button onclick="openUPIApp('gpay')" style="padding:8px 14px;border:1px solid var(--bd);background:#fff;font-size:12px;font-family:'Jost',sans-serif;cursor:pointer;display:flex;align-items:center;gap:5px;font-weight:300">🟡 GPay</button>
+        <button onclick="openUPIApp('phonepe')" style="padding:8px 14px;border:1px solid var(--bd);background:#fff;font-size:12px;font-family:'Jost',sans-serif;cursor:pointer;display:flex;align-items:center;gap:5px;font-weight:300">🟣 PhonePe</button>
+        <button onclick="openUPIApp('paytm')" style="padding:8px 14px;border:1px solid var(--bd);background:#fff;font-size:12px;font-family:'Jost',sans-serif;cursor:pointer;display:flex;align-items:center;gap:5px;font-weight:300">🔵 Paytm</button>
+        <button onclick="openUPIApp('bhim')" style="padding:8px 14px;border:1px solid var(--bd);background:#fff;font-size:12px;font-family:'Jost',sans-serif;cursor:pointer;display:flex;align-items:center;gap:5px;font-weight:300">🟠 BHIM</button>
+      </div>
+
+      <!-- Screenshot upload -->
+      <p style="font-size:11px;color:var(--mu);text-align:center;margin-bottom:10px;font-weight:300">After payment, upload your screenshot</p>
+      <div id="ssUploadBox" style="border:2px dashed var(--bd);padding:24px;text-align:center;cursor:pointer;position:relative;transition:all .2s;margin-bottom:12px" onmouseover="this.style.borderColor='var(--ink)'" onmouseout="this.style.borderColor='var(--bd)'">
+        <input type="file" accept="image/*" onchange="handleSS(this)" style="position:absolute;inset:0;opacity:0;cursor:pointer">
+        <div style="font-size:24px;margin-bottom:6px">📸</div>
+        <p style="font-size:12px;color:var(--mu);font-weight:300">Click to upload payment screenshot</p>
+      </div>
+      <img id="ssPreview" src="" alt="" style="width:100%;max-height:140px;object-fit:contain;display:none;margin-bottom:12px;border:1px solid var(--bd)">
+      <button id="confirmPayBtn" onclick="confirmPayment()" disabled style="width:100%;padding:14px;background:var(--ink);color:var(--cr);border:none;font-family:'Jost',sans-serif;font-size:10px;letter-spacing:.17em;text-transform:uppercase;cursor:not-allowed;opacity:.4;font-weight:300;transition:all .22s">Upload Screenshot to Continue →</button>
+      <button onclick="closeQR();document.getElementById('addrOv').classList.add('on')" style="width:100%;padding:13px;margin-top:9px;background:none;color:var(--mu);border:1px solid var(--bd);font-family:'Jost',sans-serif;font-size:10px;letter-spacing:.13em;text-transform:uppercase;cursor:pointer;font-weight:300">← Back to Details</button>
+    </div>
+  </div>
+</div>
+
+<!-- Step 3: Success Modal -->
+<div class="pay-ov" id="payOv">
+  <div class="pay-box" style="max-width:420px">
+    <div class="pay-header"><h2>Order Placed!</h2><button class="pay-x" onclick="closePayment()">✕</button></div>
+    <div style="padding:32px 34px;text-align:center">
+      <div style="font-size:52px;margin-bottom:14px">🌿</div>
+      <h3 style="font-family:'Cormorant Garamond',serif;font-size:26px;font-weight:300;margin-bottom:12px">Thank You!</h3>
+      <p style="font-size:13px;color:var(--mu);font-weight:300;line-height:1.8;margin-bottom:20px">Your order has been received. We'll verify your payment and confirm within a few minutes.</p>
+      <div style="background:var(--cr2);padding:14px 22px;margin-bottom:22px;font-size:13px">
+        Order ID: <span id="succOid" style="font-family:'Cormorant Garamond',serif;font-size:20px;color:var(--sgd)">#GP0001</span>
+      </div>
+      <button class="pbtn wa" onclick="sendOrdWA()" style="width:100%;padding:14px;background:#25D366;color:#fff;border:none;font-family:'Jost',sans-serif;font-size:10px;letter-spacing:.14em;text-transform:uppercase;cursor:pointer;margin-bottom:10px">View Order on WhatsApp →</button>
+      <button onclick="closePayment();goHome()" style="width:100%;padding:13px;background:none;color:var(--mu);border:1px solid var(--bd);font-family:'Jost',sans-serif;font-size:10px;letter-spacing:.13em;text-transform:uppercase;cursor:pointer">Continue Shopping</button>
+    </div>
+  </div>
+</div>
+
+
 
 <!-- ORDER DETAIL MODAL (Admin) -->
 <div class="ord-detail-mod" id="ordDetailMod">
@@ -972,435 +1014,387 @@ footer{background:var(--ink);padding:80px 56px 36px;color:var(--cream);}
 // ════════ SUPABASE ════════
 const SB_URL='https://twtjsnvjvbvetqfdmszl.supabase.co';
 const SB_KEY='eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InR3dGpzbnZqdmJ2ZXRxZmRtc3psIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NzgzMTEzNTcsImV4cCI6MjA5Mzg4NzM1N30.jKJ-ZtJgWBbKuN0TcNWZ90oX5SvtXK0THzF8x1odoXI';
+
 async function sb(table,opts={}){
-  const{method='GET',body,filters=[],order=''}=opts;
-  let url=SB_URL+'/rest/v1/'+table+'?select=*';
-  filters.forEach(f=>url+='&'+f);
-  if(order)url+='&order='+order;
-  const r=await fetch(url,{method,headers:{'apikey':SB_KEY,'Authorization':'Bearer '+SB_KEY,'Content-Type':'application/json','Prefer':method==='POST'?'return=representation':''},body:body?JSON.stringify(body):undefined});
-  if(!r.ok)return null;
-  return method==='DELETE'?[]:await r.json();
-}
-async function loadDB(){
-  const[pd,rv]=await Promise.all([sb('products',{filters:['status=neq.draft'],order:'id.asc'}),sb('reviews',{filters:['status=eq.active'],order:'id.asc'})]);
-  if(pd){prods=pd.map(p=>({id:p.id,nm:p.name,ds:p.description||'',in:p.ingredients||'',us:p.how_to_use||'',pr:p.price,op:p.original_price||'',ct:p.category,st:p.status,vr:p.variants||[],tag:p.tag||'',img:p.img_url||'',img2:p.img2_url||''}));renderFeat();renderShop();}
-  if(rv){revs=rv.map(r=>({id:r.id,nm:r.customer_name,lc:r.location||'',tx:r.review_text,st:r.stars,sv:r.status}));renderTestis();}
-}
-async function dbSaveProd(d,eid){
-  const b={name:d.nm,description:d.ds,ingredients:d.in,how_to_use:d.us,price:d.pr,original_price:d.op,category:d.ct,status:d.st,variants:d.vr,tag:d.tag,img_url:d.img,img2_url:d.img2,updated_at:new Date().toISOString()};
-  if(eid)await sb('products',{method:'PATCH',body:b,filters:['id=eq.'+eid]});
-  else await sb('products',{method:'POST',body:b});
-  const pd=await sb('products',{filters:['status=neq.draft'],order:'id.asc'});
-  if(pd){prods=pd.map(p=>({id:p.id,nm:p.name,ds:p.description||'',in:p.ingredients||'',us:p.how_to_use||'',pr:p.price,op:p.original_price||'',ct:p.category,st:p.status,vr:p.variants||[],tag:p.tag||'',img:p.img_url||'',img2:p.img2_url||''}));renderFeat();renderShop();renderAdPr();updDash();}
-}
-async function dbDelProd(id){
-  await sb('products',{method:'DELETE',filters:['id=eq.'+id]});
-  prods=prods.filter(p=>p.id!==id);renderFeat();renderShop();renderAdPr();updDash();
-}
-async function dbSaveRev(d,eid){
-  const b={customer_name:d.nm,location:d.lc,review_text:d.tx,stars:d.st,status:d.sv};
-  if(eid)await sb('reviews',{method:'PATCH',body:b,filters:['id=eq.'+eid]});
-  else await sb('reviews',{method:'POST',body:b});
-  const rv=await sb('reviews',{filters:['status=eq.active'],order:'id.asc'});
-  if(rv){revs=rv.map(r=>({id:r.id,nm:r.customer_name,lc:r.location||'',tx:r.review_text,st:r.stars,sv:r.status}));renderTestis();renderAdRv();}
-}
-async function dbDelRev(id){await sb('reviews',{method:'DELETE',filters:['id=eq.'+id]});revs=revs.filter(r=>r.id!==id);renderTestis();renderAdRv();}
-async function dbSaveOrder(ord){await sb('orders',{method:'POST',body:{id:ord.id,customer_name:ord.nm,phone:ord.ph,email:ord.em,address:ord.ad,note:ord.no,items:ord.items,total:ord.tot,status:'pending'}});}
-async function dbLoadOrders(){
-  const data=await sb('orders',{order:'created_at.desc'});
-  if(!data)return;
-  orders=data.map(o=>({id:o.id,nm:o.customer_name,ph:o.phone,em:o.email,ad:o.address,no:o.note,items:o.items,tot:o.total,ss:null,st:o.status,time:new Date(o.created_at).toLocaleString('en-IN')}));
-  renderAdOrds();updDash();
-}
-async function dbUpdOrdStatus(id,st){await sb('orders',{method:'PATCH',body:{status:st,updated_at:new Date().toISOString()},filters:['id=eq.'+id]});await dbLoadOrders();}
-async function dbLoadSettings(){
-  const data=await sb('settings');if(!data)return;
-  const map={'upi_id':'s-upi','upi_name':'s-unm','whatsapp':'s-wa','phone':'s-ph','email':'s-em','instagram':'s-ig'};
-  data.forEach(s=>{const el=document.getElementById(map[s.key]);if(el)el.value=s.value;});
-  const u=data.find(s=>s.key==='upi_id');const n=data.find(s=>s.key==='upi_name');
-  if(u)localStorage.setItem('gp_upi',u.value);if(n)localStorage.setItem('gp_unm',n.value);
-}
-async function dbSaveSettings(){
-  const fields=[['upi_id','s-upi'],['upi_name','s-unm'],['whatsapp','s-wa'],['phone','s-ph'],['email','s-em'],['instagram','s-ig']];
-  for(const[k,eid]of fields){const el=document.getElementById(eid);if(el)await sb('settings',{method:'PATCH',body:{value:el.value,updated_at:new Date().toISOString()},filters:['key=eq.'+k]});}
+  try{
+    const{method='GET',body,filters=[],order=''}=opts;
+    let url=SB_URL+'/rest/v1/'+table+'?select=*';
+    filters.forEach(f=>url+='&'+f);
+    if(order)url+='&order='+order;
+    const r=await fetch(url,{method,headers:{'apikey':SB_KEY,'Authorization':'Bearer '+SB_KEY,'Content-Type':'application/json','Prefer':method==='POST'?'return=representation':''},body:body?JSON.stringify(body):undefined});
+    if(!r.ok)return null;
+    return method==='DELETE'?[]:await r.json();
+  }catch(e){return null;}
 }
 
 // ════════ DATA ════════
-const DEFAULT_PW = 'greenpetal2024';
-let nid = 20;
-let curCat = 'All';
-let detailId = null;
-let detailQty = 1;
-let detailVar = null;
-let cart = [];
-let cartSessions = 0;
+const DEFAULT_PW='greenpetal2024';
+let nid=20, curCat='All', detailId=null, detailQty=1, detailVar=null;
+let cart=[], orders=[], currentOrderData=null, ordCounter=1, ssData=null;
+let currentOrdDetail=null, ordFilt='all';
 
-let products = [
-  {id:1,name:'Lavender & Rosemary Soap',desc:'Our signature cold-process bar crafted with French lavender essential oil and fresh rosemary extract. Rich, creamy lather that leaves skin deeply nourished.',ingr:'Coconut Oil, Shea Butter, Lavender Essential Oil, Rosemary Extract, French Clay',use:'Lather between hands or on a loofah. Massage onto wet skin in circular motions. Rinse well.',price:'₹499',op:'₹799',cat:'Artisanal Soaps',status:'active',img:'https://mudandmoon.com/uploads/products/2026/04/woo_imp_1776429065_1745.jpg',img2:'https://mudandmoon.com/uploads/products/2026/04/woo_imp_1776429065_6422.jpg',vars:['100g','150g'],tag:''},
-  {id:2,name:'Lemongrass & Sage Bar',desc:'A vibrant, citrus-forward bar with mood-lifting lemongrass and grounding sage. Perfect for morning showers to energise the senses.',ingr:'Olive Oil, Lemongrass Essential Oil, Sage Leaf Extract, Coconut Oil, Castor Oil',use:'Use daily. Especially invigorating in morning showers.',price:'₹499',op:'₹799',cat:'Artisanal Soaps',status:'active',img:'https://mudandmoon.com/uploads/products/2026/04/woo_imp_1776429068_3841.jpg',img2:'https://mudandmoon.com/uploads/products/2026/04/woo_imp_1776429068_8788.jpg',vars:['100g','200g'],tag:'New'},
-  {id:3,name:'Eucalyptus & Cedarwood',desc:'Deep cleansing and detoxifying. This bar draws out impurities while the woodsy cedarwood grounds and calms the mind.',ingr:'Kaolin Clay, Eucalyptus Essential Oil, Cedarwood Oil, Palm-Free Soap Base',use:'Ideal for oily and combination skin. Use 2–3 times per week.',price:'₹499',op:'₹799',cat:'Artisanal Soaps',status:'active',img:'https://mudandmoon.com/uploads/products/2026/04/woo_imp_1776429064_4555.jpg',img2:'https://mudandmoon.com/uploads/products/2026/04/woo_imp_1776429064_7500.jpg',vars:['100g'],tag:''},
-  {id:4,name:"Traveller's Gift Box",desc:"A curated collection of our three bestselling bars — beautifully packaged for gifting or travel. The perfect introduction to the Green Petal ritual.",ingr:'3 Artisanal Soap Bars, Gift Box, Ribbon',use:'Gift or travel. Each bar used separately as directed.',price:'₹1,499',op:'₹2,299',cat:'Gift Boxes',status:'active',img:'https://mudandmoon.com/uploads/products/2026/04/woo_imp_1776429073_1955.jpg',img2:'https://mudandmoon.com/uploads/products/2026/04/woo_imp_1776429073_8022.jpg',vars:[],tag:'Bestseller'},
-  {id:5,name:'Dream Combo',desc:'Our most loved pairing — a soap bar and a matching bath accessory at a special bundle price.',ingr:'1 Artisanal Soap, 1 Natural Loofah or Soap Dish',use:'Use the accessory with the soap bar for a complete ritual experience.',price:'₹799',op:'₹1,199',cat:'Gift Boxes',status:'active',img:'https://mudandmoon.com/uploads/products/2026/04/woo_imp_1776429072_3203.jpg',img2:'https://mudandmoon.com/uploads/products/2026/04/woo_imp_1776429072_4890.jpg',vars:[],tag:'Sale'},
-  {id:6,name:'Washed Ashore Soap Dish',desc:'Handcrafted from natural river stone, this soap dish allows your bar to dry properly between uses — extending its life and keeping your surfaces clean.',ingr:'Natural River Stone',use:'Place soap bar on dish. Rinse dish weekly to prevent residue.',price:'₹550',op:'₹850',cat:'Bath Accessories',status:'active',img:'https://mudandmoon.com/uploads/products/2026/04/woo_imp_1776429067_4469.jpg',img2:'https://mudandmoon.com/uploads/products/2026/04/woo_imp_1776429067_6938.jpg',vars:[],tag:''},
-  {id:7,name:'Pink Sea Artisanal Soap',desc:'A delicate rose and sea salt bar that exfoliates gently while hydrating. The pink hue comes entirely from natural rose clay.',ingr:'Rose Clay, Sea Salt, Rose Essential Oil, Coconut Oil, Sweet Almond Oil',use:'Use on body. May be too exfoliating for sensitive facial skin.',price:'₹445',op:'₹699',cat:'Artisanal Soaps',status:'oos',img:'https://mudandmoon.com/uploads/products/2026/04/woo_imp_1776429059_3123.jpg',img2:'https://mudandmoon.com/uploads/products/2026/04/woo_imp_1776429060_5806.jpg',vars:['80g','120g'],tag:''},
-  {id:8,name:'Natural Lip Balm Set',desc:'A trio of deeply nourishing lip balms in three botanical scents — vanilla honey, mint citrus, and rose petal.',ingr:'Shea Butter, Beeswax, Vitamin E, Natural Fragrance',use:'Apply to lips as needed throughout the day. Reapply before bed for overnight treatment.',price:'₹299',op:'₹499',cat:'Lipcare',status:'active',img:'https://framerusercontent.com/images/RgYhg7yBVjxASYJYyOxidTfnKk.jpg',img2:'https://framerusercontent.com/images/A8otwaMCLKnzwpSGdKlpiVJn0dM.jpg',vars:['Vanilla Honey','Mint Citrus','Rose Petal'],tag:'New'},
-  {id:9,name:'Herbal Shampoo Bar',desc:'Zero-waste shampoo bar enriched with amla, hibiscus, and brahmi. Leaves hair clean, soft, and full of natural shine.',ingr:'Amla Extract, Hibiscus, Brahmi, Coconut Surfactant, Argan Oil',use:'Rub bar directly on wet hair or lather in hands first. Massage into scalp, rinse well. Follow with conditioner if needed.',price:'₹399',op:'₹649',cat:'Shampoo',status:'active',img:'https://framerusercontent.com/images/5Q4YnmSDdHjGOExfiXxIRJQnA8.jpg',img2:'https://framerusercontent.com/images/o5wFliCYBikk1xrXKEZ1EMmbfFA.jpg',vars:['Normal','Dry & Damaged'],tag:''},
-  {id:10,name:'Ritual Soy Candle',desc:'Hand-poured soy wax candle with a blend of jasmine, sandalwood, and warm amber. Burns clean for 45+ hours.',ingr:'100% Soy Wax, Cotton Wick, Jasmine & Sandalwood Fragrance Oil',use:'Trim wick to 5mm before each use. Never leave burning unattended.',price:'₹899',op:'₹1,399',cat:'Candles',status:'active',img:'https://mudandmoon.com/uploads/products/2026/04/woo_imp_1776429081_5180.jpg',img2:'https://mudandmoon.com/uploads/products/2026/04/woo_imp_1776429082_4836.jpg',vars:['Small (150g)','Large (300g)'],tag:''},
+let products=[
+  {id:1,name:'Lavender & Rosemary Soap',desc:'Our signature cold-process bar crafted with French lavender essential oil and fresh rosemary extract. Rich, creamy lather.',ingr:'Coconut Oil, Shea Butter, Lavender EO, Rosemary Extract, French Clay',use:'Lather on wet skin. Rinse well.',price:'₹499',op:'₹799',cat:'Artisanal Soaps',status:'active',img:'https://mudandmoon.com/uploads/products/2026/04/woo_imp_1776429065_1745.jpg',img2:'https://mudandmoon.com/uploads/products/2026/04/woo_imp_1776429065_6422.jpg',vars:['75g','100g'],tag:''},
+  {id:2,name:'Lemongrass & Sage Bar',desc:'Vibrant citrus-forward bar with mood-lifting lemongrass and grounding sage.',ingr:'Olive Oil, Lemongrass EO, Sage Extract, Coconut Oil, Castor Oil',use:'Use daily.',price:'₹499',op:'₹799',cat:'Artisanal Soaps',status:'active',img:'https://mudandmoon.com/uploads/products/2026/04/woo_imp_1776429068_3841.jpg',img2:'https://mudandmoon.com/uploads/products/2026/04/woo_imp_1776429068_8788.jpg',vars:['100g','200g'],tag:'New'},
+  {id:3,name:'Eucalyptus & Cedarwood',desc:'Deep cleansing bar. Draws out impurities while cedarwood grounds and calms.',ingr:'Kaolin Clay, Eucalyptus EO, Cedarwood Oil, Coconut Oil',use:'Use 2-3 times per week.',price:'₹499',op:'₹799',cat:'Artisanal Soaps',status:'active',img:'https://mudandmoon.com/uploads/products/2026/04/woo_imp_1776429064_4555.jpg',img2:'https://mudandmoon.com/uploads/products/2026/04/woo_imp_1776429064_7500.jpg',vars:['100g'],tag:''},
+  {id:4,name:"Traveller's Gift Box",desc:'Three bestselling bars beautifully packaged for gifting or travel.',ingr:'3 Artisanal Soap Bars, Gift Box, Ribbon',use:'Each bar used separately.',price:'₹1,499',op:'₹2,299',cat:'Gift Boxes',status:'active',img:'https://mudandmoon.com/uploads/products/2026/04/woo_imp_1776429073_1955.jpg',img2:'https://mudandmoon.com/uploads/products/2026/04/woo_imp_1776429073_8022.jpg',vars:[],tag:'Bestseller'},
+  {id:5,name:'Dream Combo',desc:'A soap bar and matching bath accessory at a special bundle price.',ingr:'1 Artisanal Soap, 1 Natural Loofah',use:'Use accessory with soap for complete ritual.',price:'₹799',op:'₹1,199',cat:'Gift Boxes',status:'active',img:'https://mudandmoon.com/uploads/products/2026/04/woo_imp_1776429072_3203.jpg',img2:'https://mudandmoon.com/uploads/products/2026/04/woo_imp_1776429072_4890.jpg',vars:[],tag:'Sale'},
+  {id:6,name:'Washed Ashore Soap Dish',desc:'Handcrafted from natural river stone. Allows bar to dry between uses.',ingr:'Natural River Stone',use:'Place soap bar on dish. Rinse weekly.',price:'₹550',op:'₹850',cat:'Bath Accessories',status:'active',img:'https://mudandmoon.com/uploads/products/2026/04/woo_imp_1776429067_4469.jpg',img2:'https://mudandmoon.com/uploads/products/2026/04/woo_imp_1776429067_6938.jpg',vars:[],tag:''},
+  {id:7,name:'Natural Lip Balm Set',desc:'Three nourishing lip balms — vanilla honey, mint citrus, rose petal.',ingr:'Shea Butter, Beeswax, Vitamin E, Natural Fragrance',use:'Apply as needed.',price:'₹299',op:'₹499',cat:'Lipcare',status:'active',img:'https://framerusercontent.com/images/RgYhg7yBVjxASYJYyOxidTfnKk.jpg',img2:'https://framerusercontent.com/images/A8otwaMCLKnzwpSGdKlpiVJn0dM.jpg',vars:['Vanilla Honey','Mint Citrus','Rose Petal'],tag:'New'},
+  {id:8,name:'Herbal Shampoo Bar',desc:'Zero-waste bar with amla, hibiscus, brahmi. Natural shine.',ingr:'Amla, Hibiscus, Brahmi, Coconut Surfactant, Argan Oil',use:'Lather on wet hair, rinse well.',price:'₹399',op:'₹649',cat:'Shampoo',status:'active',img:'https://framerusercontent.com/images/5Q4YnmSDdHjGOExfiXxIRJQnA8.jpg',img2:'https://framerusercontent.com/images/o5wFliCYBikk1xrXKEZ1EMmbfFA.jpg',vars:['Normal','Dry & Damaged'],tag:''},
+  {id:9,name:'Ritual Soy Candle',desc:'Hand-poured soy candle. Jasmine, sandalwood, amber. 45+ hours.',ingr:'100% Soy Wax, Cotton Wick, Jasmine & Sandalwood Fragrance',use:'Trim wick 5mm before use.',price:'₹899',op:'₹1,399',cat:'Candles',status:'active',img:'https://mudandmoon.com/uploads/products/2026/04/woo_imp_1776429081_5180.jpg',img2:'https://mudandmoon.com/uploads/products/2026/04/woo_imp_1776429082_4836.jpg',vars:['Small (150g)','Large (300g)'],tag:''},
+];
+let reviews=[
+  {id:1,name:'Priya S.',loc:'Chennai',text:'Lavender soap for 3 months — skin never felt better. Worth every rupee!',stars:5,status:'active'},
+  {id:2,name:'Kavitha R.',loc:'Coimbatore',text:"The Gift Box is the most beautiful thing I've gifted. Sister was delighted!",stars:5,status:'active'},
+  {id:3,name:'Meena T.',loc:'Erode',text:'Shampoo bar transformed my hair routine. No more plastic bottles!',stars:5,status:'active'},
+  {id:4,name:'Anitha K.',loc:'Bangalore',text:'Soy candle burns so clean. Whole house smells incredible.',stars:5,status:'active'},
+  {id:5,name:'Ranjitha M.',loc:'Madurai',text:'Green Petal products are genuinely special. Quality difference immediately felt.',stars:5,status:'active'},
+  {id:6,name:'Sujatha V.',loc:'Salem',text:'Lip balm set is everything. All three scents perfect. Great gift idea!',stars:5,status:'active'},
 ];
 
-let reviews = [
-  {id:1,name:'Priya S.',loc:'Chennai',text:'I have been using the Lavender & Rosemary soap for 3 months and my skin has never felt better. Worth every rupee!',stars:5,status:'active'},
-  {id:2,name:'Kavitha R.',loc:'Coimbatore',text:"The Traveller's Gift Box is the most beautiful thing I've ever gifted. My sister was absolutely delighted. Will order again!",stars:5,status:'active'},
-  {id:3,name:'Meena T.',loc:'Erode',text:"The herbal shampoo bar completely transformed my hair routine. No more plastic bottles and my hair is so much healthier.",stars:5,status:'active'},
-  {id:4,name:'Anitha K.',loc:'Bangalore',text:'The soy candle burns so clean and the scent is absolutely divine. The whole house smells incredible.',stars:5,status:'active'},
-  {id:5,name:'Ranjitha M.',loc:'Madurai',text:'Green Petal products are genuinely special. You can feel the quality difference immediately. The soap dish is so elegant.',stars:5,status:'active'},
-  {id:6,name:'Sujatha V.',loc:'Salem',text:'The lip balm set is everything. All three scents are perfect and the packaging is so beautiful. Great gift idea!',stars:5,status:'active'},
-];
+// ════════ DB FUNCTIONS ════════
+async function loadDB(){
+  try{
+    const[pd,rv]=await Promise.all([
+      sb('products',{filters:['status=neq.draft'],order:'id.asc'}),
+      sb('reviews',{filters:['status=eq.active'],order:'id.asc'})
+    ]);
+    if(pd&&pd.length){
+      products=pd.map(p=>({id:p.id,name:p.name,desc:p.description||'',ingr:p.ingredients||'',use:p.how_to_use||'',price:p.price,op:p.original_price||'',cat:p.category,status:p.status,vars:p.variants||[],tag:p.tag||'',img:p.img_url||'',img2:p.img2_url||''}));
+      renderFeat();renderShopGrid();renderAdminProds();
+    }
+    if(rv&&rv.length){
+      reviews=rv.map(r=>({id:r.id,name:r.customer_name,loc:r.location||'',text:r.review_text,stars:r.stars,status:r.status}));
+      renderTestis();
+    }
+  }catch(e){console.log('DB offline, using static data');}
+}
+
+async function loadOrdersDB(){
+  try{
+    const data=await sb('orders',{order:'created_at.desc'});
+    if(!data)return;
+    orders=data.map(o=>({id:o.id,nm:o.customer_name,ph:o.phone,em:o.email||'',ad:o.address,no:o.note||'',items:o.items||[],tot:o.total,ss:null,st:o.status,time:new Date(o.created_at).toLocaleString('en-IN')}));
+    renderAdminOrders();updateDashStats();
+  }catch(e){}
+}
+
+async function loadSettingsDB(){
+  try{
+    const data=await sb('settings');
+    if(!data)return;
+    const map={'upi_id':'s-upi','upi_name':'s-uname','whatsapp':'s-wa','phone':'s-ph','email':'s-em','instagram':'s-ig'};
+    data.forEach(s=>{
+      const el=document.getElementById(map[s.key]);
+      if(el&&s.value)el.value=s.value;
+      if(s.key==='upi_id'&&s.value)localStorage.setItem('gp_upi',s.value);
+      if(s.key==='upi_name'&&s.value)localStorage.setItem('gp_uname',s.value);
+      if(s.key==='qr_image'&&s.value){
+        localStorage.setItem('gp_qr',s.value);
+        const prev=document.getElementById('s-qr-preview');
+        const wrap=document.getElementById('qr-admin-preview');
+        if(prev){prev.src=s.value;}
+        if(wrap){wrap.style.display='block';}
+      }
+      if(s.key==='hero_image'&&s.value){
+        setHeroImg(s.value);
+        const el2=document.getElementById('s-hero-url');
+        const prev=document.getElementById('s-hero-preview');
+        const ph=document.getElementById('s-hero-placeholder');
+        if(el2)el2.value=s.value;
+        if(prev){prev.src=s.value;prev.style.display='block';}
+        if(ph)ph.style.display='none';
+        // Store for offline use
+        localStorage.setItem('gp_hero',s.value);
+      }
+      if(s.key==='categories'&&s.value){
+        try{const c=JSON.parse(s.value);if(c&&c.length){ALL_CATS=c;localStorage.setItem('gp_cats',s.value);}}catch(e){}
+      }
+    });
+    refreshCatUI();
+  }catch(e){}
+}
+
+async function saveSettingDB(key, value){
+  try{
+    const exists=await sb('settings',{filters:['key=eq.'+key]});
+    if(exists&&exists.length>0){
+      await sb('settings',{method:'PATCH',body:{value:value,updated_at:new Date().toISOString()},filters:['key=eq.'+key]});
+    } else {
+      await sb('settings',{method:'POST',body:{key:key,value:value}});
+    }
+  }catch(e){}
+}
 
 // ════════ ROUTING ════════
-const PAGES = ['home','shop','detail','philosophy','contact'];
-function showPg(name){
-  PAGES.forEach(p=>{
-    document.getElementById('pg-'+p).classList.toggle('on',p===name);
-  });
-  const footer = document.getElementById('siteFooter');
-  footer.style.display = name === 'detail' ? '' : '';
-  footer.style.display = 'block';
-  window.scrollTo({top:0,behavior:'smooth'});
-}
-function goHome(){ showPg('home'); }
-function goShop(){ renderShopGrid(); showPg('shop'); }
-function goPage(name){ showPg(name); }
+const PAGES=['home','shop','detail','philosophy','contact'];
+function showPg(n){PAGES.forEach(p=>document.getElementById('pg-'+p).classList.toggle('on',p===n));document.getElementById('siteFooter').style.display='block';window.scrollTo({top:0,behavior:'smooth'});}
+function goHome(){showPg('home');}
+function goShop(){renderShopGrid();showPg('shop');}
+function goPage(n){showPg(n);}
 
 // ════════ MARQUEE ════════
 function buildMarquee(){
-  const cats = ['Artisanal Soaps','Gift Boxes','Bath Accessories','Shampoo & Haircare','Lipcare','Candles','Natural Ingredients','Zero Chemicals','Handcrafted in India','Lifetime Love'];
-  const items = [...cats,...cats].map(c=>`<span class="mq-i">${c}</span>`).join('');
-  document.getElementById('mqt').innerHTML = items;
+  const cats=['Artisanal Soaps','Gift Boxes','Bath Accessories','Shampoo','Lipcare','Candles','Natural Ingredients','Zero Chemicals','Handcrafted in India','Small Batch'];
+  document.getElementById('mqt').innerHTML=[...cats,...cats].map(c=>`<span class="mq-i">${c}</span>`).join('');
 }
 
 // ════════ CATEGORIES ════════
-const ALL_CATS = ['All','Artisanal Soaps','Gift Boxes','Bath Accessories','Shampoo','Lipcare','Candles'];
+let ALL_CATS=(function(){try{return JSON.parse(localStorage.getItem('gp_cats'));}catch(e){}return null;})()||['All','Artisanal Soaps','Gift Boxes','Bath Accessories','Shampoo','Lipcare','Candles'];
+
 function buildCatRow(){
-  document.getElementById('catRow').innerHTML = ALL_CATS.map(c=>
-    `<button class="ctab${c===curCat?' on':''}" onclick="filterCat('${c}',this)">${c==='All'?'Shop All':c}</button>`
-  ).join('');
+  document.getElementById('catRow').innerHTML=ALL_CATS.map(c=>`<button class="ctab${c===curCat?' on':''}" onclick="filterCat('${c}',this)">${c==='All'?'Shop All':c}</button>`).join('');
 }
-function filterCat(cat, btn){
-  curCat = cat;
-  buildCatRow();
-  renderShopGrid();
+function filterCat(cat){curCat=cat;renderShopGrid();}
+function updateProdCatSelect(){
+  const sel=document.getElementById('p-cat');if(!sel)return;
+  sel.innerHTML=ALL_CATS.filter(c=>c!=='All').map(c=>`<option value="${c}">${c}</option>`).join('');
+}
+function buildNavDropdown(){
+  const d=document.querySelector('.ddrop');if(!d)return;
+  let h='<a href="#" onclick="filterCat(\'All\');goShop();return false;">— All Collection</a>';
+  ALL_CATS.filter(c=>c!=='All').forEach(c=>{h+='<a href="#" onclick="filterCat(\''+c+'\');goShop();return false;">— '+c+'</a>';});
+  d.innerHTML=h;
+}
+function refreshCatUI(){buildCatRow();buildNavDropdown();updateProdCatSelect();renderShopGrid();renderFeat();}
+function saveCats(){
+  localStorage.setItem('gp_cats',JSON.stringify(ALL_CATS));
+  saveSettingDB('categories',JSON.stringify(ALL_CATS));
+}
+function renderCatAdmin(){
+  const el=document.getElementById('catListAdmin');if(!el)return;
+  const cats=ALL_CATS.filter(c=>c!=='All');
+  if(!cats.length){el.innerHTML='<p style="font-size:13px;color:var(--mu);font-weight:300">No categories yet.</p>';return;}
+  el.innerHTML=cats.map((cat,i)=>`<div style="display:flex;align-items:center;gap:10px;padding:10px 0;border-bottom:1px solid var(--bd)"><input type="text" value="${cat}" style="flex:1;padding:7px 0;border:none;border-bottom:1px solid var(--bd);background:transparent;font-family:'Jost',sans-serif;font-size:14px;color:var(--ink);outline:none;font-weight:300" onblur="renameCat(${i+1},this.value)" onkeydown="if(event.key==='Enter')this.blur()"><button onclick="deleteCat(${i+1})" style="padding:6px 12px;background:none;border:1px solid rgba(192,57,43,.2);font-size:10px;letter-spacing:.1em;cursor:pointer;font-family:'Jost',sans-serif;color:#c0392b;font-weight:300">Delete</button></div>`).join('');
+}
+function addCat(){
+  const inp=document.getElementById('newCatInput');const val=inp.value.trim();
+  if(!val){toast('Enter a category name.');return;}
+  if(ALL_CATS.includes(val)){toast('Category already exists!');return;}
+  ALL_CATS.push(val);inp.value='';saveCats();renderCatAdmin();refreshCatUI();toast('Category "'+val+'" added! ✅');
+}
+function deleteCat(idx){
+  const cat=ALL_CATS[idx];
+  if(products.some(p=>p.cat===cat)){toast('Cannot delete — products use this category!');return;}
+  if(!confirm('Delete category "'+cat+'"?'))return;
+  ALL_CATS.splice(idx,1);saveCats();renderCatAdmin();refreshCatUI();toast('Category deleted.');
+}
+function renameCat(idx,newName){
+  newName=newName.trim();if(!newName||ALL_CATS[idx]===newName)return;
+  const old=ALL_CATS[idx];ALL_CATS[idx]=newName;
+  products.forEach(p=>{if(p.cat===old)p.cat=newName;});
+  saveCats();refreshCatUI();toast('Category renamed. ✅');
 }
 
-// ════════ PRODUCT CARD HTML ════════
-function cardHTML(p, onclick=''){
-  const oos = p.status==='oos';
-  const hasTag = p.tag && p.tag!=='';
-  const tagCls = p.tag==='Sale'?'ptag sale':p.tag==='New'?'ptag sale':'ptag';
-  return `
-  <div class="pcard${oos?' oos':''}" onclick="${onclick||`openDetail(${p.id})`}">
+// ════════ PRODUCT CARDS ════════
+function cardHTML(p){
+  const oos=p.status==='oos';
+  const tagCls=p.tag==='Sale'?'ptag sale':p.tag==='New'?'ptag sale':'ptag';
+  return `<div class="pcard${oos?' oos':''}" onclick="openDetail(${p.id})">
     <div class="pimg">
       <img class="pm" src="${p.img}" alt="${p.name}" onerror="this.style.background='#c8dec9'">
       <img class="ph" src="${p.img2||p.img}" alt="" onerror="this.style.background='#a0c8a4'">
-      ${hasTag?`<div class="${tagCls}">${p.tag}</div>`:oos?`<div class="ptag oos-tag">Out of Stock</div>`:''}
-      <div class="padd" onclick="${oos?'':'addCart('+p.id+',event);'}event.stopPropagation();">
-        <span>${oos?'Out of Stock':'Add to Bag'}</span>
-        ${oos?'':'<span>'+p.price+'</span>'}
+      ${p.tag?`<div class="${tagCls}">${p.tag}</div>`:oos?'<div class="ptag oos-tag">Out of Stock</div>':''}
+      <div class="padd" onclick="${oos?'':('addCart('+p.id+',event);')}event.stopPropagation()">
+        <span>${oos?'Out of Stock':'Add to Bag'}</span>${oos?'':'<span>'+p.price+'</span>'}
       </div>
     </div>
-    <div class="pinfo">
-      <div class="pname">${p.name}</div>
-      <div class="pprice">${p.price}${p.op?` <del>${p.op}</del>`:''}</div>
-    </div>
+    <div class="pinfo"><div class="pname">${p.name}</div><div class="pprice">${p.price}${p.op?` <del>${p.op}</del>`:''}</div></div>
   </div>`;
 }
 
-// ════════ FEATURED GRID ════════
 function renderFeat(){
-  const featured = products.filter(p=>p.status!=='draft').slice(0,8);
-  document.getElementById('featGrid').innerHTML = featured.map(p=>cardHTML(p)).join('');
+  const el=document.getElementById('featGrid');
+  if(el)el.innerHTML=products.filter(p=>p.status!=='draft').slice(0,8).map(cardHTML).join('');
 }
-
-// ════════ SHOP GRID ════════
-function renderShopGrid(sortVal){
-  let list = curCat==='All' ? products : products.filter(p=>p.cat===curCat);
-  list = list.filter(p=>p.status!=='draft');
-  if(sortVal==='low') list=[...list].sort((a,b)=>parseInt(a.price.replace(/\D/g,''))-parseInt(b.price.replace(/\D/g,'')));
-  if(sortVal==='high') list=[...list].sort((a,b)=>parseInt(b.price.replace(/\D/g,''))-parseInt(a.price.replace(/\D/g,'')));
+function renderShopGrid(sv){
+  let list=curCat==='All'?products:products.filter(p=>p.cat===curCat);
+  list=list.filter(p=>p.status!=='draft');
+  if(sv==='low')list=[...list].sort((a,b)=>parseInt(a.price.replace(/\D/g,''))-parseInt(b.price.replace(/\D/g,'')));
+  if(sv==='high')list=[...list].sort((a,b)=>parseInt(b.price.replace(/\D/g,''))-parseInt(a.price.replace(/\D/g,'')));
   buildCatRow();
-  document.getElementById('shopGrid').innerHTML = list.map(p=>cardHTML(p)).join('');
-  document.getElementById('resCt').textContent = `Showing ${list.length} product${list.length!==1?'s':''}`;
+  const sg=document.getElementById('shopGrid');if(sg)sg.innerHTML=list.map(cardHTML).join('');
+  const rc=document.getElementById('resCt');if(rc)rc.textContent=`Showing ${list.length} product${list.length!==1?'s':''}`;
 }
-function sortProds(v){ renderShopGrid(v); }
+function sortProds(v){renderShopGrid(v);}
 
 // ════════ PRODUCT DETAIL ════════
 function openDetail(id){
-  const p = products.find(x=>x.id===id);
-  if(!p) return;
-  detailId = id; detailQty = 1; detailVar = p.vars&&p.vars.length?p.vars[0]:null;
-
-  document.getElementById('dMainImg').src = p.img;
-  document.getElementById('dMainImg').onerror = function(){ this.style.background='#c8dec9'; };
-  // thumbs
-  const imgs = [p.img, p.img2||p.img].filter(Boolean);
-  document.getElementById('dThumbs').innerHTML = imgs.map((src,i)=>
-    `<img class="dthumb${i===0?' on':''}" src="${src}" onclick="setMainImg(this,'${src}')" onerror="this.style.background='#c8dec9'">`
-  ).join('');
-
-  document.getElementById('dCat').textContent = p.cat;
-  document.getElementById('dName').textContent = p.name;
-
-  // price + saving
-  const priceNum = parseInt(p.price.replace(/\D/g,''));
-  const opNum = p.op ? parseInt(p.op.replace(/\D/g,'')) : 0;
-  document.getElementById('dPrice').innerHTML = p.price + (p.op?` <del style="font-size:18px;color:var(--muted);font-family:'Jost',sans-serif;font-weight:300;">${p.op}</del>`:'');
-  if(opNum && priceNum < opNum){
-    const save = Math.round((1-priceNum/opNum)*100);
-    document.getElementById('dSaving').textContent = `You save ₹${(opNum-priceNum).toLocaleString('en-IN')} (${save}% off)`;
-  } else { document.getElementById('dSaving').textContent = ''; }
-
-  document.getElementById('dDesc').textContent = p.desc;
-  document.getElementById('detailQty').textContent = '1';
-
-  // variants
-  if(p.vars && p.vars.length){
-    document.getElementById('dVarBlock').style.display='';
-    document.getElementById('dVars').innerHTML = p.vars.map((v,i)=>
-      `<button class="var-btn${i===0?' on':''}" onclick="selectVar(this,'${v}')">${v}</button>`
-    ).join('');
-  } else { document.getElementById('dVarBlock').style.display='none'; }
-
-  // meta
-  document.getElementById('dMeta').innerHTML = `
-    <div class="meta-row"><div class="meta-key">Category</div><div class="meta-val">${p.cat}</div></div>
-    ${p.status==='oos'?'<div class="meta-row"><div class="meta-key">Availability</div><div class="meta-val" style="color:#c0392b;">Out of Stock</div></div>':'<div class="meta-row"><div class="meta-key">Availability</div><div class="meta-val" style="color:var(--sage-d);">In Stock</div></div>'}
-  `;
-
-  // accordion
-  document.getElementById('acc-ingredients').textContent = p.ingr || 'All natural ingredients. Full list on packaging.';
-  document.getElementById('acc-usage').textContent = p.use || 'Use as directed on packaging.';
-
-  // button state
-  if(p.status==='oos'){
-    document.getElementById('dAddBtn').textContent = 'Out of Stock';
-    document.getElementById('dAddBtn').style.opacity='0.5';
-    document.getElementById('dAddBtn').style.cursor='not-allowed';
-    document.getElementById('dAddBtn').onclick = null;
-  } else {
-    document.getElementById('dAddBtn').textContent = 'Add to Bag →';
-    document.getElementById('dAddBtn').style.opacity='1';
-    document.getElementById('dAddBtn').style.cursor='pointer';
-    document.getElementById('dAddBtn').onclick = addDetailToCart;
-  }
-
-  // reset accordions
-  document.querySelectorAll('.acc-item').forEach(a=>a.classList.remove('open'));
+  const p=products.find(x=>x.id==id);if(!p)return;
+  detailId=id;detailQty=1;detailVar=p.vars&&p.vars.length?p.vars[0]:null;
+  const mi=document.getElementById('dMainImg');if(mi){mi.src=p.img;mi.onerror=function(){this.style.background='#c8dec9'};}
+  const th=document.getElementById('dThumbs');
+  if(th)th.innerHTML=[p.img,p.img2||p.img].map((s,i)=>`<img class="dthumb${i===0?' on':''}" src="${s}" onclick="setMainImg(this,'${s}')" onerror="this.style.background='#c8dec9'">`).join('');
+  const set=(id,v)=>{const e=document.getElementById(id);if(e)e.textContent=v;};
+  const setH=(id,v)=>{const e=document.getElementById(id);if(e)e.innerHTML=v;};
+  set('dCat',p.cat);set('dName',p.name);set('dDesc',p.desc);set('detailQty','1');
+  const pn=parseInt(p.price.replace(/\D/g,'')),on=p.op?parseInt(p.op.replace(/\D/g,'')):0;
+  setH('dPr',p.price+(p.op?` <del style="font-size:16px;color:var(--mu);font-family:'Jost',sans-serif;font-weight:300">${p.op}</del>`:''));
+  set('dSv',on&&pn<on?`You save ₹${(on-pn).toLocaleString('en-IN')} (${Math.round((1-pn/on)*100)}% off)`:'');
+  const vb=document.getElementById('dVarBlock');
+  if(p.vars&&p.vars.length){
+    if(vb)vb.style.display='';
+    const dv=document.getElementById('dVars');
+    if(dv)dv.innerHTML=p.vars.map((v,i)=>`<button class="var-btn${i===0?' on':''}" onclick="selectVar(this,'${v}')">${v}</button>`).join('');
+  }else{if(vb)vb.style.display='none';}
+  // Update accordion content using static IDs
+  const aiEl=document.getElementById('acc-ingredients');if(aiEl)aiEl.textContent=p.ingr||'All natural ingredients. Full list on packaging.';
+  const auEl=document.getElementById('acc-usage');if(auEl)auEl.textContent=p.use||'Use as directed on packaging.';
+  const btn=document.getElementById('dAddBtn');
+  if(btn){if(p.status==='oos'){btn.textContent='Out of Stock';btn.style.opacity='.5';btn.style.cursor='not-allowed';btn.onclick=null;}else{btn.textContent='Add to Bag →';btn.style.opacity='1';btn.style.cursor='pointer';btn.onclick=addDetailToCart;}}
+  document.querySelectorAll('.ai').forEach(a=>a.classList.remove('open'));
   showPg('detail');
 }
-
-function setMainImg(el, src){
-  document.getElementById('dMainImg').src = src;
-  document.querySelectorAll('.dthumb').forEach(t=>t.classList.remove('on'));
-  el.classList.add('on');
-}
-function selectVar(btn, v){
-  document.querySelectorAll('.var-btn').forEach(b=>b.classList.remove('on'));
-  btn.classList.add('on'); detailVar = v;
-}
-function changeQty(d){
-  detailQty = Math.max(1, detailQty + d);
-  document.getElementById('detailQty').textContent = detailQty;
-}
-function toggleAcc(btn){
-  btn.closest('.acc-item').classList.toggle('open');
-}
-function addDetailToCart(){
-  const p = products.find(x=>x.id===detailId);
-  if(!p || p.status==='oos') return;
-  for(let i=0;i<detailQty;i++) addCart(p.id, null, detailVar);
-}
-function detailWA(){
-  const p = products.find(x=>x.id===detailId);
-  if(!p) return;
-  const msg = `Hello! I'd like to order:\n\n• ${p.name}${detailVar?' ('+detailVar+')':''} x${detailQty} — ${p.price}\n\nPlease let me know how to proceed.`;
-  window.open('https://wa.me/91'+document.getElementById('s-wa').value.replace(/\D/g,'')||'919123533325'+'?text='+encodeURIComponent(msg),'_blank');
-}
+function setMainImg(el,src){const m=document.getElementById('dMainImg');if(m)m.src=src;document.querySelectorAll('.dthumb').forEach(t=>t.classList.remove('on'));el.classList.add('on');}
+function selectVar(btn,v){document.querySelectorAll('.var-btn').forEach(b=>b.classList.remove('on'));btn.classList.add('on');detailVar=v;}
+function changeQty(d){detailQty=Math.max(1,detailQty+d);const e=document.getElementById('detailQty');if(e)e.textContent=detailQty;}
+function toggleAcc(btn){btn.closest('.acc-item').classList.toggle('open');}
+function togAcc(btn){btn.closest('.acc-item').classList.toggle('open');}
+function addDetailToCart(){const p=products.find(x=>x.id===detailId);if(!p||p.status==='oos')return;for(let i=0;i<detailQty;i++)addCart(p.id,null,detailVar);}
+function detailWA(){const p=products.find(x=>x.id===detailId);if(!p)return;const msg=`Hello! I'd like to order:\n\n• ${p.name}${detailVar?' ('+detailVar+')':''} × ${detailQty} — ${p.price}\n\nPlease let me know how to proceed.`;window.open('https://wa.me/'+getWA()+'?text='+encodeURIComponent(msg),'_blank');}
 
 // ════════ CART ════════
-function addCart(id, e, variant){
-  if(e) e.stopPropagation();
-  const p = products.find(x=>x.id===id);
-  if(!p || p.status==='oos') return;
-  const v = variant || (p.vars&&p.vars.length?p.vars[0]:null);
-  const key = id+'-'+(v||'');
-  const ex = cart.find(x=>x.key===key);
-  if(ex){ ex.qty++; } else { cart.push({...p,qty:1,variant:v,key}); }
-  updateCart();
-  toast(`${p.name.substring(0,28)}… added to bag.`);
-  cartSessions++;
-  if(document.getElementById('ad-orders')) document.getElementById('ad-orders').textContent = cartSessions;
+function addCart(id,e,variant){
+  if(e)e.stopPropagation();
+  const p=products.find(x=>x.id==id);if(!p||p.status==='oos')return;
+  const v=variant||(p.vars&&p.vars.length?p.vars[0]:null);
+  const key=id+'-'+(v||'');
+  const ex=cart.find(x=>x.key===key);
+  if(ex)ex.qty++;else cart.push({...p,qty:1,variant:v,key});
+  updateCart();toast(`${p.name.substring(0,26)}… added to bag.`);
 }
-function rmCart(key){ cart=cart.filter(x=>x.key!==key); updateCart(); }
-function chQty(key,d){
-  const it=cart.find(x=>x.key===key);
-  if(!it) return;
-  it.qty+=d;
-  if(it.qty<=0) rmCart(key); else updateCart();
-}
+function rmCart(key){cart=cart.filter(x=>x.key!==key);updateCart();}
+function chQty(key,d){const it=cart.find(x=>x.key===key);if(!it)return;it.qty+=d;if(it.qty<=0)rmCart(key);else updateCart();}
 function updateCart(){
-  const n = cart.reduce((s,i)=>s+i.qty,0);
-  document.getElementById('cN').textContent = n;
-  const bd = document.getElementById('cartBd');
-  const ft = document.getElementById('cartFt');
+  const n=cart.reduce((s,i)=>s+i.qty,0);
+  const cN=document.getElementById('cN');if(cN)cN.textContent=n;
+  const bd=document.getElementById('cartBd'),ft=document.getElementById('cartFt');
+  if(!bd)return;
   if(!cart.length){
-    bd.innerHTML=`<div class="cart-empty-msg"><p>Your ritual awaits.</p><button onclick="closeCart();goShop()">Discover the Collection</button></div>`;
-    ft.style.display='none';
-  } else {
-    bd.innerHTML=cart.map(i=>`
-      <div class="c-item">
-        <img src="${i.img}" alt="${i.name}" onerror="this.style.background='#c8dec9'">
-        <div class="c-info">
-          <div class="c-name">${i.name}</div>
-          ${i.variant?`<div class="c-var">${i.variant}</div>`:''}
-          <div class="c-price">${i.price}</div>
-          <div class="c-qty">
-            <button class="cqb" onclick="chQty('${i.key}',-1)">−</button>
-            <span class="c-qnum">${i.qty}</span>
-            <button class="cqb" onclick="chQty('${i.key}',1)">+</button>
-          </div>
-          <button class="c-rm" onclick="rmCart('${i.key}')">Remove</button>
-        </div>
-      </div>`).join('');
-    const tot = cart.reduce((s,i)=>s+parseInt(i.price.replace(/\D/g,''))*i.qty,0);
-    document.getElementById('cartTot').textContent='₹'+tot.toLocaleString('en-IN');
-    ft.style.display='block';
+    bd.innerHTML='<div class="cart-empty-msg"><p>Your ritual awaits.</p><button onclick="closeCart();goShop()">Discover the Collection</button></div>';
+    if(ft)ft.style.display='none';
+  }else{
+    bd.innerHTML=cart.map(i=>`<div class="c-item"><img src="${i.img}" alt="" onerror="this.style.background='#c8dec9'"><div class="c-info"><div class="c-name">${i.name}</div>${i.variant?`<div class="c-var">${i.variant}</div>`:''}<div class="c-price">${i.price}</div><div class="c-qty"><button class="cqb" onclick="chQty('${i.key}',-1)">−</button><span>${i.qty}</span><button class="cqb" onclick="chQty('${i.key}',1)">+</button></div><button class="c-rm" onclick="rmCart('${i.key}')">Remove</button></div></div>`).join('');
+    const tot=cart.reduce((s,i)=>s+parseInt(i.price.replace(/\D/g,''))*i.qty,0);
+    const ct=document.getElementById('cartTot');if(ct)ct.textContent='₹'+tot.toLocaleString('en-IN');
+    if(ft)ft.style.display='block';
   }
 }
-function openCart(){ document.getElementById('cartOv').classList.add('on'); updateCart(); }
-function closeCart(){ document.getElementById('cartOv').classList.remove('on'); }
-function cartOvClick(e){ if(e.target===document.getElementById('cartOv')) closeCart(); }
+function openCart(){document.getElementById('cartOv').classList.add('on');updateCart();}
+function closeCart(){document.getElementById('cartOv').classList.remove('on');}
+function cartOvClick(e){if(e.target===document.getElementById('cartOv'))closeCart();}
 function waCheckout(){
-  const lines=cart.map(i=>`• ${i.name}${i.variant?' ('+i.variant+')':''} x${i.qty} — ${i.price}`).join('\n');
+  const lines=cart.map(i=>`• ${i.name}${i.variant?' ('+i.variant+')':''} × ${i.qty} — ${i.price}`).join('\n');
   const tot=cart.reduce((s,i)=>s+parseInt(i.price.replace(/\D/g,''))*i.qty,0);
-  const msg=`Hello Green Petal! I'd like to place an order:\n\n${lines}\n\nTotal: ₹${tot.toLocaleString('en-IN')}\n\nPlease confirm availability and payment details.`;
-  window.open('https://wa.me/919123533325?text='+encodeURIComponent(msg),'_blank');
+  window.open('https://wa.me/'+getWA()+'?text='+encodeURIComponent(`Hello Green Petal! Order:\n\n${lines}\n\nTotal: ₹${tot.toLocaleString('en-IN')}\n\nPlease confirm.`),'_blank');
 }
 
 // ════════ TESTIMONIALS ════════
 function renderTestis(){
-  const active = reviews.filter(r=>r.status==='active');
-  document.getElementById('testiGrid').innerHTML = active.map(r=>`
-    <div style="background:var(--cream);padding:36px 28px;border-bottom:3px solid transparent;transition:border-color .3s;" onmouseenter="this.style.borderColor='var(--sage)'" onmouseleave="this.style.borderColor='transparent'">
-      <div style="color:var(--sage);letter-spacing:2px;font-size:13px;margin-bottom:14px;">${'★'.repeat(r.stars)}</div>
-      <div style="font-family:'Cormorant Garamond',serif;font-size:19px;font-style:italic;color:var(--ink);line-height:1.6;font-weight:300;margin-bottom:24px;">"${r.text}"</div>
-      <div style="display:flex;align-items:center;gap:12px;">
-        <div style="width:36px;height:36px;border-radius:50%;background:var(--ink);color:var(--cream);display:flex;align-items:center;justify-content:center;font-family:'Cormorant Garamond',serif;font-size:15px;">${r.name.charAt(0)}</div>
-        <div><div style="font-size:11px;letter-spacing:.1em;text-transform:uppercase;font-weight:400;">${r.name}</div><div style="font-size:11px;color:var(--muted);font-weight:300;margin-top:2px;">${r.loc}</div></div>
-      </div>
-    </div>`).join('');
+  const el=document.getElementById('testiGrid');if(!el)return;
+  el.innerHTML=reviews.filter(r=>r.status==='active').map(r=>`<div style="background:var(--cr);padding:34px 26px;border-bottom:3px solid transparent;transition:border-color .3s" onmouseenter="this.style.borderColor='var(--sg)'" onmouseleave="this.style.borderColor='transparent'"><div style="color:var(--sg);letter-spacing:2px;font-size:13px;margin-bottom:13px">${'★'.repeat(r.stars)}</div><div style="font-family:'Cormorant Garamond',serif;font-size:18px;font-style:italic;line-height:1.6;font-weight:300;margin-bottom:22px">"${r.text}"</div><div style="display:flex;align-items:center;gap:11px"><div style="width:35px;height:35px;border-radius:50%;background:var(--ink);color:var(--cr);display:flex;align-items:center;justify-content:center;font-family:'Cormorant Garamond',serif;font-size:14px">${r.name.charAt(0)}</div><div><div style="font-size:11px;letter-spacing:.1em;text-transform:uppercase;font-weight:400">${r.name}</div><div style="font-size:11px;color:var(--mu);font-weight:300;margin-top:2px">${r.loc}</div></div></div></div>`).join('');
 }
 
 // ════════ TOAST ════════
-function toast(msg){
-  const el=document.getElementById('toastEl');
-  el.textContent=msg; el.classList.add('on');
-  setTimeout(()=>el.classList.remove('on'),3200);
-}
+function toast(msg){const el=document.getElementById('toastEl');if(!el)return;el.textContent=msg;el.classList.add('on');setTimeout(()=>el.classList.remove('on'),3200);}
 
 // ════════ ADMIN ════════
-let clicks=0, ct=null;
-document.getElementById('adTrig').addEventListener('click',()=>{
-  clicks++; if(!ct) ct=setTimeout(()=>{clicks=0;ct=null;},3000);
-  if(clicks>=5){clicks=0;clearTimeout(ct);ct=null;openAdmLogin();}
-});
+let ac=0,aT=null;
+document.getElementById('adTrig').addEventListener('click',()=>{ac++;if(!aT)aT=setTimeout(()=>{ac=0;aT=null;},3000);if(ac>=5){ac=0;clearTimeout(aT);aT=null;openAdmLogin();}});
 document.getElementById('ftCopy').addEventListener('click',(()=>{let c=0;return()=>{c++;if(c>=3){c=0;openAdmLogin();}setTimeout(()=>{if(c>0)c=0;},2000);}})());
 
-function openAdmLogin(){ document.getElementById('admOv').classList.add('on'); setTimeout(()=>document.getElementById('admPw').focus(),100); }
-function closeAdmLogin(){ document.getElementById('admOv').classList.remove('on'); document.getElementById('admPw').value=''; document.getElementById('admErr').style.display='none'; }
+function openAdmLogin(){document.getElementById('admOv').classList.add('on');setTimeout(()=>document.getElementById('admPw').focus(),100);}
+function closeAdmLogin(){document.getElementById('admOv').classList.remove('on');document.getElementById('admPw').value='';document.getElementById('admErr').style.display='none';}
 function doLogin(){
   const pw=document.getElementById('admPw').value;
   const stored=localStorage.getItem('gp_pw')||DEFAULT_PW;
-  if(pw===stored){ closeAdmLogin(); document.getElementById('admPanel').classList.add('on'); document.body.style.overflow='hidden'; renderAdminProds(); renderAdminRevs(); renderAdminOrders(); updateDashStats(); }
-  else { document.getElementById('admErr').style.display='block'; document.getElementById('admPw').value=''; }
+  if(pw===stored){
+    closeAdmLogin();
+    document.getElementById('admPanel').classList.add('on');
+    document.body.style.overflow='hidden';
+    renderAdminProds();renderAdminRevs();renderAdminOrders();updateDashStats();
+    loadOrdersDB();loadSettingsDB();renderCatAdmin();updateProdCatSelect();initUPISettings();
+  }else{
+    document.getElementById('admErr').style.display='block';
+    document.getElementById('admPw').value='';
+  }
 }
-function doLogout(){ document.getElementById('admPanel').classList.remove('on'); document.body.style.overflow=''; }
+function doLogout(){document.getElementById('admPanel').classList.remove('on');document.body.style.overflow='';}
 function aTab(n,btn){
   document.querySelectorAll('.asec').forEach(s=>s.classList.remove('on'));
   document.querySelectorAll('.atab').forEach(b=>b.classList.remove('on'));
-  document.getElementById('asec-'+n).classList.add('on'); btn.classList.add('on');
+  document.getElementById('asec-'+n).classList.add('on');btn.classList.add('on');
+  if(n==='products')renderAdminProds();
+  if(n==='orders'){renderAdminOrders();updateDashStats();}
+  if(n==='reviews')renderAdminRevs();
+  if(n==='settings'){renderCatAdmin();updateProdCatSelect();initUPISettings();}
 }
-
 function updateDashStats(){
-  document.getElementById('ad-prod').textContent = products.filter(p=>p.status!=='draft').length;
-  document.getElementById('ad-orders').textContent = orders.length;
-  const pending = orders.filter(o=>o.status==='pending').length;
-  document.getElementById('ad-pending').textContent = pending;
-  const revenue = orders.filter(o=>o.status!=='cancelled').reduce((s,o)=>s+o.total,0);
-  document.getElementById('ad-revenue').textContent = '₹'+revenue.toLocaleString('en-IN');
+  const set=(id,v)=>{const e=document.getElementById(id);if(e)e.textContent=v;};
+  set('ad-pr',products.filter(p=>p.status!=='draft').length);
+  set('ad-or',orders.length);
+  set('ad-pe',orders.filter(o=>o.st==='pending').length);
+  const rev=orders.filter(o=>o.st!=='cancelled').reduce((s,o)=>s+(o.tot||0),0);
+  set('ad-rv','₹'+rev.toLocaleString('en-IN'));
 }
 
 // ── ADMIN PRODUCTS ──
 function renderAdminProds(){
   updateDashStats();
-  document.getElementById('aProdBody').innerHTML = products.map(p=>`
-    <tr>
-      <td><img src="${p.img}" onerror="this.style.background='#c8dec9'"></td>
-      <td style="font-family:'Cormorant Garamond',serif;font-size:15px;max-width:180px;">${p.name}</td>
-      <td style="font-family:'Cormorant Garamond',serif;font-size:17px;">${p.price}</td>
-      <td style="font-size:11px;letter-spacing:.06em;">${p.cat}</td>
-      <td><span class="${p.status==='active'?'ab-active':p.status==='oos'?'ab-oos':'ab-draft'}">${p.status==='active'?'Active':p.status==='oos'?'Out of Stock':'Draft'}</span></td>
-      <td><div style="display:flex;gap:7px;"><button class="a-edit" onclick="editProd(${p.id})">Edit</button><button class="a-del" onclick="delProd(${p.id})">Delete</button></div></td>
-    </tr>`).join('');
+  const el=document.getElementById('aProdBody');if(!el)return;
+  el.innerHTML=products.map(p=>`<tr>
+    <td><img src="${p.img}" onerror="this.style.background='#c8dec9'"></td>
+    <td style="font-family:'Cormorant Garamond',serif;font-size:15px;max-width:160px">${p.name}</td>
+    <td style="font-family:'Cormorant Garamond',serif;font-size:16px">${p.price}</td>
+    <td style="font-size:11px">${p.cat}</td>
+    <td><span class="${p.status==='active'?'ab-active':p.status==='oos'?'ab-oos':'ab-draft'}">${p.status==='active'?'Active':p.status==='oos'?'Out of Stock':'Draft'}</span></td>
+    <td><div style="display:flex;gap:7px"><button class="a-edit" onclick="editProd(${p.id})">Edit</button><button class="a-del" onclick="delProd(${p.id})">Delete</button></div></td>
+  </tr>`).join('');
 }
-
 function openProdMod(){
+  const set=(id,v)=>{const e=document.getElementById(id);if(e)e.value=v;};
   document.getElementById('pModTitle').textContent='Add New Product';
   document.getElementById('pId').value='';
-  ['p-name','p-desc','p-ingr','p-use','p-price','p-op','p-vars'].forEach(id=>document.getElementById(id).value='');
-  document.getElementById('p-cat').value='Artisanal Soaps';
-  document.getElementById('p-status').value='active';
-  document.getElementById('pImgP').innerHTML=''; document.getElementById('pImg2P').innerHTML='';
+  ['p-name','p-desc','p-ingr','p-use','p-price','p-op','p-vars'].forEach(id=>set(id,''));
+  set('p-status','active');
+  const pc=document.getElementById('p-cat');if(pc&&pc.options.length)pc.selectedIndex=0;
+  const pp=document.getElementById('pImgP'),pp2=document.getElementById('pImg2P');
+  if(pp)pp.innerHTML='';if(pp2)pp2.innerHTML='';
   document.getElementById('prodMod').classList.add('on');
 }
-function closeProdMod(){ document.getElementById('prodMod').classList.remove('on'); }
-
+function closeProdMod(){document.getElementById('prodMod').classList.remove('on');}
 function editProd(id){
-  const p=products.find(x=>x.id===id); if(!p) return;
+  id=parseInt(id)||id;
+  const p=products.find(x=>x.id==id);if(!p)return;
+  const set=(eid,v)=>{const e=document.getElementById(eid);if(e)e.value=v;};
   document.getElementById('pModTitle').textContent='Edit Product';
-  document.getElementById('pId').value=id;
-  document.getElementById('p-name').value=p.name;
-  document.getElementById('p-desc').value=p.desc;
-  document.getElementById('p-ingr').value=p.ingr||'';
-  document.getElementById('p-use').value=p.use||'';
-  document.getElementById('p-price').value=p.price;
-  document.getElementById('p-op').value=p.op;
-  document.getElementById('p-cat').value=p.cat;
-  document.getElementById('p-status').value=p.status;
-  document.getElementById('p-vars').value=(p.vars||[]).join(', ');
-  document.getElementById('pImgP').innerHTML=p.img?`<img src="${p.img}" id="pImgD" style="width:72px;height:88px;object-fit:cover;">`:'' ;
-  document.getElementById('pImg2P').innerHTML=p.img2?`<img src="${p.img2}" id="pImg2D" style="width:72px;height:88px;object-fit:cover;">`:'' ;
+  set('pId',id);set('p-name',p.name);set('p-desc',p.desc);
+  set('p-ingr',p.ingr||'');set('p-use',p.use||'');
+  set('p-price',p.price);set('p-op',p.op||'');
+  set('p-cat',p.cat);set('p-status',p.status);
+  set('p-vars',(p.vars||[]).join(', '));
+  const pp=document.getElementById('pImgP');
+  if(pp)pp.innerHTML=p.img?`<img src="${p.img}" id="pImgD" style="width:72px;height:88px;object-fit:cover">`:'';
+  const pp2=document.getElementById('pImg2P');
+  if(pp2)pp2.innerHTML=p.img2?`<img src="${p.img2}" id="pImg2D" style="width:72px;height:88px;object-fit:cover">`:'';
   document.getElementById('prodMod').classList.add('on');
 }
-
 function prevImg(input,prevId,dataId){
-  const wrap=document.getElementById(prevId);
-  if(input.files&&input.files[0]){
-    const r=new FileReader();
-    r.onload=e=>{wrap.innerHTML=`<img src="${e.target.result}" id="${dataId}" style="width:72px;height:88px;object-fit:cover;">`;};
-    r.readAsDataURL(input.files[0]);
-  }
+  if(!input.files||!input.files[0])return;
+  const r=new FileReader();
+  r.onload=e=>{const w=document.getElementById(prevId);if(w)w.innerHTML=`<img src="${e.target.result}" id="${dataId}" style="width:72px;height:88px;object-fit:cover">`;};
+  r.readAsDataURL(input.files[0]);
 }
-
 function saveProduct(){
   const name=document.getElementById('p-name').value.trim();
   if(!name){toast('Product name required.');return;}
-  const eid=parseInt(document.getElementById('pId').value);
-  const imgEl=document.getElementById('pImgD');
-  const img2El=document.getElementById('pImg2D');
-  const varsRaw=document.getElementById('p-vars').value;
-  const vars=varsRaw?varsRaw.split(',').map(v=>v.trim()).filter(Boolean):[];
+  const eid=parseInt(document.getElementById('pId').value)||0;
+  const i1=document.getElementById('pImgD'),i2=document.getElementById('pImg2D');
+  const vars=(document.getElementById('p-vars').value||'').split(',').map(v=>v.trim()).filter(Boolean);
   const data={
-    name,desc:document.getElementById('p-desc').value,
+    name,
+    desc:document.getElementById('p-desc').value,
     ingr:document.getElementById('p-ingr').value,
     use:document.getElementById('p-use').value,
     price:document.getElementById('p-price').value,
@@ -1408,348 +1402,331 @@ function saveProduct(){
     cat:document.getElementById('p-cat').value,
     status:document.getElementById('p-status').value,
     vars,
-    img:imgEl?imgEl.src:(eid?products.find(p=>p.id===eid)?.img||'':''),
-    img2:img2El?img2El.src:(eid?products.find(p=>p.id===eid)?.img2||'':''),
-    tag:eid?products.find(p=>p.id===eid)?.tag||'':'',
+    img:i1?i1.src:(eid?products.find(p=>p.id==eid)?.img||'':''),
+    img2:i2?i2.src:(eid?products.find(p=>p.id==eid)?.img2||'':''),
+    tag:eid?products.find(p=>p.id==eid)?.tag||'':'',
   };
-  if(eid){ const i=products.findIndex(p=>p.id===eid); if(i!==-1) products[i]={...products[i],...data}; toast('Product updated. ✅'); }
-  else { products.push({id:nid++,...data}); toast('Product added. ✅'); }
-  closeProdMod(); renderAdminProds(); renderFeat(); renderShopGrid();
+  if(eid){
+    const ix=products.findIndex(p=>p.id==eid);
+    if(ix!==-1)products[ix]={...products[ix],...data};
+    closeProdMod();renderAdminProds();renderFeat();renderShopGrid();
+    toast('Product updated. ✅');
+    sb('products',{method:'PATCH',body:{name:data.name,description:data.desc,ingredients:data.ingr,how_to_use:data.use,price:data.price,original_price:data.op,category:data.cat,status:data.status,variants:data.vars,tag:data.tag,img_url:data.img,img2_url:data.img2,updated_at:new Date().toISOString()},filters:['id=eq.'+eid]}).catch(()=>{});
+  }else{
+    products.push({id:nid++,...data});
+    closeProdMod();renderAdminProds();renderFeat();renderShopGrid();
+    toast('Product added. ✅');
+    sb('products',{method:'POST',body:{name:data.name,description:data.desc,ingredients:data.ingr,how_to_use:data.use,price:data.price,original_price:data.op,category:data.cat,status:data.status,variants:data.vars,tag:data.tag,img_url:data.img,img2_url:data.img2}}).catch(()=>{});
+  }
 }
 function delProd(id){
-  if(!confirm('Delete this product?')) return;
-  products=products.filter(p=>p.id!==id);
-  renderAdminProds(); renderFeat(); renderShopGrid();
+  id=parseInt(id)||id;
+  if(!confirm('Delete this product?'))return;
+  products=products.filter(p=>p.id!=id);
+  renderAdminProds();renderFeat();renderShopGrid();
   toast('Product deleted.');
+  sb('products',{method:'DELETE',filters:['id=eq.'+id]}).catch(()=>{});
 }
+
+// ── ADMIN ORDERS ──
+function renderAdminOrders(){
+  updateDashStats();
+  const el=document.getElementById('ordsGrid');if(!el)return;
+  const filt=ordFilt==='all'?orders:orders.filter(o=>o.st===ordFilt);
+  if(!filt.length){el.innerHTML='<div style="padding:40px;text-align:center;color:var(--mu);font-size:13px;font-weight:300;font-style:italic">No orders yet.</div>';return;}
+  const stLabel={pending:'⏳ Pending',confirmed:'✅ Confirmed',shipped:'🚚 Shipped',delivered:'📦 Delivered',cancelled:'❌ Cancelled'};
+  const stBadge={pending:'bpend',confirmed:'bconf',shipped:'bship',delivered:'bdlv',cancelled:'boos'};
+  el.innerHTML=[...filt].reverse().map(o=>`<div class="ordrow">
+    <div><div class="oid">#${o.id}</div><div class="ometa">${o.time}</div></div>
+    <div><div style="font-size:14px;font-weight:400">${o.nm}</div><div class="ometa">${o.ph}</div><div class="ometa">${(o.items||[]).slice(0,2).map(i=>i.nm||i.name).join(', ')}</div></div>
+    <div><div class="otot">₹${(o.tot||0).toLocaleString('en-IN')}</div>${o.ss?`<img class="ossthumb" src="${o.ss}" onclick="openOrdDetail('${o.id}')" title="Screenshot">`:''}</div>
+    <div><div style="margin-bottom:7px"><span class="${stBadge[o.st]||'bpend'}">${stLabel[o.st]||o.st}</span></div>
+    <div style="display:flex;gap:7px"><button class="a-edit" onclick="openOrdDetail('${o.id}')">View</button><button class="ord-wa-btn" onclick="notifyCustomer('${o.id}')">📱 WA</button></div></div>
+  </div>`).join('');
+}
+function filtOrds(v){ordFilt=v;renderAdminOrders();}
+function openOrdDetail(id){
+  const o=orders.find(x=>x.id==id);if(!o)return;
+  currentOrdDetail=o;
+  document.getElementById('odTitle').textContent='Order #'+o.id;
+  const set=(eid,v)=>{const e=document.getElementById(eid);if(e)e.textContent=v||'—';};
+  set('od-nm',o.nm);set('od-ph',o.ph);set('od-em',o.em);set('od-ad',o.ad);set('od-no',o.no);
+  const items=document.getElementById('od-items');
+  if(items)items.innerHTML=(o.items||[]).map(i=>`<div class="odr"><span>${(i.nm||i.name)}${i.vr?' ('+i.vr+')':''} × ${i.qty}</span><span>${i.pr||i.price}</span></div>`).join('');
+  const tot=document.getElementById('od-total');if(tot)tot.textContent='₹'+(o.tot||0).toLocaleString('en-IN');
+  const ss=document.getElementById('od-ss'),ssno=document.getElementById('od-ss-none');
+  if(o.ss){if(ss){ss.src=o.ss;ss.style.display='block';}if(ssno)ssno.style.display='none';}
+  else{if(ss)ss.style.display='none';if(ssno)ssno.style.display='block';}
+  const sel=document.getElementById('od-status-sel');if(sel)sel.value=o.st||'pending';
+  document.getElementById('ordDetailMod').classList.add('on');
+}
+function closeOrdDetail(){document.getElementById('ordDetailMod').classList.remove('on');}
+function updOrdSt(){
+  if(!currentOrdDetail)return;
+  const sel=document.getElementById('od-status-sel');
+  currentOrdDetail.st=sel?sel.value:'pending';
+  renderAdminOrders();
+  sb('orders',{method:'PATCH',body:{status:currentOrdDetail.st,updated_at:new Date().toISOString()},filters:['id=eq.'+currentOrdDetail.id]}).catch(()=>{});
+  toast('Status updated. ✅');
+}
+function notifyCustomer(id){
+  const o=orders.find(x=>x.id==id);if(!o)return;
+  const msgs={pending:'⏳ Your order is pending payment verification.',confirmed:'✅ Payment confirmed! We are preparing your order.',shipped:'🚚 Your order has been shipped! Arrives in 3–5 days.',delivered:'📦 Your order has been delivered! Thank you 🌿',cancelled:'❌ Your order has been cancelled. Contact us for details.'};
+  const msg=`🌿 *Green Petal — Order Update*\n\n*Order:* #${o.id}\n\n${msgs[o.st]||'Order status updated.'}\n\nCall: 9123533325`;
+  window.open(`https://wa.me/91${(o.ph||'').replace(/\D/g,'')}?text=${encodeURIComponent(msg)}`,'_blank');
+}
+function sendStatusWA(){if(!currentOrdDetail)return;updOrdSt();notifyCustomer(currentOrdDetail.id);}
 
 // ── ADMIN REVIEWS ──
 function renderAdminRevs(){
-  document.getElementById('aRevBody').innerHTML = reviews.map(r=>`
-    <tr>
-      <td><div style="font-family:'Cormorant Garamond',serif;font-size:15px;">${r.name}</div><div style="font-size:11px;color:var(--muted);">${r.loc}</div></td>
-      <td style="font-size:12px;color:var(--muted);max-width:240px;">${r.text.substring(0,72)}…</td>
-      <td style="color:var(--sage);letter-spacing:2px;">${'★'.repeat(r.stars)}</td>
-      <td><span class="${r.status==='active'?'ab-active':'ab-draft'}">${r.status}</span></td>
-      <td><div style="display:flex;gap:7px;"><button class="a-edit" onclick="editRev(${r.id})">Edit</button><button class="a-del" onclick="delRev(${r.id})">Delete</button></div></td>
-    </tr>`).join('');
+  const el=document.getElementById('aRevBody');if(!el)return;
+  el.innerHTML=reviews.map(r=>`<tr>
+    <td><div style="font-family:'Cormorant Garamond',serif;font-size:14px">${r.name}</div><div style="font-size:11px;color:var(--mu)">${r.loc}</div></td>
+    <td style="font-size:12px;color:var(--mu);max-width:230px">${r.text.substring(0,70)}…</td>
+    <td style="color:var(--sg);letter-spacing:2px">${'★'.repeat(r.stars)}</td>
+    <td><span class="${r.status==='active'?'ab-active':'ab-draft'}">${r.status==='active'?'Active':'Hidden'}</span></td>
+    <td><div style="display:flex;gap:7px"><button class="a-edit" onclick="editRev(${r.id})">Edit</button><button class="a-del" onclick="delRev(${r.id})">Delete</button></div></td>
+  </tr>`).join('');
 }
 function openRevMod(){
+  const set=(id,v)=>{const e=document.getElementById(id);if(e)e.value=v;};
   document.getElementById('rModTitle').textContent='Add Review';
   document.getElementById('rId').value='';
-  ['r-name','r-loc','r-text'].forEach(id=>document.getElementById(id).value='');
-  document.getElementById('r-stars').value='5';
-  document.getElementById('r-status').value='active';
+  ['r-name','r-loc','r-text'].forEach(id=>set(id,''));
+  set('r-stars','5');set('r-status','active');
   document.getElementById('revMod').classList.add('on');
 }
-function closeRevMod(){ document.getElementById('revMod').classList.remove('on'); }
+function closeRevMod(){document.getElementById('revMod').classList.remove('on');}
 function editRev(id){
-  const r=reviews.find(x=>x.id===id); if(!r) return;
+  id=parseInt(id)||id;
+  const r=reviews.find(x=>x.id==id);if(!r)return;
+  const set=(eid,v)=>{const e=document.getElementById(eid);if(e)e.value=v;};
   document.getElementById('rModTitle').textContent='Edit Review';
-  document.getElementById('rId').value=id;
-  document.getElementById('r-name').value=r.name;
-  document.getElementById('r-loc').value=r.loc;
-  document.getElementById('r-text').value=r.text;
-  document.getElementById('r-stars').value=r.stars;
-  document.getElementById('r-status').value=r.status;
+  set('rId',id);set('r-name',r.name);set('r-loc',r.loc);set('r-text',r.text);set('r-stars',r.stars);set('r-status',r.status);
   document.getElementById('revMod').classList.add('on');
 }
 function saveReview(){
   const name=document.getElementById('r-name').value.trim();
   if(!name){toast('Name required.');return;}
-  const eid=parseInt(document.getElementById('rId').value);
+  const eid=parseInt(document.getElementById('rId').value)||0;
   const data={name,loc:document.getElementById('r-loc').value,text:document.getElementById('r-text').value,stars:parseInt(document.getElementById('r-stars').value),status:document.getElementById('r-status').value};
-  if(eid){ const i=reviews.findIndex(r=>r.id===eid); if(i!==-1) reviews[i]={...reviews[i],...data}; toast('Review updated. ✅'); }
-  else { reviews.push({id:nid++,...data}); toast('Review added. ✅'); }
-  closeRevMod(); renderAdminRevs(); renderTestis();
+  if(eid){
+    const ix=reviews.findIndex(r=>r.id==eid);
+    if(ix!==-1)reviews[ix]={...reviews[ix],...data};
+    closeRevMod();renderAdminRevs();renderTestis();toast('Review updated. ✅');
+    sb('reviews',{method:'PATCH',body:{customer_name:data.name,location:data.loc,review_text:data.text,stars:data.stars,status:data.status},filters:['id=eq.'+eid]}).catch(()=>{});
+  }else{
+    reviews.push({id:nid++,...data});
+    closeRevMod();renderAdminRevs();renderTestis();toast('Review added. ✅');
+    sb('reviews',{method:'POST',body:{customer_name:data.name,location:data.loc,review_text:data.text,stars:data.stars,status:data.status}}).catch(()=>{});
+  }
 }
 function delRev(id){
-  if(!confirm('Delete review?')) return;
-  reviews=reviews.filter(r=>r.id!==id);
-  renderAdminRevs(); renderTestis();
-  toast('Review deleted.');
+  id=parseInt(id)||id;
+  if(!confirm('Delete review?'))return;
+  reviews=reviews.filter(r=>r.id!=id);
+  renderAdminRevs();renderTestis();toast('Deleted.');
+  sb('reviews',{method:'DELETE',filters:['id=eq.'+id]}).catch(()=>{});
 }
 
 // ── SETTINGS ──
-function saveSettings(){
-  const np=document.getElementById('s-np').value;
-  const cp=document.getElementById('s-cp').value;
-  if(np){ if(np!==cp){toast('Passwords do not match.');return;} localStorage.setItem('gp_pw',np); document.getElementById('s-np').value=''; document.getElementById('s-cp').value=''; }
-  // save UPI to localStorage
-  const upi = document.getElementById('s-upi').value.trim();
-  const uname = document.getElementById('s-uname').value.trim();
-  if(upi) localStorage.setItem('gp_upi', upi);
-  if(uname) localStorage.setItem('gp_uname', uname);
-  toast('Settings saved. ✅');
-  saveSettToDB();
-}
+function getWA(){const e=document.getElementById('s-wa');return(e?e.value:'919123533325').replace(/\D/g,'')||'919123533325';}
+function getUPI(){const e=document.getElementById('s-upi');return(e&&e.value.trim())?e.value.trim():(localStorage.getItem('gp_upi')||'');}
+function getUPIName(){const e=document.getElementById('s-uname');return(e&&e.value.trim())?e.value.trim():(localStorage.getItem('gp_uname')||'Green Petal');}
+function getQRImg(){const e=document.getElementById('s-qr-preview');if(e&&e.src&&e.src.length>50)return e.src;return localStorage.getItem('gp_qr')||'';}
 
-function uploadQR(input){
-  if(input.files&&input.files[0]){
-    const r=new FileReader();
-    r.onload=e=>{
-      localStorage.setItem('gp_qr', e.target.result);
-      document.getElementById('qrPreviewWrap').innerHTML=`<img src="${e.target.result}" style="width:120px;height:120px;object-fit:contain;border:1px solid var(--border);">`;
-      document.getElementById('qrImg').src = e.target.result;
-      toast('QR code uploaded! ✅');
-    };
-    r.readAsDataURL(input.files[0]);
+function initUPISettings(){
+  const upi=localStorage.getItem('gp_upi'),name=localStorage.getItem('gp_uname'),qr=localStorage.getItem('gp_qr');
+  if(upi){const e=document.getElementById('s-upi');if(e)e.value=upi;}
+  if(name){const e=document.getElementById('s-uname');if(e)e.value=name;}
+  if(qr){
+    const prev=document.getElementById('s-qr-preview'),wrap=document.getElementById('qr-admin-preview');
+    if(prev)prev.src=qr;if(wrap)wrap.style.display='block';
   }
 }
-
-// ════════ PAYMENT SYSTEM ════════
-let orders = [];
-let orderCounter = 1;
-let currentOrderData = null;
-let screenshotData = null;
-let currentOrdDetail = null;
-let ordFilterCat = 'all';
-
-function getUPI(){ return localStorage.getItem('gp_upi') || 'greenpetal@paytm'; }
-function getUname(){ return localStorage.getItem('gp_uname') || 'Green Petal'; }
-function getQR(){ return localStorage.getItem('gp_qr') || ''; }
-function getWA(){ return (document.getElementById('s-wa')||{value:'919123533325'}).value || '919123533325'; }
-
-function beginCheckout(){
-  if(!cart.length){ toast('Your bag is empty!'); return; }
-  closeCart();
-  // Build summary
-  buildCheckoutSummary();
-  // Reset to step 1
-  goStep(1);
-  screenshotData = null;
-  document.getElementById('ssPreview').style.display='none';
-  document.getElementById('ssPreview').src='';
-  document.getElementById('confirmPayBtn').style.opacity='.4';
-  document.getElementById('confirmPayBtn').style.cursor='not-allowed';
-  document.getElementById('confirmPayBtn').onclick=null;
-  document.getElementById('payOv').classList.add('on');
-}
-
-function buildCheckoutSummary(){
-  const tot = cart.reduce((s,i)=>s+parseInt(i.price.replace(/\D/g,''))*i.qty,0);
-  const itemsHTML = cart.map(i=>`
-    <div class="ord-item">
-      <span>${i.name}${i.variant?' ('+i.variant+')':''} × ${i.qty}</span>
-      <span>₹${(parseInt(i.price.replace(/\D/g,''))*i.qty).toLocaleString('en-IN')}</span>
-    </div>`).join('');
-  document.getElementById('checkoutSummary').innerHTML = `
-    <div class="ord-sum-title">Order Summary</div>
-    ${itemsHTML}
-    <div class="ord-item total"><span>Total</span><span>₹${tot.toLocaleString('en-IN')}</span></div>`;
-}
-
-function closePayment(){
-  document.getElementById('payOv').classList.remove('on');
-}
-
-function goStep(n){
-  [1,2,3].forEach(i=>{
-    document.getElementById('pp'+i).classList.toggle('on', i===n);
-    document.getElementById('st'+i).classList.toggle('on', i===n);
-    document.getElementById('st'+i).classList.toggle('done', i<n);
-    document.getElementById('sn'+i).textContent = i<n ? '✓' : i;
-  });
-  if(n===2){
-    // setup QR
-    const tot = cart.reduce((s,i)=>s+parseInt(i.price.replace(/\D/g,''))*i.qty,0);
-    document.getElementById('qrAmount').textContent = '₹'+tot.toLocaleString('en-IN');
-    document.getElementById('qrUpiId').textContent = getUPI();
-    document.getElementById('qrUpiName').textContent = getUname();
-    const savedQR = getQR();
-    if(savedQR){
-      document.getElementById('qrImg').src = savedQR;
-    } else {
-      // Generate QR via Google Charts API
-      const upiLink = `upi://pay?pa=${encodeURIComponent(getUPI())}&pn=${encodeURIComponent(getUname())}&am=${tot}&cu=INR`;
-      document.getElementById('qrImg').src = `https://chart.googleapis.com/chart?chs=200x200&cht=qr&chl=${encodeURIComponent(upiLink)}&choe=UTF-8`;
-    }
-  }
-}
-
-function goToPayStep(){
-  const name=document.getElementById('o-name').value.trim();
-  const phone=document.getElementById('o-phone').value.trim();
-  const addr=document.getElementById('o-addr').value.trim();
-  const city=document.getElementById('o-city').value.trim();
-  const pin=document.getElementById('o-pin').value.trim();
-  const state=document.getElementById('o-state').value.trim();
-  if(!name){toast('Please enter your name.');return;}
-  if(!phone||phone.length<10){toast('Please enter a valid phone number.');return;}
-  if(!addr||!city||!pin||!state){toast('Please fill in your delivery address.');return;}
-  goStep(2);
-}
-
-function openUPI(app){
-  const tot = cart.reduce((s,i)=>s+parseInt(i.price.replace(/\D/g,''))*i.qty,0);
-  const upi = getUPI();
-  const name = getUname();
-  const upiLink = `upi://pay?pa=${encodeURIComponent(upi)}&pn=${encodeURIComponent(name)}&am=${tot}&cu=INR`;
-  window.open(upiLink,'_blank');
-}
-
-function handleSSUpload(input){
-  if(input.files&&input.files[0]){
-    const r=new FileReader();
-    r.onload=e=>{
-      screenshotData = e.target.result;
-      const prev=document.getElementById('ssPreview');
-      prev.src=e.target.result; prev.style.display='block';
-      const btn=document.getElementById('confirmPayBtn');
-      btn.style.opacity='1'; btn.style.cursor='pointer';
-      btn.onclick=confirmPayment;
-      btn.textContent='Confirm Payment →';
-    };
-    r.readAsDataURL(input.files[0]);
-  }
-}
-
-function confirmPayment(){
-  if(!screenshotData){toast('Please upload payment screenshot first.');return;}
-  const tot = cart.reduce((s,i)=>s+parseInt(i.price.replace(/\D/g,''))*i.qty,0);
-  const ordId = 'GP'+String(orderCounter).padStart(4,'0');
-  orderCounter++;
-  const ordObj = {
-    id: ordId,
-    name: document.getElementById('o-name').value,
-    phone: document.getElementById('o-phone').value,
-    email: document.getElementById('o-email').value,
-    addr: document.getElementById('o-addr').value+', '+document.getElementById('o-city').value+', '+document.getElementById('o-state').value+' – '+document.getElementById('o-pin').value,
-    note: document.getElementById('o-note').value,
-    items: cart.map(i=>({name:i.name,variant:i.variant,qty:i.qty,price:i.price})),
-    total: tot,
-    screenshot: screenshotData,
-    status: 'pending',
-    time: new Date().toLocaleString('en-IN'),
+function uploadQRAdmin(input){
+  if(!input.files||!input.files[0])return;
+  const r=new FileReader();
+  r.onload=function(e){
+    const data=e.target.result;
+    localStorage.setItem('gp_qr',data);
+    const prev=document.getElementById('s-qr-preview'),wrap=document.getElementById('qr-admin-preview');
+    if(prev)prev.src=data;if(wrap)wrap.style.display='block';
+    saveSettingDB('qr_image',data);
+    toast('QR code uploaded! ✅ Customers will see this at checkout.');
   };
-  orders.push(ordObj);
-  currentOrderData = ordObj;
-  document.getElementById('successOrderId').textContent = '#'+ordId;
-  // update admin stats
-  document.getElementById('ad-orders').textContent = orders.length;
-  // clear cart
-  cart = []; updateCart();
-  goStep(3);
-  // send WA
-  setTimeout(()=>sendOrderWA(),500);
-  renderAdminOrders();
+  r.readAsDataURL(input.files[0]);
+}
+function removeQR(){
+  if(!confirm('Remove QR code?'))return;
+  localStorage.removeItem('gp_qr');
+  const prev=document.getElementById('s-qr-preview'),wrap=document.getElementById('qr-admin-preview');
+  if(prev)prev.src='';if(wrap)wrap.style.display='none';
+  saveSettingDB('qr_image','');
+  toast('QR removed.');
+}
+function saveSett(){
+  const np=document.getElementById('s-np').value,cp=document.getElementById('s-cp').value;
+  if(np){if(np!==cp){toast('Passwords do not match.');return;}localStorage.setItem('gp_pw',np);document.getElementById('s-np').value='';document.getElementById('s-cp').value='';}
+  const upi=document.getElementById('s-upi')?.value.trim();
+  const uname=document.getElementById('s-uname')?.value.trim();
+  if(upi){localStorage.setItem('gp_upi',upi);saveSettingDB('upi_id',upi);}
+  if(uname){localStorage.setItem('gp_uname',uname);saveSettingDB('upi_name',uname);}
+  const wa=document.getElementById('s-wa')?.value;
+  const ph=document.getElementById('s-ph')?.value;
+  const em=document.getElementById('s-em')?.value;
+  if(wa)saveSettingDB('whatsapp',wa);
+  if(ph)saveSettingDB('phone',ph);
+  if(em)saveSettingDB('email',em);
+  saveCats();
+  toast('Settings saved. ✅');
 }
 
-function sendOrderWA(){
-  if(!currentOrderData) return;
-  const o=currentOrderData;
-  const lines=o.items.map(i=>`• ${i.name}${i.variant?' ('+i.variant+')':''} × ${i.qty} — ${i.price}`).join('\n');
-  const msg=`🌿 *New Order — Green Petal*\n\n*Order ID:* ${o.id}\n*Customer:* ${o.name}\n*Phone:* ${o.phone}\n*Address:* ${o.addr}\n\n*Items:*\n${lines}\n\n*Total: ₹${o.total.toLocaleString('en-IN')}*\n\n*Payment:* Screenshot uploaded ✅\n\n${o.note?'*Note:* '+o.note+'\n\n':''}Please confirm this order.`;
-  const wa = getWA().replace(/\D/g,'');
-  window.open(`https://wa.me/${wa}?text=${encodeURIComponent(msg)}`,'_blank');
-}
-
-// ════════ ADMIN ORDERS ════════
-function renderAdminOrders(){
-  const filtered = ordFilterCat==='all' ? orders : orders.filter(o=>o.status===ordFilterCat);
-  const grid=document.getElementById('ordersGrid');
-  if(!filtered.length){
-    grid.innerHTML=`<div style="padding:48px;text-align:center;color:var(--muted);font-size:13px;font-weight:300;font-style:italic;">No orders found.</div>`;
-    return;
-  }
-  const statusMap={pending:'⏳ Pending',confirmed:'✅ Confirmed',shipped:'🚚 Shipped',delivered:'📦 Delivered',cancelled:'❌ Cancelled'};
-  const badgeMap={pending:'st-pending',confirmed:'st-confirmed',shipped:'st-shipped',delivered:'st-delivered',cancelled:'st-cancelled'};
-  grid.innerHTML = [...filtered].reverse().map(o=>`
-    <div class="order-row">
-      <div>
-        <div class="ord-id">#${o.id}</div>
-        <div class="ord-meta">${o.time}</div>
-      </div>
-      <div>
-        <div style="font-size:14px;font-weight:400;">${o.name}</div>
-        <div class="ord-meta">${o.phone} · ${o.items.length} item${o.items.length>1?'s':''}</div>
-        <div class="ord-meta" style="margin-top:2px;">${o.items.slice(0,2).map(i=>i.name.substring(0,22)).join(', ')}${o.items.length>2?'…':''}</div>
-      </div>
-      <div style="text-align:right;">
-        <div class="ord-total-big">₹${o.total.toLocaleString('en-IN')}</div>
-        ${o.screenshot?`<img class="ss-thumb" src="${o.screenshot}" onclick="openOrdDetail('${o.id}')" title="View screenshot">`:
-          '<div style="font-size:10px;color:var(--muted);margin-top:4px;">No screenshot</div>'}
-      </div>
-      <div>
-        <div style="margin-bottom:8px;"><span class="ord-status-badge ${badgeMap[o.status]||'st-pending'}">${statusMap[o.status]||o.status}</span></div>
-        <div class="ord-actions">
-          <button class="a-edit" onclick="openOrdDetail('${o.id}')">View</button>
-          <button class="ord-wa-btn" onclick="notifyCustomer('${o.id}')">📱 WA</button>
-        </div>
-      </div>
-    </div>`).join('');
-}
-
-function filterOrders(val){ ordFilterCat=val; renderAdminOrders(); }
-
-function openOrdDetail(id){
-  const o=orders.find(x=>x.id===id); if(!o) return;
-  currentOrdDetail=o;
-  document.getElementById('odTitle').textContent='Order #'+o.id;
-  document.getElementById('od-name').textContent=o.name;
-  document.getElementById('od-phone').textContent=o.phone;
-  document.getElementById('od-email').textContent=o.email||'—';
-  document.getElementById('od-addr').textContent=o.addr;
-  document.getElementById('od-note').textContent=o.note||'—';
-  document.getElementById('od-items').innerHTML=o.items.map(i=>`
-    <div class="od-row"><span>${i.name}${i.variant?' ('+i.variant+')':''} × ${i.qty}</span><span>${i.price}</span></div>`).join('');
-  document.getElementById('od-total').textContent='₹'+o.total.toLocaleString('en-IN');
-  if(o.screenshot){
-    document.getElementById('od-ss').src=o.screenshot;
-    document.getElementById('od-ss').style.display='block';
-    document.getElementById('od-ss-none').style.display='none';
+// ── HERO IMAGE ──
+function setHeroImg(url){
+  if(url && url.length > 5){
+    // Remove quotes from JSON.stringify to avoid double-quoting
+    const cleanUrl = url.replace(/"/g,'').replace(/'/g,'');
+    document.documentElement.style.setProperty('--hero-img','url("'+cleanUrl+'")');
+    // Also directly set hero-bg background as fallback
+    const bg = document.querySelector('.hero-bg');
+    if(bg) bg.style.backgroundImage = 'url("'+cleanUrl+'")';
   } else {
-    document.getElementById('od-ss').style.display='none';
-    document.getElementById('od-ss-none').style.display='block';
+    document.documentElement.style.setProperty('--hero-img','linear-gradient(160deg,#2d4a2f,#1a1714)');
+    const bg = document.querySelector('.hero-bg');
+    if(bg) bg.style.backgroundImage = 'linear-gradient(160deg,#2d4a2f,#1a1714)';
   }
-  document.getElementById('od-status-sel').value=o.status;
-  document.getElementById('ordDetailMod').classList.add('on');
 }
-function closeOrdDetail(){ document.getElementById('ordDetailMod').classList.remove('on'); }
-
-function updateOrdStatus(){
-  if(!currentOrdDetail) return;
-  const newStatus=document.getElementById('od-status-sel').value;
-  currentOrdDetail.status=newStatus;
-  toast('Order status updated to: '+newStatus+' ✅');
-  renderAdminOrders();
+function previewHeroUrl(url){
+  const prev=document.getElementById('s-hero-preview'),ph=document.getElementById('s-hero-placeholder');
+  if(url&&prev){prev.src=url;prev.style.display='block';if(ph)ph.style.display='none';}
+  else{if(prev)prev.style.display='none';if(ph)ph.style.display='flex';}
+}
+function uploadHeroImg(input){
+  if(!input.files||!input.files[0])return;
+  const r=new FileReader();
+  r.onload=function(e){
+    const el=document.getElementById('s-hero-url');if(el)el.value=e.target.result;
+    previewHeroUrl(e.target.result);
+    toast('Image ready. Click "Set as Hero Image" to save.');
+  };
+  r.readAsDataURL(input.files[0]);
+}
+async function saveHeroImg(){
+  const el=document.getElementById('s-hero-url');
+  const url=el?el.value.trim():'';
+  if(!url){toast('Please upload or enter an image URL.');return;}
+  // Apply immediately
+  setHeroImg(url);
+  // Save to localStorage (works offline)
+  localStorage.setItem('gp_hero', url);
+  // Save to DB (works online)
+  await saveSettingDB('hero_image', url);
+  toast('Hero image updated! ✅ Live on website now.');
 }
 
-function notifyCustomer(id){
-  const o=orders.find(x=>x.id===id); if(!o) return;
-  const statusMsg={pending:'⏳ Your order is pending payment verification.',confirmed:'✅ Your payment is confirmed! We are preparing your order.',shipped:'🚚 Your order has been shipped! It will arrive in 3–5 business days.',delivered:'📦 Your order has been delivered! Thank you for shopping with Green Petal 🌿',cancelled:'❌ Unfortunately your order has been cancelled. Please contact us for more details.'};
-  const msg=`🌿 *Green Petal Order Update*\n\n*Order ID:* #${o.id}\n*Customer:* ${o.name}\n\n${statusMsg[o.status]||'Your order status has been updated.'}\n\nFor any queries, call us: 9123533325\n\nThank you for choosing Green Petal! 🌿`;
-  const wa=o.phone.replace(/\D/g,'');
-  window.open(`https://wa.me/91${wa}?text=${encodeURIComponent(msg)}`,'_blank');
+// ════════ QR / UPI PAYMENT ════════
+function beginCheckout(){
+  if(!cart.length){toast('Your bag is empty!');return;}
+  closeCart();
+  buildOrderSummary('addrOsum');
+  ['on','oph','oem','oad','oci','opi'].forEach(id=>{const e=document.getElementById(id);if(e&&id!=='ost')e.value='';});
+  document.getElementById('addrOv').classList.add('on');
 }
-
-function sendStatusWA(){
-  if(!currentOrdDetail) return;
-  const newStatus=document.getElementById('od-status-sel').value;
-  currentOrdDetail.status=newStatus;
-  notifyCustomer(currentOrdDetail.id);
-  toast('Status updated & WhatsApp message opened ✅');
-  renderAdminOrders();
+function buildOrderSummary(tid){
+  const tot=cart.reduce((s,i)=>s+parseInt(i.price.replace(/\D/g,''))*i.qty,0);
+  const rows=cart.map(i=>`<div style="display:flex;justify-content:space-between;padding:4px 0;border-bottom:1px solid var(--bd);font-weight:300"><span>${i.name}${i.variant?' ('+i.variant+')':''} × ${i.qty}</span><span>₹${(parseInt(i.price.replace(/\D/g,''))*i.qty).toLocaleString('en-IN')}</span></div>`).join('');
+  const el=document.getElementById(tid);
+  if(el)el.innerHTML=rows+`<div style="display:flex;justify-content:space-between;padding-top:10px;font-family:'Cormorant Garamond',serif;font-size:18px;font-weight:400;border-top:1px solid var(--ink);margin-top:4px"><span>Total</span><span>₹${tot.toLocaleString('en-IN')}</span></div>`;
 }
-
-// Init saved settings
-(function initSettings(){
-  const savedUPI = localStorage.getItem('gp_upi');
-  const savedUname = localStorage.getItem('gp_uname');
-  const savedQR = localStorage.getItem('gp_qr');
-  if(savedUPI && document.getElementById('s-upi')) document.getElementById('s-upi').value=savedUPI;
-  if(savedUname && document.getElementById('s-uname')) document.getElementById('s-uname').value=savedUname;
-  if(savedQR && document.getElementById('qrPreviewWrap')){
-    document.getElementById('qrPreviewWrap').innerHTML=`<img src="${savedQR}" style="width:120px;height:120px;object-fit:contain;border:1px solid var(--border);">`;
-    document.getElementById('qrImg').src=savedQR;
+function closeAddr(){document.getElementById('addrOv').classList.remove('on');}
+function closeQR(){document.getElementById('qrOv').classList.remove('on');}
+function closePayment(){document.getElementById('payOv').classList.remove('on');}
+function goToQR(){
+  const g=id=>document.getElementById(id)?.value.trim()||'';
+  const name=g('on'),ph=g('oph'),addr=g('oad'),city=g('oci'),pin=g('opi');
+  if(!name){toast('Please enter your name.');return;}
+  if(!ph||ph.length<10){toast('Please enter a valid phone number.');return;}
+  if(!addr||!city||!pin){toast('Please fill in your delivery address.');return;}
+  const tot=cart.reduce((s,i)=>s+parseInt(i.price.replace(/\D/g,''))*i.qty,0);
+  const set=(id,v)=>{const e=document.getElementById(id);if(e)e.textContent=v;};
+  set('qrPayAmt','₹'+tot.toLocaleString('en-IN'));
+  set('qrUpiName',getUPIName());
+  const upiId=getUPI();
+  set('qrUpiId',upiId||'Set UPI ID in Admin → Settings');
+  const qrImg=getQRImg(),imgEl=document.getElementById('qrCodeImg'),noImg=document.getElementById('qrNoImg'),wrap=document.getElementById('qrImgWrap');
+  if(qrImg){
+    if(imgEl){imgEl.src=qrImg;imgEl.style.display='block';}
+    if(noImg)noImg.style.display='none';
+    if(wrap)wrap.style.display='inline-block';
+  }else if(upiId){
+    const lnk='upi://pay?pa='+encodeURIComponent(upiId)+'&pn='+encodeURIComponent(getUPIName())+'&am='+tot+'&cu=INR';
+    if(imgEl){imgEl.src='https://chart.googleapis.com/chart?chs=200x200&cht=qr&chl='+encodeURIComponent(lnk);imgEl.style.display='block';}
+    if(noImg)noImg.style.display='none';
+    if(wrap)wrap.style.display='inline-block';
+  }else{
+    if(imgEl)imgEl.style.display='none';
+    if(noImg)noImg.style.display='flex';
+    if(wrap)wrap.style.display='none';
   }
-})();
+  buildOrderSummary('qrOsum');
+  ssData=null;
+  const prev=document.getElementById('ssPreview');if(prev){prev.style.display='none';prev.src='';}
+  const btn=document.getElementById('confirmPayBtn');if(btn){btn.disabled=true;btn.style.opacity='.4';btn.style.cursor='not-allowed';btn.textContent='Upload Screenshot to Continue →';}
+  document.getElementById('addrOv').classList.remove('on');
+  document.getElementById('qrOv').classList.add('on');
+}
+function openUPIApp(app){
+  const tot=cart.reduce((s,i)=>s+parseInt(i.price.replace(/\D/g,''))*i.qty,0);
+  const upi=getUPI();
+  if(!upi){toast('UPI ID not set. Please contact the shop.');return;}
+  window.open('upi://pay?pa='+encodeURIComponent(upi)+'&pn='+encodeURIComponent(getUPIName())+'&am='+tot+'&cu=INR','_blank');
+}
+function handleSS(input){
+  if(!input.files||!input.files[0])return;
+  const r=new FileReader();
+  r.onload=function(e){
+    ssData=e.target.result;
+    const prev=document.getElementById('ssPreview');if(prev){prev.src=e.target.result;prev.style.display='block';}
+    const btn=document.getElementById('confirmPayBtn');
+    if(btn){btn.disabled=false;btn.style.opacity='1';btn.style.cursor='pointer';btn.textContent='Confirm Payment →';}
+  };
+  r.readAsDataURL(input.files[0]);
+}
+function confirmPayment(){
+  if(!ssData){toast('Please upload payment screenshot first.');return;}
+  const tot=cart.reduce((s,i)=>s+parseInt(i.price.replace(/\D/g,''))*i.qty,0);
+  const ordId='GP'+String(ordCounter).padStart(4,'0');ordCounter++;
+  const g=id=>document.getElementById(id)?.value||'';
+  const ord={id:ordId,nm:g('on'),ph:g('oph'),em:g('oem'),ad:g('oad')+', '+g('oci')+', '+g('ost')+' – '+g('opi'),no:'',items:cart.map(i=>({nm:i.name,vr:i.variant,qty:i.qty,pr:i.price})),tot:tot,ss:ssData,st:'pending',time:new Date().toLocaleString('en-IN')};
+  orders.push(ord);currentOrderData=ord;
+  const el=document.getElementById('succOid');if(el)el.textContent='#'+ordId;
+  sb('orders',{method:'POST',body:{id:ordId,customer_name:ord.nm,phone:ord.ph,email:ord.em,address:ord.ad,items:ord.items,total:ord.tot,status:'pending'}}).catch(()=>{});
+  cart=[];updateCart();
+  document.getElementById('qrOv').classList.remove('on');
+  document.getElementById('payOv').classList.add('on');
+  renderAdminOrders();updateDashStats();
+  setTimeout(()=>sendOrdWA(),500);
+  toast('Order placed! ✅');
+}
+function sendOrdWA(){
+  if(!currentOrderData)return;
+  const o=currentOrderData;
+  const lines=o.items.map(i=>`• ${i.nm}${i.vr?' ('+i.vr+')':''} × ${i.qty} — ${i.pr}`).join('\n');
+  window.open('https://wa.me/'+getWA()+'?text='+encodeURIComponent(`🌿 *New Order — Green Petal*\n\n*Order ID:* #${o.id}\n*Customer:* ${o.nm}\n*Phone:* ${o.ph}\n*Address:* ${o.ad}\n\n*Items:*\n${lines}\n\n*Total: ₹${o.tot.toLocaleString('en-IN')}*\n\n📸 Payment screenshot uploaded — please verify.`),'_blank');
+}
 
 // ════════ INIT ════════
-buildMarquee();
-renderFeat();
-renderTestis();
-updateCart();
+buildMarquee();updateCart();
+ALL_CATS=(function(){try{return JSON.parse(localStorage.getItem('gp_cats'));}catch(e){}return null;})()||['All','Artisanal Soaps','Gift Boxes','Bath Accessories','Shampoo','Lipcare','Candles'];
+updateProdCatSelect();buildCatRow();buildNavDropdown();
+renderFeat();renderShopGrid();renderTestis();
+// Load hero from localStorage immediately (no wait)
+const _savedHero = localStorage.getItem('gp_hero');
+if(_savedHero) setHeroImg(_savedHero);
+loadDB();
+loadSettingsDB().then(()=>{initUPISettings();});
 </script>
+
 </body>
 </html>
