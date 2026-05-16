@@ -3,21 +3,31 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>green petal</title>
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,300;1,400&family=Jost:wght@200;300;400;500&display=swap" rel="stylesheet" media="print" onload="this.media='all'">
-<noscript><link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,300;1,400&family=Jost:wght@200;300;400;500&display=swap" rel="stylesheet"></noscript>
+<title>Green Petal Soap Store</title>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,300;1,400&family=Jost:wght@200;300;400;500&display=swap" rel="stylesheet">
 <style>
 *{box-sizing:border-box;margin:0;padding:0;}
 :root{
   --ink:#1a1714;--cream:#f5f0e8;--cream2:#ede8dc;
   --sage:#7a9e7e;--sage-d:#4a6b4e;--muted:#7a7570;
   --border:rgba(26,23,20,0.1);--white:#fff;
-  --hero-img:linear-gradient(160deg,#2d4a2f,#1a1714);
 }
+/* ── BOLD OVERRIDES ── */
+body,input,select,textarea{font-weight:400}
+h1,h2,h3,h4{font-weight:600}
+.logo,.nav-c a,.atab,.aadd,.a-edit,.a-del,.ctab,.cart-co,.cart-wa{font-weight:700}
+.pname{font-weight:700}.pprice{font-weight:600}
+.sec-ey,.sec-eyebrow,.h-eyebrow{font-weight:700;letter-spacing:0.18em}
+.h-sub{font-weight:500}
+label{font-weight:700 !important;letter-spacing:0.1em}
+th{font-weight:700}td{font-weight:500}
+.ft-col h4{font-weight:700}.ft-col a{font-weight:500}
+button{font-weight:600}
+.mq-i{font-weight:600}
+.cart-co,.cart-wa,.btn-light,.btn-ghost-w{font-weight:700}
+
 html{scroll-behavior:smooth;}
-html{background:#f5f0e8}body{font-family:'Jost',sans-serif;background:#f5f0e8;background:var(--cream);color:#1a1714;color:var(--ink);overflow-x:hidden}
+body{font-family:'Jost',sans-serif;background:var(--cream);color:var(--ink);overflow-x:hidden;}
 ::-webkit-scrollbar{width:3px;}::-webkit-scrollbar-track{background:var(--cream);}::-webkit-scrollbar-thumb{background:var(--muted);}
 
 /* NAV */
@@ -39,17 +49,17 @@ nav{position:fixed;top:0;left:0;right:0;z-index:300;height:62px;display:flex;ali
 li:hover .ddrop{opacity:1;pointer-events:all;}
 
 /* PAGES */
-.pg{display:none;}.pg.on{display:block;}
+.pg{display:none;min-height:100vh;}.pg.on{display:block;}
 
 /* ───── HERO ───── */
 .hero{height:100vh;position:relative;overflow:hidden;display:flex;align-items:flex-end;background:var(--ink);}
-.hero-bg{position:absolute;inset:0;background:var(--hero-img,linear-gradient(160deg,#2d4a2f,#1a1714)) center/cover no-repeat;opacity:0.55;transition:transform 10s ease;}
+.hero-bg{position:absolute;inset:0;background:url('https://mudandmoon.com/2.webp') center/cover no-repeat;opacity:0.38;transition:transform 10s ease;}
 body:hover .hero-bg{transform:scale(1.03);}
-.hero-txt{position:relative;z-index:2;padding:72px 60px;max-width:680px;text-align:left;}
+.hero-txt{position:relative;z-index:2;padding:72px 60px;max-width:680px;}
 .h-eyebrow{font-size:10px;letter-spacing:0.22em;text-transform:uppercase;color:rgba(245,240,232,0.5);margin-bottom:22px;font-weight:300;}
-.hero-txt h1{font-family:'Cormorant Garamond',serif;font-size:clamp(48px,7vw,96px);font-weight:300;line-height:1.0;color:var(--cream);margin-bottom:30px;letter-spacing:-0.01em;}
+.hero-txt h1{font-family:'Cormorant Garamond',serif;font-size:clamp(54px,7.5vw,100px);font-weight:300;line-height:0.93;color:var(--cream);margin-bottom:30px;}
 .hero-txt h1 em{font-style:italic;color:rgba(200,222,201,0.85);}
-.h-sub{font-size:12px;letter-spacing:0.08em;text-transform:uppercase;color:rgba(245,240,232,0.6);font-weight:300;max-width:420px;line-height:1.85;margin-bottom:44px;}
+.h-sub{font-size:11px;letter-spacing:0.11em;text-transform:uppercase;color:rgba(245,240,232,0.48);font-weight:300;max-width:360px;line-height:1.9;margin-bottom:44px;}
 .h-btns{display:flex;gap:18px;align-items:center;}
 .btn-light{padding:13px 34px;background:var(--cream);color:var(--ink);font-size:10px;font-weight:400;letter-spacing:0.16em;text-transform:uppercase;border:none;cursor:pointer;font-family:'Jost',sans-serif;transition:all .22s;}
 .btn-light:hover{background:#fff;}
@@ -159,12 +169,12 @@ body:hover .hero-bg{transform:scale(1.03);}
 .p-desc{font-size:12px;color:rgba(245,240,232,0.42);margin-top:7px;line-height:1.7;font-weight:300;}
 
 /* ───── CONTACT ───── */
-.contact-wrap{padding:100px 60px;display:grid;grid-template-columns:1fr 1fr;gap:80px;}
-.ci-list{display:flex;flex-direction:column;gap:0;}
-.ci-row{display:flex;gap:20px;padding:18px 0;border-bottom:1px solid var(--border);}
-.ci-row:first-child{border-top:1px solid var(--border);}
-.ci-k{font-size:10px;letter-spacing:0.15em;text-transform:uppercase;color:var(--muted);min-width:80px;font-weight:300;padding-top:2px;}
-.ci-v{font-size:14px;color:var(--ink);font-weight:300;line-height:1.6;}
+
+
+
+
+
+
 .ci-v a{color:var(--ink);text-decoration:none;}
 .cf-box{background:var(--cream2);padding:44px;}
 .cf-box h3{font-family:'Cormorant Garamond',serif;font-size:28px;font-weight:400;margin-bottom:32px;}
@@ -309,10 +319,41 @@ footer{background:var(--ink);padding:80px 56px 36px;color:var(--cream);}
 .sg h3{font-family:'Cormorant Garamond',serif;font-size:20px;font-weight:400;margin-bottom:22px;padding-bottom:14px;border-bottom:1px solid var(--border);}
 .sg-row{display:grid;grid-template-columns:1fr 1fr;gap:18px;}
 
+/* PAYMENT METHOD CARDS */
+.pay-method{border:1.5px solid var(--border);padding:18px 20px;margin-bottom:10px;cursor:pointer;display:flex;align-items:center;gap:16px;transition:all .2s;background:white;}
+.pay-method:hover,.pay-method.on{border-color:var(--ink);background:var(--cream);}
+.pay-radio{width:18px;height:18px;border:2px solid var(--border);border-radius:50%;flex-shrink:0;display:flex;align-items:center;justify-content:center;transition:all .2s;}
+.pay-method.on .pay-radio{border-color:var(--ink);background:var(--ink);}
+.pay-radio-dot{width:8px;height:8px;border-radius:50%;background:var(--cream);display:none;}
+.pay-method.on .pay-radio-dot{display:block;}
+.pay-icon{font-size:24px;width:36px;text-align:center;}
+.pay-label{font-size:14px;font-weight:300;color:var(--ink);}
+.pay-sublabel{font-size:11px;color:var(--muted);font-weight:300;margin-top:2px;}
+.qr-box{background:white;border:1px solid var(--border);padding:32px;text-align:center;margin-bottom:20px;}
+.qr-box img{max-width:200px;max-height:200px;margin:0 auto 16px;display:block;image-rendering:pixelated;}
+.qr-upi{font-size:15px;font-weight:400;letter-spacing:.04em;color:var(--ink);margin-bottom:4px;}
+.qr-name{font-size:12px;color:var(--muted);font-weight:300;}
+.upi-apps{display:flex;gap:10px;justify-content:center;flex-wrap:wrap;margin-top:16px;}
+.upi-app-btn{padding:8px 16px;border:1px solid var(--border);font-size:11px;letter-spacing:.06em;font-family:'Jost',sans-serif;background:none;cursor:pointer;display:flex;align-items:center;gap:6px;font-weight:300;color:var(--ink);transition:all .2s;}
+.upi-app-btn:hover{background:var(--cream2);}
+.pay-done-btn{width:100%;padding:14px;background:var(--sage-d);color:white;border:none;font-family:'Jost',sans-serif;font-size:10px;letter-spacing:.18em;text-transform:uppercase;cursor:pointer;font-weight:300;margin-top:16px;transition:all .2s;}
+.pay-done-btn:hover{background:var(--sage);}
+.bank-details-box{background:var(--cream2);padding:24px;margin-bottom:16px;}
+.bank-row{display:flex;justify-content:space-between;align-items:center;padding:10px 0;border-bottom:1px solid var(--border);font-size:13px;}
+.bank-row:last-child{border:none;}
+.bank-k{color:var(--muted);font-weight:300;}
+.bank-v{font-weight:400;font-family:'Cormorant Garamond',serif;font-size:15px;}
+.copy-btn{background:none;border:1px solid var(--border);padding:4px 10px;font-size:10px;cursor:pointer;font-family:'Jost',sans-serif;font-weight:300;letter-spacing:.08em;transition:all .2s;}
+.copy-btn:hover{background:var(--ink);color:var(--cream);}
+.os-pending{font-size:9px;letter-spacing:.1em;text-transform:uppercase;background:rgba(239,159,39,.12);color:#c07000;padding:4px 10px;font-weight:400;}
+.os-paid{font-size:9px;letter-spacing:.1em;text-transform:uppercase;background:rgba(122,158,126,.15);color:var(--sage-d);padding:4px 10px;font-weight:400;}
+.os-shipped{font-size:9px;letter-spacing:.1em;text-transform:uppercase;background:rgba(26,23,20,.08);color:var(--ink);padding:4px 10px;font-weight:400;}
+.os-delivered{font-size:9px;letter-spacing:.1em;text-transform:uppercase;background:rgba(74,107,78,.15);color:var(--sage-d);padding:4px 10px;font-weight:400;}
+
 @media(max-width:900px){
   nav{padding:0 22px;}.nav-c{display:none;}
   .hero-txt{padding:80px 28px;}
-  .feat-section,.shop-wrap,.contact-wrap,.phil-wrap{padding:80px 22px;}
+  .feat-section,.shop-wrap,.phil-wrap{padding:80px 22px;}
   .pgrid,.pgrid.wide{grid-template-columns:repeat(2,1fr);}
   .detail-wrap{grid-template-columns:1fr;padding:90px 22px 60px;}
   .detail-imgs{position:static;}
@@ -321,112 +362,68 @@ footer{background:var(--ink);padding:80px 56px 36px;color:var(--cream);}
   .a-stats{grid-template-columns:repeat(2,1fr);}
   .adm-body{padding:20px;}
   .shop-top{grid-template-columns:1fr;}
-  .contact-wrap{grid-template-columns:1fr;}
+  
   .phil-wrap{grid-template-columns:1fr;}
 }
 
-/* ═══════════ PAYMENT STYLES ═══════════ */
-.pay-ov{display:none;position:fixed;inset:0;z-index:5000;background:rgba(26,23,20,0.75);backdrop-filter:blur(8px);align-items:center;justify-content:center;}
+
+/* ── CONNECT PAGE ── */
+.connect-pg{display:grid;grid-template-columns:1fr 1fr;min-height:100vh;background:var(--ink);}
+.connect-left{display:flex;flex-direction:column;justify-content:center;padding:100px 60px;background:var(--ink);position:sticky;top:0;height:100vh;}
+.connect-h{font-family:'Cormorant Garamond',serif;font-size:clamp(52px,6vw,84px);font-weight:300;line-height:1.0;color:var(--cream);margin:20px 0 28px;}
+.connect-h em{font-style:italic;color:var(--sage);}
+.connect-sub{font-size:13px;color:rgba(245,240,232,0.55);font-weight:300;line-height:1.9;max-width:320px;letter-spacing:0.04em;}
+.connect-right{padding:100px 60px;background:var(--cream);display:flex;flex-direction:column;justify-content:center;gap:0;}
+.conn-item{padding:28px 0;border-bottom:1px solid var(--border);}
+.conn-item:first-child{border-top:1px solid var(--border);}
+.conn-label{font-size:9px;letter-spacing:0.25em;text-transform:uppercase;color:var(--muted);font-weight:700;margin-bottom:10px;}
+.conn-val{font-size:16px;color:var(--ink);font-weight:400;text-decoration:none;line-height:1.5;display:block;font-family:'Cormorant Garamond',serif;}
+.conn-val:hover{color:var(--sage-d);}
+.conn-note{font-size:11px;color:var(--muted);font-weight:400;margin-top:5px;letter-spacing:0.04em;}
+.conn-wa{background:none;border:none;cursor:pointer;font-size:16px;font-family:'Cormorant Garamond',serif;color:var(--sage-d);font-weight:400;padding:0;text-align:left;}
+.conn-wa:hover{color:var(--ink);}
+@media(max-width:768px){
+  .connect-pg{grid-template-columns:1fr;min-height:auto;}
+  .connect-left{position:relative;height:auto;padding:80px 24px 40px;min-height:45vh;}
+  .connect-right{padding:40px 24px 80px;}
+  .connect-h{font-size:clamp(42px,10vw,64px);}
+}
+
+/* ── PAYMENT MODALS ── */
+.pay-ov{display:none;position:fixed;inset:0;z-index:30000;background:rgba(26,23,20,.7);backdrop-filter:blur(8px);align-items:center;justify-content:center;padding:20px;}
 .pay-ov.on{display:flex;}
-.pay-box{background:var(--cream);width:520px;max-height:96vh;overflow-y:auto;position:relative;}
-.pay-header{background:var(--ink);color:var(--cream);padding:28px 36px;display:flex;align-items:center;justify-content:space-between;}
-.pay-header h2{font-family:'Cormorant Garamond',serif;font-size:24px;font-weight:300;letter-spacing:.05em;}
-.pay-x{background:none;border:none;color:rgba(245,240,232,.6);font-size:22px;cursor:pointer;}
-/* Steps */
+.pay-box{background:var(--cream);width:100%;max-height:92vh;overflow-y:auto;}
+.pay-header{display:flex;justify-content:space-between;align-items:center;padding:22px 32px;border-bottom:1px solid var(--border);}
+.pay-header h2{font-family:'Cormorant Garamond',serif;font-size:22px;font-weight:400;letter-spacing:0.02em;}
+.pay-x{background:none;border:none;font-size:20px;cursor:pointer;color:var(--ink);line-height:1;padding:4px 8px;}
+.mf{margin-bottom:16px;}
+.mf label{display:block;font-size:10px;letter-spacing:.14em;text-transform:uppercase;color:var(--muted);font-weight:700;margin-bottom:7px;}
+.mf input,.mf textarea,.mf select{width:100%;padding:10px 0;border:none;border-bottom:1px solid var(--border);background:transparent;font-family:'Jost',sans-serif;font-size:14px;color:var(--ink);outline:none;font-weight:400;}
+.mf textarea{resize:none;}
+.pf{margin-bottom:14px;}
+.pf label{display:block;font-size:10px;letter-spacing:.14em;text-transform:uppercase;color:var(--muted);font-weight:700;margin-bottom:6px;}
+.pf input,.pf textarea{width:100%;padding:9px 0;border:none;border-bottom:1px solid var(--border);background:transparent;font-family:'Jost',sans-serif;font-size:14px;color:var(--ink);outline:none;font-weight:400;box-sizing:border-box;}
+.pf textarea{resize:none;}
 
-
-
-.pay-step.done{opacity:.7;}
-.step-num{width:24px;height:24px;border-radius:50%;background:var(--ink);color:var(--cream);font-size:10px;display:flex;align-items:center;justify-content:center;font-weight:400;flex-shrink:0;}
-.pay-step.done .step-num{background:var(--sage-d);}
-.step-lbl{font-size:10px;letter-spacing:.12em;text-transform:uppercase;font-weight:300;color:var(--ink);}
-.step-div{width:24px;height:1px;background:var(--border);flex-shrink:0;}
-/* Step panels */
-.pay-panel{display:none;padding:32px 36px;}.pay-panel.on{display:block;}
-/* Address form */
-.pf{margin-bottom:16px;}
-.pf label{font-size:10px;letter-spacing:.14em;text-transform:uppercase;color:var(--muted);display:block;margin-bottom:7px;font-weight:300;}
-.pf input,.pf textarea,.pf select{width:100%;padding:11px 0;border:none;border-bottom:1px solid var(--border);background:transparent;font-family:'Jost',sans-serif;font-size:14px;color:var(--ink);outline:none;font-weight:300;transition:border-color .2s;}
-.pf input:focus,.pf textarea:focus{border-bottom-color:var(--ink);}
-.pf2{display:grid;grid-template-columns:1fr 1fr;gap:18px;}
-/* Order summary in payment */
-.ord-sum{background:var(--cream2);padding:20px;margin-bottom:24px;}
-.ord-sum-title{font-size:10px;letter-spacing:.14em;text-transform:uppercase;color:var(--muted);margin-bottom:14px;font-weight:300;}
-.ord-item{display:flex;justify-content:space-between;font-size:13px;font-weight:300;padding:6px 0;border-bottom:1px solid var(--border);}
-.ord-item:last-child{border:none;}
-.ord-item.total{font-family:'Cormorant Garamond',serif;font-size:20px;font-weight:400;padding-top:12px;margin-top:4px;border-top:1px solid var(--ink);}
-/* QR section */
-.qr-section{text-align:center;padding:8px 0 20px;}
-.qr-wrap{display:inline-block;padding:16px;background:white;border:1px solid var(--border);margin:16px auto;}
-.qr-wrap img{width:200px;height:200px;display:block;}
-.qr-upi{font-family:'Cormorant Garamond',serif;font-size:18px;font-weight:400;margin:12px 0 4px;}
-.qr-upi-id{font-size:13px;color:var(--muted);font-weight:300;margin-bottom:16px;letter-spacing:.04em;}
-.qr-amount{font-family:'Cormorant Garamond',serif;font-size:32px;font-weight:300;color:var(--sage-d);margin-bottom:6px;}
-.qr-note{font-size:11px;color:var(--muted);font-weight:300;line-height:1.7;margin-bottom:20px;}
-.qr-apps{display:flex;justify-content:center;gap:12px;flex-wrap:wrap;margin-bottom:20px;}
-.qr-app{padding:8px 14px;border:1px solid var(--border);background:white;font-size:12px;font-weight:300;display:flex;align-items:center;gap:6px;cursor:pointer;transition:all .2s;}
-.qr-app:hover{border-color:var(--ink);background:var(--cream2);}
-/* Screenshot upload */
-.ss-upload{border:2px dashed var(--border);padding:28px;text-align:center;cursor:pointer;position:relative;transition:all .2s;margin-bottom:16px;}
-.ss-upload:hover{border-color:var(--ink);}
-.ss-upload input{position:absolute;inset:0;opacity:0;cursor:pointer;}
-.ss-upload-icon{font-size:28px;margin-bottom:8px;}
-.ss-upload p{font-size:12px;color:var(--muted);font-weight:300;}
-.ss-preview{width:100%;max-height:160px;object-fit:contain;display:none;margin-bottom:12px;border:1px solid var(--border);}
-/* Buttons */
-.pay-btn{width:100%;padding:14px;background:var(--ink);color:var(--cream);border:none;font-family:'Jost',sans-serif;font-size:10px;letter-spacing:.18em;text-transform:uppercase;cursor:pointer;font-weight:300;transition:all .22s;margin-top:8px;}
-.pay-btn:hover{background:var(--sage-d);}
-.pay-btn.ghost{background:none;color:var(--ink);border:1px solid var(--border);margin-top:10px;}
-.pay-btn.ghost:hover{background:var(--cream2);}
-.pay-btn.wa{background:#25D366;color:#fff;}
-.pay-btn.wa:hover{background:#1da851;}
-/* Success screen */
-.success-screen{text-align:center;padding:20px 0 8px;}
-.success-icon{font-size:56px;margin-bottom:16px;}
-.success-screen h3{font-family:'Cormorant Garamond',serif;font-size:28px;font-weight:300;margin-bottom:12px;}
-.success-screen p{font-size:13px;color:var(--muted);font-weight:300;line-height:1.8;max-width:340px;margin:0 auto 24px;}
-.order-id-box{background:var(--cream2);padding:16px 24px;font-size:13px;margin-bottom:24px;}
-.order-id-box span{font-family:'Cormorant Garamond',serif;font-size:20px;color:var(--sage-d);}
-
-/* ═══ ADMIN PAYMENT PANEL ═══ */
-.orders-grid{display:grid;grid-template-columns:1fr;gap:0;}
-.order-row{background:white;padding:20px 24px;border-bottom:1px solid var(--border);display:grid;grid-template-columns:auto 1fr auto auto;gap:20px;align-items:center;}
-.order-row:last-child{border-bottom:none;}
-.ord-id{font-family:'Cormorant Garamond',serif;font-size:20px;font-weight:400;color:var(--ink);}
-.ord-meta{font-size:12px;color:var(--muted);font-weight:300;margin-top:3px;line-height:1.6;}
-.ord-total-big{font-family:'Cormorant Garamond',serif;font-size:22px;font-weight:400;color:var(--ink);}
-.ord-status-badge{font-size:9px;letter-spacing:.13em;text-transform:uppercase;padding:5px 12px;font-weight:400;}
-.st-pending{background:rgba(186,117,23,.1);color:#ba7517;}
-.st-confirmed{background:rgba(74,107,78,.12);color:var(--sage-d);}
-.st-shipped{background:rgba(37,99,235,.1);color:#1d4ed8;}
-.st-delivered{background:rgba(122,158,126,.15);color:#2d6a4f;}
-.st-cancelled{background:rgba(192,57,43,.08);color:#c0392b;}
-.ord-actions{display:flex;gap:8px;align-items:center;}
-.ord-act-sel{font-size:11px;border:1px solid var(--border);background:var(--cream);font-family:'Jost',sans-serif;padding:7px 10px;color:var(--ink);cursor:pointer;outline:none;font-weight:300;}
-.ord-wa-btn{padding:7px 14px;background:#25D366;color:#fff;border:none;font-size:11px;cursor:pointer;font-family:'Jost',sans-serif;font-weight:300;letter-spacing:.08em;transition:all .2s;}
-.ord-wa-btn:hover{background:#1da851;}
-.ord-del-btn{padding:7px 12px;background:none;border:1px solid rgba(192,57,43,.2);color:#c0392b;font-size:11px;cursor:pointer;font-family:'Jost',sans-serif;font-weight:300;transition:all .2s;}
-.ss-thumb{width:44px;height:44px;object-fit:cover;border:1px solid var(--border);cursor:pointer;}
-/* order detail modal */
-.ord-detail-mod{display:none;position:fixed;inset:0;z-index:25000;background:rgba(26,23,20,.65);backdrop-filter:blur(6px);align-items:center;justify-content:center;}
-.ord-detail-mod.on{display:flex;}
-.ord-detail-inner{background:var(--cream);width:640px;max-height:92vh;overflow-y:auto;padding:44px;position:relative;}
-.ord-detail-inner h2{font-family:'Cormorant Garamond',serif;font-size:26px;font-weight:400;margin-bottom:24px;}
-.od-x{position:absolute;top:18px;right:22px;font-size:22px;cursor:pointer;color:var(--muted);background:none;border:none;}
-.od-section{margin-bottom:24px;padding-bottom:24px;border-bottom:1px solid var(--border);}
-.od-section:last-child{border:none;margin-bottom:0;padding-bottom:0;}
-.od-section h4{font-size:10px;letter-spacing:.16em;text-transform:uppercase;color:var(--muted);margin-bottom:14px;font-weight:300;}
-.od-row{display:flex;justify-content:space-between;font-size:13px;font-weight:300;padding:5px 0;}
-.od-ss{max-width:100%;max-height:240px;object-fit:contain;border:1px solid var(--border);display:block;margin-top:8px;}
-.pay-settings-note{font-size:12px;color:var(--muted);font-weight:300;line-height:1.7;margin-bottom:16px;}
+/* ── ORDER DETAIL MODAL ── */
+.ord-detail-mod{display:none;position:fixed;inset:0;z-index:30001;background:rgba(26,23,20,.7);backdrop-filter:blur(6px);overflow-y:auto;padding:40px 20px;}
+.ord-detail-mod.on{display:flex;align-items:flex-start;justify-content:center;}
+.ord-detail-inner{background:var(--cream);width:100%;max-width:580px;padding:40px;position:relative;}
+.od-x{position:absolute;top:16px;right:20px;background:none;border:none;font-size:22px;cursor:pointer;color:var(--ink);}
+.ord-detail-inner h2{font-family:'Cormorant Garamond',serif;font-size:24px;font-weight:400;margin-bottom:28px;}
+.ods{margin-bottom:24px;padding-bottom:24px;border-bottom:1px solid var(--border);}
+.ods:last-child{border-bottom:none;margin-bottom:0;padding-bottom:0;}
+.ods h4{font-size:10px;letter-spacing:.18em;text-transform:uppercase;color:var(--muted);font-weight:700;margin-bottom:14px;}
+.odr{display:flex;justify-content:space-between;font-size:13px;font-weight:400;padding:5px 0;border-bottom:1px solid var(--border);}
+.odr:last-child{border-bottom:none;}
+.ord-wa-btn{padding:8px 16px;background:none;border:1px solid var(--border);font-size:10px;letter-spacing:.1em;cursor:pointer;font-family:'Jost',sans-serif;font-weight:600;color:var(--ink);}
 </style>
-
 </head>
 <body>
 
 <!-- NAV -->
 <nav>
-  <span class="logo" onclick="goHome()">green petal</span>
+  <span class="logo" onclick="goHome()">Green Petal Soap Store</span>
   <ul class="nav-c">
     <li>
       <a href="#" onclick="goShop();return false;">Shop</a>
@@ -495,7 +492,7 @@ footer{background:var(--ink);padding:80px 56px 36px;color:var(--cream);}
         <span class="sec-ey">The Collection</span>
         <h1 style="font-family:'Cormorant Garamond',serif;font-size:clamp(38px,4.5vw,58px);font-weight:300;">The <em style="font-style:italic;color:var(--sage-d)">Collection.</em></h1>
       </div>
-      <p>Where nature meets artistry — handmade soaps created with pure ingredients and creative passion. Minimal. Botanical. Handcrafted.</p>
+      <p>Artisanal botanical care formulated to elevate your daily ritual. Crafted with reverence in small batches.</p>
     </div>
     <div class="cat-row" id="catRow"></div>
     <div class="shop-ctrl">
@@ -553,7 +550,7 @@ footer{background:var(--ink);padding:80px 56px 36px;color:var(--cream);}
         </div>
         <div class="acc-item">
           <button class="acc-btn" onclick="toggleAcc(this)"><span>Shipping & Returns</span><span class="acc-icon">+</span></button>
-          <div class="acc-body">We ship across India within 5–7 business days. Express delivery available. Returns accepted within 7 days for unopened products. Contact us at Greenpetalsoapstore@gmail.com.</div>
+          <div class="acc-body">We ship across India within 5–7 business days. Express delivery available. Returns accepted within 7 days for unopened products. Contact us at greenpetals2296@gmail.com.</div>
         </div>
       </div>
     </div>
@@ -565,46 +562,184 @@ footer{background:var(--ink);padding:80px 56px 36px;color:var(--cream);}
   <div class="phil-wrap">
     <div class="phil-img"><img src="https://framerusercontent.com/images/Xp9C7zxahZmjWnCfuN9wcfnBk.png" alt="" onerror="this.style.background='#4a6b4e'"></div>
     <div class="phil-txt">
-      <span class="sec-ey">Our Journey</span>
-      <h2 class="sec-ttl">Our <em>Journey</em><br>Begins Here.</h2>
-      <p>Green Petal was born from a desire to bring the raw, untamed beauty of nature into your daily ritual. Every botanical, every clay, every cold-pressed oil is chosen with intention and reverence.</p>
-      <p style="margin-top:14px;">We are not just a brand; we are an atelier. A place where ancient earth minerals meet modern apothecary science to create rituals that nourish the skin and ground the spirit.</p>
-      <div class="pillar"><span class="p-num">01</span><div class="p-ttl">Small Batch Craft</div><div class="p-desc">True alchemy cannot be rushed. We craft our botanical products using traditional methods, ensuring every batch retains its raw nourishing power.</div></div>
-      <div class="pillar"><span class="p-num">02</span><div class="p-ttl">Zero Compromise</div><div class="p-desc">No synthetic fragrances. No harsh chemicals. Every ingredient is plant-derived, ethically sourced, and chosen for a purpose.</div></div>
-      <div class="pillar"><span class="p-num">03</span><div class="p-ttl">10 Years of Mastery</div><div class="p-desc">A decade of perfecting formulations, training 2000+ students, and building a community that believes in conscious beauty.</div></div>
-    </div>
-  </div>
-</div>
-
-<!-- ═══════════ CONTACT ═══════════ -->
-<div class="pg" id="pg-contact">
-  <div style="padding:110px 60px 40px;"><span class="sec-ey">Reach Out</span><h2 class="sec-ttl">Connect <em>With Us.</em></h2></div>
-  <div class="contact-wrap" style="padding-top:0;">
-    <div>
-      <div class="ci-list">
-        <div class="ci-row"><div class="ci-k">Phone</div><div class="ci-v"><a href="tel:9123533325">9123533325</a><br><span style="font-size:11px;color:var(--muted);">Mon–Sat, 8am–6pm</span></div></div>
-        <div class="ci-row"><div class="ci-k">Email</div><div class="ci-v"><a href="mailto:Greenpetalsoapstore@gmail.com">Greenpetalsoapstore@gmail.com</a></div></div>
-        <div class="ci-row"><div class="ci-k">Address</div><div class="ci-v">14, Muthurangam Street,<br>Manikoondu, Erode – 638001</div></div>
-        <div class="ci-row"><div class="ci-k">Instagram</div><div class="ci-v"><a href="https://instagram.com/_greenpetals__" target="_blank">@_greenpetals__</a></div></div>
-        <div class="ci-row"><div class="ci-k">WhatsApp</div><div class="ci-v"><a href="https://wa.me/919123533325" target="_blank">Chat with us</a></div></div>
+      <span class="sec-ey">Our Story</span>
+      <h2 class="sec-ttl" id="journey-heading">Our <em>Journey</em><br>Begins Here.</h2>
+      <div id="journey-body-display">
+        <p>Green Petal was born from a desire to bring the raw, untamed beauty of nature into your daily ritual. Every botanical, every clay, every cold-pressed oil is chosen with intention.</p>
+        <p style="margin-top:14px">We are not a factory. We are a small team of makers who believe that what you put on your skin should be as pure as what you put in your body.</p>
+        <p style="margin-top:14px">This is not just skincare. This is a ritual.</p>
+      </div>
+      <div class="phil-stats">
+        <div><span class="ps-n">100%</span><span class="ps-l">Natural</span></div>
+        <div><span class="ps-n">Small</span><span class="ps-l">Batch</span></div>
+        <div><span class="ps-n">0</span><span class="ps-l">Chemicals</span></div>
       </div>
     </div>
-    <div class="cf-box">
-      <h3>Send a Message</h3>
-      <div class="cf-f"><label>Product Name</label><input type="text" placeholder="Your name"></div>
-      <div class="cf-f"><label>Email or Phone</label><input type="text" placeholder="your@email.com"></div>
-      <div class="cf-f"><label>Message</label><textarea placeholder="How can we help?"></textarea></div>
-      <button class="cf-sub" onclick="toast('Message sent! We will get back to you soon.')">Submit →</button>
+  </div>
+</div>
+<div class="pg" id="pg-contact">
+  <div class="connect-pg">
+    <div class="connect-left">
+      <span class="sec-ey" style="color:rgba(245,240,232,0.5)">Reach Out</span>
+      <h1 class="connect-h">Connect<br><em>With Us.</em></h1>
+      <p class="connect-sub">We'd love to hear from you — whether it's a question about ingredients, a custom order, or just to say hello.</p>
+    </div>
+    <div class="connect-right">
+      <div class="conn-item">
+        <div class="conn-label">Phone</div>
+        <a id="cp-ph" href="tel:9123533325" class="conn-val">9123533325</a>
+        <div id="cp-hrs" class="conn-note">Mon–Sat, 8am–6pm</div>
+      </div>
+      <div class="conn-item">
+        <div class="conn-label">Email</div>
+        <a id="cp-em" href="mailto:Greenpetalsoapstore@gmail.com" class="conn-val">Greenpetalsoapstore@gmail.com</a>
+      </div>
+      <div class="conn-item">
+        <div class="conn-label">Address</div>
+        <div id="cp-addr" class="conn-val">14, Muthurangam Street,<br>Manikoondu, Erode – 638001</div>
+      </div>
+      <div class="conn-item">
+        <div class="conn-label">Instagram</div>
+        <a id="cp-ig" href="https://instagram.com/_greenpetals__" target="_blank" class="conn-val">@_greenpetals__</a>
+      </div>
+      <div class="conn-item">
+        <div class="conn-label">WhatsApp</div>
+        <a href="#" onclick="window.open('https://wa.me/'+getWA(),'_blank');return false;" class="conn-val conn-wa">Chat with us →</a>
+      </div>
     </div>
   </div>
 </div>
 
-<!-- SHARED FOOTER -->
+<div class="cart-ov" id="cartOv" onclick="cartOvClick(event)">
+  <div class="cart-sb">
+    <div class="cart-hd"><h2>Your Bag</h2><button class="cart-x" onclick="closeCart()">✕</button></div>
+    <div class="cart-bd" id="cartBd"></div>
+    <div class="cart-ft" id="cartFt" style="display:none;">
+      <div style="padding:0 0 10px">
+        <div style="display:flex;justify-content:space-between;font-size:13px;font-weight:500;padding:5px 0"><span>Subtotal</span><span id="cartTot">₹0</span></div>
+        <div style="display:flex;justify-content:space-between;font-size:12px;font-weight:500;padding:5px 0;border-bottom:1px solid var(--border);padding-bottom:10px"><span>Shipping</span><span id="cartShip" style="color:var(--sage-d);font-size:11px;font-weight:600">Enter state at checkout</span></div>
+        <div style="display:flex;justify-content:space-between;font-size:16px;font-weight:700;padding:10px 0"><span>Total</span><span id="cartGrand">₹0</span></div>
+      </div>
+      <button class="cart-co" onclick="beginCheckout()">Begin Checkout →</button>
+      <button class="cart-wa" onclick="waCheckout()">Order via WhatsApp</button>
+    </div>
+  </div>
+</div>
+
+<!-- ═══════ PAYMENT MODALS ═══════ -->
+<div class="pay-ov" id="addrOv">
+  <div class="pay-box" style="max-width:500px">
+    <div class="pay-header"><h2>Delivery Details</h2><button class="pay-x" onclick="closeAddr()">✕</button></div>
+    <div style="padding:24px 32px 32px">
+      <div id="addrOsum" style="background:var(--cream2);padding:12px 16px;margin-bottom:20px;font-size:13px;font-weight:500"></div>
+      <div style="display:grid;grid-template-columns:1fr 1fr;gap:14px">
+        <div class="mf"><label>Full Name *</label><input type="text" id="on" placeholder="Your name"></div>
+        <div class="mf"><label>Phone *</label><input type="text" id="oph" placeholder="10-digit mobile"></div>
+      </div>
+      <div class="mf"><label>Email</label><input type="text" id="oem" placeholder="for order updates"></div>
+      <div class="mf"><label>Address *</label><textarea id="oad" placeholder="House no, Street, Area" style="min-height:52px;resize:none"></textarea></div>
+      <div style="display:grid;grid-template-columns:1fr 1fr;gap:14px">
+        <div class="mf"><label>City *</label><input type="text" id="oci" placeholder="City"></div>
+        <div class="mf"><label>Pincode *</label><input type="text" id="opi" placeholder="6-digit"></div>
+      </div>
+      <div class="mf"><label>State *</label><input type="text" id="ost" value="Tamil Nadu" oninput="calcShipping(this.value)"></div>
+      <div id="shippingPreview" style="background:var(--cream2);padding:10px 14px;margin:10px 0;font-size:13px;font-weight:600;display:none;border-left:3px solid var(--sage-d)"></div>
+      <button onclick="goToQR()" style="width:100%;padding:15px;background:var(--ink);color:var(--cream);border:none;font-family:'Jost',sans-serif;font-size:11px;letter-spacing:.17em;text-transform:uppercase;cursor:pointer;font-weight:700;margin-top:8px">Proceed to Payment →</button>
+    </div>
+  </div>
+</div>
+
+<div class="pay-ov" id="qrOv">
+  <div class="pay-box" style="max-width:460px">
+    <div class="pay-header"><h2>Pay via UPI / QR</h2><button class="pay-x" onclick="closeQR()">✕</button></div>
+    <div style="padding:22px 32px 30px">
+      <div id="qrOsum" style="background:var(--cream2);padding:12px 16px;margin-bottom:18px;font-size:13px;font-weight:500"></div>
+      <div style="text-align:center;margin-bottom:16px">
+        <p style="font-size:10px;letter-spacing:.14em;text-transform:uppercase;color:var(--muted);margin-bottom:10px;font-weight:600">Scan QR to Pay</p>
+        <div id="qrImgWrap" style="display:inline-block;padding:12px;background:#fff;border:1px solid var(--border)">
+          <img id="qrCodeImg" src="" alt="QR" style="width:190px;height:190px;display:block" onerror="this.style.background='#eee'">
+        </div>
+        <div id="qrNoImg" style="width:190px;height:190px;background:var(--cream2);border:2px dashed var(--border);display:none;align-items:center;justify-content:center;margin:0 auto;font-size:12px;color:var(--muted);font-weight:500;text-align:center;padding:16px;box-sizing:border-box">No QR uploaded.<br>Set in Admin → Settings</div>
+        <div style="margin-top:10px">
+          <div style="font-family:'Cormorant Garamond',serif;font-size:17px;font-weight:600" id="qrUpiName">Green Petal Soap Store</div>
+          <div style="font-size:13px;color:var(--muted);font-weight:500;margin:3px 0 6px" id="qrUpiId">Set UPI ID in Settings</div>
+          <div style="font-family:'Cormorant Garamond',serif;font-size:28px;color:var(--sage-d);font-weight:600" id="qrPayAmt">₹0</div>
+          <div id="qrShipNote" style="font-size:11px;color:var(--sage-d);font-weight:600;margin-top:3px"></div>
+        </div>
+      </div>
+      <div style="display:flex;justify-content:center;gap:8px;flex-wrap:wrap;margin-bottom:14px">
+        <button onclick="openUPIApp('gpay')" style="padding:8px 12px;border:1px solid var(--border);background:#fff;font-size:12px;font-family:'Jost',sans-serif;cursor:pointer;font-weight:600">🟡 GPay</button>
+        <button onclick="openUPIApp('phonepe')" style="padding:8px 12px;border:1px solid var(--border);background:#fff;font-size:12px;font-family:'Jost',sans-serif;cursor:pointer;font-weight:600">🟣 PhonePe</button>
+        <button onclick="openUPIApp('paytm')" style="padding:8px 12px;border:1px solid var(--border);background:#fff;font-size:12px;font-family:'Jost',sans-serif;cursor:pointer;font-weight:600">🔵 Paytm</button>
+        <button onclick="openUPIApp('bhim')" style="padding:8px 12px;border:1px solid var(--border);background:#fff;font-size:12px;font-family:'Jost',sans-serif;cursor:pointer;font-weight:600">🟠 BHIM</button>
+      </div>
+      <div style="border:2px dashed var(--border);padding:18px;text-align:center;cursor:pointer;position:relative;margin-bottom:10px">
+        <input type="file" accept="image/*" onchange="handleSS(this)" style="position:absolute;inset:0;opacity:0;cursor:pointer">
+        <div style="font-size:22px;margin-bottom:4px">📸</div>
+        <p style="font-size:12px;color:var(--muted);font-weight:500">Click to upload payment screenshot</p>
+      </div>
+      <img id="ssPreview" src="" style="width:100%;max-height:130px;object-fit:contain;display:none;margin-bottom:10px;border:1px solid var(--border)">
+      <button id="confirmPayBtn" onclick="confirmPayment()" disabled style="width:100%;padding:13px;background:var(--ink);color:var(--cream);border:none;font-family:'Jost',sans-serif;font-size:10px;letter-spacing:.17em;text-transform:uppercase;cursor:not-allowed;opacity:.4;font-weight:700">Upload Screenshot to Continue →</button>
+      <button onclick="closeQR();document.getElementById('addrOv').classList.add('on')" style="width:100%;padding:11px;margin-top:8px;background:none;color:var(--muted);border:1px solid var(--border);font-family:'Jost',sans-serif;font-size:10px;letter-spacing:.13em;text-transform:uppercase;cursor:pointer;font-weight:600">← Back</button>
+    </div>
+  </div>
+</div>
+
+<div class="pay-ov" id="payOv">
+  <div class="pay-box" style="max-width:420px">
+    <div class="pay-header"><h2>Order Placed!</h2><button class="pay-x" onclick="closePayment()">✕</button></div>
+    <div style="padding:30px 32px;text-align:center">
+      <div style="font-size:48px;margin-bottom:12px">🌿</div>
+      <h3 style="font-family:'Cormorant Garamond',serif;font-size:24px;font-weight:600;margin-bottom:10px">Thank You!</h3>
+      <p style="font-size:13px;color:var(--muted);font-weight:500;line-height:1.8;margin-bottom:16px">Payment received! We'll verify and confirm within a few minutes.</p>
+      <div style="background:var(--cream2);padding:12px 20px;margin-bottom:18px;font-size:13px;font-weight:500">Order ID: <span id="succOid" style="font-family:'Cormorant Garamond',serif;font-size:20px;color:var(--sage-d);font-weight:600">#GP0001</span></div>
+      <button onclick="sendOrdWA()" style="width:100%;padding:13px;background:#25D366;color:#fff;border:none;font-family:'Jost',sans-serif;font-size:10px;letter-spacing:.14em;text-transform:uppercase;cursor:pointer;margin-bottom:9px;font-weight:700">View Order on WhatsApp →</button>
+      <button onclick="closePayment();goHome()" style="width:100%;padding:12px;background:none;color:var(--muted);border:1px solid var(--border);font-family:'Jost',sans-serif;font-size:10px;letter-spacing:.13em;text-transform:uppercase;cursor:pointer;font-weight:600">Continue Shopping</button>
+    </div>
+  </div>
+</div>
+
+<!-- ORDER DETAIL MODAL -->
+<div class="ord-detail-mod" id="ordDetailMod">
+  <div class="ord-detail-inner">
+    <button class="od-x" onclick="closeOrdDetail()">✕</button>
+    <h2 id="odTitle">Order Detail</h2>
+    <div class="ods"><h4>Customer Details</h4>
+      <div class="odr"><span>Name</span><span id="od-name"></span></div>
+      <div class="odr"><span>Phone</span><span id="od-phone"></span></div>
+      <div class="odr"><span>Email</span><span id="od-email"></span></div>
+      <div class="odr"><span>Address</span><span id="od-addr" style="text-align:right;max-width:58%"></span></div>
+      <div class="odr"><span>Note</span><span id="od-note" style="color:var(--muted)"></span></div>
+    </div>
+    <div class="ods"><h4>Order Items</h4>
+      <div id="od-items"></div>
+      <div class="odr" style="margin-top:8px;border-top:1px solid var(--border);padding-top:8px"><span style="font-weight:700">Total</span><span id="od-total" style="font-family:'Cormorant Garamond',serif;font-size:19px;font-weight:600"></span></div>
+    </div>
+    <div class="ods"><h4>Payment Screenshot</h4>
+      <img id="od-ss" src="" style="width:100%;max-height:200px;object-fit:contain;border:1px solid var(--border);display:none">
+      <p id="od-ss-none" style="font-size:12px;color:var(--muted);font-weight:500">No screenshot uploaded.</p>
+    </div>
+    <div class="ods"><h4>Update Status</h4>
+      <div style="display:flex;gap:8px;align-items:center;flex-wrap:wrap">
+        <select id="od-status-sel" class="ostsel">
+          <option value="pending">⏳ Pending</option>
+          <option value="confirmed">✅ Confirmed</option>
+          <option value="shipped">🚚 Shipped</option>
+          <option value="delivered">📦 Delivered</option>
+          <option value="cancelled">❌ Cancelled</option>
+        </select>
+        <button class="pbtn" style="width:auto;padding:9px 16px;margin-top:0;font-weight:700" onclick="updOrdSt()">Update →</button>
+        <button class="ord-wa-btn" onclick="sendStatusWA()">📱 Notify</button>
+      </div>
+    </div>
+  </div>
+</div>
+
 <footer id="siteFooter" style="display:none;">
   <div class="ft">
     <div class="ft-brand">
-      <div class="ft-logo">green petal</div>
-      <p>Artisanal botanical care formulated to elevate your daily ritual. Crafted with reverence in small batches.</p>
+      <div class="ft-logo">Green Petal Soap Store</div>
+      <p>Where nature meets artistry — handmade soaps created with pure ingredients and creative passion. Minimal. Botanical. Handcrafted.</p>
       <div class="ft-nl"><input type="email" placeholder="Your email address"><button onclick="toast('Thank you for subscribing.')">→</button></div>
     </div>
     <div class="ft-col">
@@ -614,7 +749,7 @@ footer{background:var(--ink);padding:80px 56px 36px;color:var(--cream);}
       <a onclick="filterCat('Gift Boxes');goShop()">Gift Boxes</a>
       <a onclick="filterCat('Bath Accessories');goShop()">Bath Accessories</a>
     </div>
-
+    
     <div class="ft-col">
       <h4>Contact</h4>
       <a href="tel:9123533325">9123533325</a>
@@ -623,7 +758,7 @@ footer{background:var(--ink);padding:80px 56px 36px;color:var(--cream);}
     </div>
   </div>
   <div class="ft-bot">
-    <span id="ftCopy">© 2025 green petal. All Rights Reserved.</span>
+    <span id="ftCopy"><span id="ftCopy">© 2025 green petal. All Rights Reserved.</span></span>
     <div style="display:flex;gap:22px;"><a href="#">Privacy Policy</a><a href="#">Terms of Service</a></div>
   </div>
 </footer>
@@ -637,14 +772,13 @@ footer{background:var(--ink);padding:80px 56px 36px;color:var(--cream);}
     <div class="cart-bd" id="cartBd"></div>
     <div class="cart-ft" id="cartFt" style="display:none;">
       <div class="cart-tot"><span>Total</span><span id="cartTot">₹0</span></div>
-      <div class="cart-sub-note">Taxes & shipping calculated at checkout</div>
-      <button class="cart-co" onclick="beginCheckout()">Begin Checkout →</button>
+      <div class="cart-sub-note">Free shipping above ₹999 · All India delivery</div>
+      <button class="cart-co" onclick="openCheckout()">Proceed to Payment →</button>
       <button class="cart-wa" onclick="waCheckout()">Order via WhatsApp</button>
     </div>
   </div>
 </div>
 
-<!-- ADMIN TRIGGER (hidden bottom-right corner) -->
 <div id="adTrig" style="position:fixed;bottom:0;right:0;width:50px;height:50px;z-index:9999;opacity:0;cursor:default;"></div>
 
 <!-- ADMIN LOGIN -->
@@ -668,6 +802,7 @@ footer{background:var(--ink);padding:80px 56px 36px;color:var(--cream);}
       <button class="atab on" onclick="aTab('dash',this)">Dashboard</button>
       <button class="atab" onclick="aTab('products',this)">Products</button>
       <button class="atab" onclick="aTab('orders',this)">Orders</button>
+      <button class="atab" onclick="aTab('payment',this)">Payment</button>
       <button class="atab" onclick="aTab('reviews',this)">Reviews</button>
       <button class="atab" onclick="aTab('settings',this)">Settings</button>
     </div>
@@ -678,18 +813,18 @@ footer{background:var(--ink);padding:80px 56px 36px;color:var(--cream);}
     <!-- DASHBOARD -->
     <div class="asec on" id="asec-dash">
       <div class="a-stats">
-        <div class="a-stat" data-ic="📦"><div class="a-sv" id="ad-pr">0</div><div class="a-sl">Total Products</div></div>
-        <div class="a-stat" data-ic="🛒"><div class="a-sv" id="ad-or">0</div><div class="a-sl">Total Orders</div></div>
-        <div class="a-stat" data-ic="⏳"><div class="a-sv" id="ad-pe">0</div><div class="a-sl">Pending Orders</div></div>
-        <div class="a-stat" data-ic="💰"><div class="a-sv" id="ad-rv">₹0</div><div class="a-sl">Total Revenue</div></div>
+        <div class="a-stat" data-ic="📦"><div class="a-sv" id="ad-prod">0</div><div class="a-sl">Total Products</div></div>
+        <div class="a-stat" data-ic="🛒"><div class="a-sv" id="ad-orders">0</div><div class="a-sl">Orders Received</div></div>
+        <div class="a-stat" data-ic="💰"><div class="a-sv" id="ad-rev">₹0</div><div class="a-sl">Total Revenue</div></div>
+        <div class="a-stat" data-ic="⭐"><div class="a-sv">4.9★</div><div class="a-sl">Avg Rating</div></div>
       </div>
       <div class="acard">
-        <div class="acdh"><div class="acdt">Quick Actions</div></div>
-        <div style="display:grid;grid-template-columns:repeat(4,1fr);gap:12px">
-          <div style="background:var(--cr2);padding:20px;text-align:center;cursor:pointer" onclick="aTab('products',document.querySelectorAll('.atab')[1])"><div style="font-size:28px;margin-bottom:8px">📦</div><div style="font-size:11px;letter-spacing:.06em;font-weight:400">Products</div></div>
-          <div style="background:var(--ink);color:var(--cr);padding:20px;text-align:center;cursor:pointer" onclick="aTab('orders',document.querySelectorAll('.atab')[2])"><div style="font-size:28px;margin-bottom:8px">🛒</div><div style="font-size:11px;letter-spacing:.06em;font-weight:400">Orders</div></div>
-          <div style="background:var(--cr2);padding:20px;text-align:center;cursor:pointer" onclick="aTab('reviews',document.querySelectorAll('.atab')[3])"><div style="font-size:28px;margin-bottom:8px">⭐</div><div style="font-size:11px;letter-spacing:.06em;font-weight:400">Reviews</div></div>
-          <div style="background:var(--cr2);padding:20px;text-align:center;cursor:pointer" onclick="aTab('settings',document.querySelectorAll('.atab')[4])"><div style="font-size:28px;margin-bottom:8px">⚙️</div><div style="font-size:11px;letter-spacing:.06em;font-weight:400">Settings</div></div>
+        <div class="acard-h"><div class="acard-t">Quick Actions</div></div>
+        <div style="display:grid;grid-template-columns:repeat(4,1fr);gap:14px;">
+          <div style="background:var(--cream2);padding:22px;text-align:center;cursor:pointer;" onclick="aTab('products',document.querySelectorAll('.atab')[1])"><div style="font-size:30px;margin-bottom:9px;">📦</div><div style="font-size:10px;letter-spacing:.14em;text-transform:uppercase;font-weight:300;">Manage Products</div></div>
+          <div style="background:var(--cream2);padding:22px;text-align:center;cursor:pointer;" onclick="aTab('orders',document.querySelectorAll('.atab')[2])"><div style="font-size:30px;margin-bottom:9px;">🛒</div><div style="font-size:10px;letter-spacing:.14em;text-transform:uppercase;font-weight:300;">View Orders</div></div>
+          <div style="background:var(--cream2);padding:22px;text-align:center;cursor:pointer;" onclick="aTab('payment',document.querySelectorAll('.atab')[3])"><div style="font-size:30px;margin-bottom:9px;">💳</div><div style="font-size:10px;letter-spacing:.14em;text-transform:uppercase;font-weight:300;">Payment Settings</div></div>
+          <div style="background:var(--cream2);padding:22px;text-align:center;cursor:pointer;" onclick="aTab('settings',document.querySelectorAll('.atab')[5])"><div style="font-size:30px;margin-bottom:9px;">⚙️</div><div style="font-size:10px;letter-spacing:.14em;text-transform:uppercase;font-weight:300;">Site Settings</div></div>
         </div>
       </div>
     </div>
@@ -697,10 +832,7 @@ footer{background:var(--ink);padding:80px 56px 36px;color:var(--cream);}
     <!-- PRODUCTS -->
     <div class="asec" id="asec-products">
       <div class="acard">
-        <div class="acdh">
-          <div class="acdt">All Products</div>
-          <button class="aadd" onclick="openProdMod()">+ Add Product</button>
-        </div>
+        <div class="acard-h"><div class="acard-t">All Products</div><button class="a-add" onclick="openProdMod()">+ Add Product</button></div>
         <table class="atbl">
           <thead><tr><th>Image</th><th>Product Name</th><th>Price</th><th>Category</th><th>Status</th><th>Actions</th></tr></thead>
           <tbody id="aProdBody"></tbody>
@@ -711,28 +843,106 @@ footer{background:var(--ink);padding:80px 56px 36px;color:var(--cream);}
     <!-- ORDERS -->
     <div class="asec" id="asec-orders">
       <div class="acard">
-        <div class="acdh">
-          <div class="acdt">All Orders</div>
-          <select class="ostsel" onchange="filtOrds(this.value)">
-            <option value="all">All</option>
-            <option value="pending">⏳ Pending</option>
-            <option value="confirmed">✅ Confirmed</option>
-            <option value="shipped">🚚 Shipped</option>
-            <option value="delivered">📦 Delivered</option>
-            <option value="cancelled">❌ Cancelled</option>
-          </select>
+        <div class="acard-h">
+          <div class="acard-t">All Orders</div>
+          <div style="display:flex;gap:10px;align-items:center;">
+            <span style="font-size:11px;color:var(--muted);letter-spacing:.06em;" id="orderStats">0 orders · ₹0 total</span>
+            <button class="a-add" onclick="exportOrders()">Export CSV</button>
+          </div>
         </div>
-        <div id="ordsGrid"><div style="padding:44px;text-align:center;color:var(--mu);font-size:14px;font-weight:300;font-style:italic">No orders yet. They will appear here when customers checkout.</div></div>
+        <div id="ordersEmpty" style="text-align:center;padding:48px;color:var(--muted);">
+          <div style="font-size:36px;margin-bottom:12px;">🛒</div>
+          <div style="font-size:13px;font-weight:300;letter-spacing:.06em;">No orders yet. Orders will appear here after customers complete payment.</div>
+        </div>
+        <table class="atbl" id="ordersTable" style="display:none;">
+          <thead><tr><th>#</th><th>Customer</th><th>Items</th><th>Total</th><th>Payment</th><th>Status</th><th>Date</th><th>Actions</th></tr></thead>
+          <tbody id="aOrderBody"></tbody>
+        </table>
       </div>
     </div>
 
-    <!-- REVIEWS -->
+    <!-- PAYMENT SETTINGS -->
+    <div class="asec" id="asec-payment">
+      <div class="acard">
+        <div class="acard-h"><div class="acard-t">Payment Methods</div></div>
+        <div style="display:grid;grid-template-columns:1fr 1fr;gap:20px;margin-bottom:28px;">
+
+          <!-- UPI Toggle -->
+          <div style="background:var(--cream2);padding:24px;border-left:3px solid var(--sage);">
+            <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:16px;">
+              <div style="font-size:13px;font-weight:500;letter-spacing:.04em;">UPI / QR Payment</div>
+              <label style="display:flex;align-items:center;gap:8px;cursor:pointer;">
+                <input type="checkbox" id="upi-enabled" checked onchange="savePaySettings()" style="width:16px;height:16px;accent-color:var(--sage-d);">
+                <span style="font-size:11px;color:var(--muted);font-weight:300;">Enabled</span>
+              </label>
+            </div>
+            <div class="mf"><label>UPI ID</label><input type="text" id="pay-upi" value="greenpetals@upi" oninput="savePaySettings()"></div>
+            <div class="mf"><label>Account Name (shown on QR screen)</label><input type="text" id="pay-name" value="Green Petal" oninput="savePaySettings()"></div>
+            <div class="mf">
+              <label>QR Code Image (upload your UPI QR)</label>
+              <div class="img-drop" style="padding:20px;"><input type="file" accept="image/*" onchange="uploadQR(this)"><p>Click to upload QR code image</p></div>
+              <div id="qr-preview" style="margin-top:10px;"></div>
+            </div>
+          </div>
+
+          <!-- WhatsApp Toggle -->
+          <div style="background:var(--cream2);padding:24px;border-left:3px solid #25D366;">
+            <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:16px;">
+              <div style="font-size:13px;font-weight:500;letter-spacing:.04em;">WhatsApp Order</div>
+              <label style="display:flex;align-items:center;gap:8px;cursor:pointer;">
+                <input type="checkbox" id="wa-enabled" checked onchange="savePaySettings()" style="width:16px;height:16px;accent-color:#25D366;">
+                <span style="font-size:11px;color:var(--muted);font-weight:300;">Enabled</span>
+              </label>
+            </div>
+            <div class="mf"><label>WhatsApp Number (with country code)</label><input type="text" id="pay-wa" value="919123533325" oninput="savePaySettings()"></div>
+            <div class="mf"><label>Auto-Message Template</label><textarea id="pay-wa-msg" style="min-height:90px;" oninput="savePaySettings()">Hello Green Petal! 🌿
+
+I'd like to place an order:
+
+{items}
+
+Total: {total}
+
+Please confirm availability and share payment details.</textarea></div>
+          </div>
+
+          <!-- Bank Transfer Toggle -->
+          <div style="background:var(--cream2);padding:24px;border-left:3px solid var(--ink);">
+            <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:16px;">
+              <div style="font-size:13px;font-weight:500;letter-spacing:.04em;">Bank Transfer (NEFT/IMPS)</div>
+              <label style="display:flex;align-items:center;gap:8px;cursor:pointer;">
+                <input type="checkbox" id="bank-enabled" onchange="savePaySettings()" style="width:16px;height:16px;accent-color:var(--ink);">
+                <span style="font-size:11px;color:var(--muted);font-weight:300;">Enabled</span>
+              </label>
+            </div>
+            <div class="mf"><label>Account Holder Name</label><input type="text" id="pay-bank-name" placeholder="e.g. Green Petal Soap Co." oninput="savePaySettings()"></div>
+            <div class="mf"><label>Bank Name</label><input type="text" id="pay-bank" placeholder="e.g. State Bank of India" oninput="savePaySettings()"></div>
+            <div class="mf"><label>Account Number</label><input type="text" id="pay-acc" placeholder="e.g. 1234567890" oninput="savePaySettings()"></div>
+            <div class="mf"><label>IFSC Code</label><input type="text" id="pay-ifsc" placeholder="e.g. SBIN0001234" oninput="savePaySettings()"></div>
+          </div>
+
+          <!-- COD Toggle -->
+          <div style="background:var(--cream2);padding:24px;border-left:3px solid var(--earth,#8B6F47);">
+            <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:16px;">
+              <div style="font-size:13px;font-weight:500;letter-spacing:.04em;">Cash on Delivery (COD)</div>
+              <label style="display:flex;align-items:center;gap:8px;cursor:pointer;">
+                <input type="checkbox" id="cod-enabled" onchange="savePaySettings()" style="width:16px;height:16px;accent-color:#8B6F47;">
+                <span style="font-size:11px;color:var(--muted);font-weight:300;">Enabled</span>
+              </label>
+            </div>
+            <div class="mf"><label>COD Note (shown to customer)</label><textarea id="pay-cod-note" style="min-height:72px;" oninput="savePaySettings()">Cash on Delivery available for orders above ₹500 within Tamil Nadu. Pay when your order arrives.</textarea></div>
+          </div>
+        </div>
+
+        <div style="background:rgba(122,158,126,0.1);padding:18px 20px;border-left:3px solid var(--sage);margin-bottom:20px;">
+          <div style="font-size:12px;color:var(--sage-d);font-weight:400;letter-spacing:.04em;">💡 Payment settings auto-save as you type. Changes reflect instantly on the checkout page.</div>
+        </div>
+        <button class="a-add" onclick="savePaySettings();toast('Payment settings saved. ✅')">Save Payment Settings →</button>
+      </div>
+    </div>
     <div class="asec" id="asec-reviews">
       <div class="acard">
-        <div class="acdh">
-          <div class="acdt">Customer Reviews</div>
-          <button class="aadd" onclick="openRevMod()">+ Add Review</button>
-        </div>
+        <div class="acard-h"><div class="acard-t">Customer Reviews</div><button class="a-add" onclick="openRevMod()">+ Add Review</button></div>
         <table class="atbl">
           <thead><tr><th>Customer</th><th>Review</th><th>Stars</th><th>Status</th><th>Actions</th></tr></thead>
           <tbody id="aRevBody"></tbody>
@@ -743,83 +953,89 @@ footer{background:var(--ink);padding:80px 56px 36px;color:var(--cream);}
     <!-- SETTINGS -->
     <div class="asec" id="asec-settings">
 
-      <div class="sg">
-        <h3>🖼️ Hero Image (Homepage Banner)</h3>
-        <p class="snote">Change the homepage background image. Updates instantly on the website after saving.</p>
-        <div style="display:flex;gap:20px;align-items:flex-start;flex-wrap:wrap">
-          <div style="flex:1;min-width:200px">
-            <div class="mf"><label>Image URL (or upload below)</label><input type="text" id="s-hero-url" placeholder="https://your-image-url.jpg" oninput="previewHeroUrl(this.value)"></div>
-            <div class="imdrop" style="margin-top:8px"><input type="file" accept="image/*" onchange="uploadHeroImg(this)"><p>Click to upload hero image</p></div>
-          </div>
-          <div style="flex-shrink:0">
-            <div style="font-size:10px;letter-spacing:.1em;text-transform:uppercase;color:var(--mu);margin-bottom:7px;font-weight:300">Preview</div>
-            <img id="s-hero-preview" src="" style="width:180px;height:120px;object-fit:cover;border:1px solid var(--bd);display:none">
-            <div id="s-hero-placeholder" style="width:180px;height:120px;background:linear-gradient(160deg,#2d4a2f,#1a1714);display:flex;align-items:center;justify-content:center;font-size:11px;color:rgba(245,240,232,.4);letter-spacing:.1em">CURRENT</div>
-          </div>
-        </div>
-        <button class="aadd" style="margin-top:16px" onclick="saveHeroImg()">Set as Hero Image →</button>
-      </div>
-      <div class="sg">
-        <h3>💳 UPI / QR Payment Settings</h3>
-        <p class="snote">Set your UPI ID and upload your QR code. Customers will see this at checkout to pay via GPay, PhonePe, Paytm etc.</p>
-        <div class="sgrow">
-          <div class="mf"><label>UPI ID *</label><input type="text" id="s-upi" placeholder="yourname@paytm / yourname@okaxis" value=""></div>
-          <div class="mf"><label>Account Name</label><input type="text" id="s-uname" placeholder="Green Petal" value="Green Petal"></div>
-        </div>
-        <div class="mf" style="margin-top:14px">
-          <label>QR Code Image</label>
-          <p class="snote">Upload your UPI QR from GPay/PhonePe → Profile → My QR Code</p>
-          <div class="imdrop"><input type="file" accept="image/*" onchange="uploadQRAdmin(this)"><p>📱 Click to upload UPI QR Code</p></div>
-          <div id="qr-admin-preview" style="margin-top:10px;display:none">
-            <img id="s-qr-preview" src="" style="width:150px;height:150px;object-fit:contain;border:1px solid var(--bd);display:block;margin-bottom:8px">
-            <button onclick="removeQR()" style="font-size:10px;color:#c0392b;background:none;border:1px solid rgba(192,57,43,.2);padding:5px 12px;cursor:pointer;font-family:'Jost',sans-serif;font-weight:300">Remove QR</button>
-          </div>
-        </div>
-      </div>
-
-
-
       
 
       <div class="sg">
-        <h3>📱 Contact & WhatsApp</h3>
+        <h3>💳 UPI / QR Payment Settings</h3>
+        <p class="snote">Set your UPI ID and upload your QR code. Customers will see this at checkout.</p>
         <div class="sgrow">
-          <div class="mf"><label>WhatsApp Number</label><input type="text" id="s-wa" value="919123533325"></div>
+          <div class="mf"><label>UPI ID *</label><input type="text" id="s-upi" placeholder="yourname@paytm" value=""></div>
+          <div class="mf"><label>Account Name</label><input type="text" id="s-uname" placeholder="Green Petal Soap Store" value="Green Petal Soap Store"></div>
+        </div>
+        <div class="mf" style="margin-top:12px">
+          <label>QR Code Image</label>
+          <p class="snote">Upload from GPay/PhonePe → Profile → My QR Code</p>
+          <div class="imdrop"><input type="file" accept="image/*" onchange="uploadQRAdmin(this)"><p>📱 Upload UPI QR Code</p></div>
+          <div id="qr-admin-preview" style="margin-top:10px;display:none">
+            <img id="s-qr-preview" src="" style="width:140px;height:140px;object-fit:contain;border:1px solid var(--border);display:block;margin-bottom:8px">
+            <button onclick="removeQR()" style="font-size:10px;color:#c0392b;background:none;border:1px solid rgba(192,57,43,.2);padding:5px 12px;cursor:pointer;font-family:'Jost',sans-serif;font-weight:600">Remove QR</button>
+          </div>
+        </div>
+      </div>
+
+      <div class="sg">
+        <h3>🚚 Shipping Settings</h3>
+        <p class="snote">Set shipping charges by state. Customer's state at checkout auto-calculates the charge.</p>
+        <div id="shippingZonesAdmin" style="margin-bottom:12px"></div>
+        <button class="aadd" style="margin-right:8px" onclick="addShippingZone()">+ Add Zone</button>
+        <button class="aadd" onclick="saveShipping()">Save Shipping →</button>
+      </div>
+
+      <div class="sg">
+        <h3>🛤️ Our Journey Page</h3>
+        <p class="snote">Edit the content on the Our Journey page.</p>
+        <div class="mf"><label>Page Heading</label><input type="text" id="s-journey-title" placeholder="Our Journey" value="Our Journey"></div>
+        <div class="mf"><label>Body Text (press Enter twice for new paragraph)</label><textarea id="s-journey-body" style="min-height:100px;resize:vertical;width:100%;padding:10px 0;border:none;border-bottom:1px solid var(--border);background:transparent;font-family:'Jost',sans-serif;font-size:13px;outline:none;font-weight:400">Green Petal was born from a desire to bring the raw, untamed beauty of nature into your daily ritual.
+
+We are not a factory. We are a small team of makers who believe that what you put on your skin should be as pure as what you put in your body.
+
+This is not just skincare. This is a ritual.</textarea></div>
+        <button class="aadd" style="margin-top:10px" onclick="saveJourney()">Save Journey →</button>
+      </div>
+
+      <div class="sg">
+        <h3>📞 Contact Page</h3>
+        <p class="snote">Edit the info shown on Connect With Us page.</p>
+        <div class="sgrow">
+          <div class="mf"><label>Phone</label><input type="text" id="s-contact-ph" value="9123533325"></div>
+          <div class="mf"><label>Hours</label><input type="text" id="s-contact-hours" value="Mon–Sat, 8am–6pm"></div>
+        </div>
+        <div class="mf"><label>Email</label><input type="text" id="s-contact-em" value="Greenpetalsoapstore@gmail.com"></div>
+        <div class="mf"><label>Address</label><textarea id="s-contact-addr" style="min-height:50px;resize:none;width:100%;padding:8px 0;border:none;border-bottom:1px solid var(--border);background:transparent;font-family:'Jost',sans-serif;font-size:13px;outline:none;font-weight:400">14, Muthurangam Street, Manikoondu, Erode – 638001</textarea></div>
+        <div class="mf"><label>Instagram</label><input type="text" id="s-ig" value="@_greenpetals__"></div>
+        <button class="aadd" style="margin-top:10px" onclick="saveContact()">Save Contact →</button>
+      </div>
+
+      <div class="sg">
+        <h3>📱 WhatsApp & Phone</h3>
+        <div class="sgrow">
+          <div class="mf"><label>WhatsApp Number (with 91)</label><input type="text" id="s-wa" value="919123533325"></div>
           <div class="mf"><label>Phone</label><input type="text" id="s-ph" value="9123533325"></div>
         </div>
-        <div class="sgrow">
-          <div class="mf"><label>Email</label><input type="text" id="s-em" value="Greenpetalsoapstore@gmail.com"></div>
-          <div class="mf"><label>Instagram</label><input type="text" id="s-ig" value="@_greenpetals__"></div>
+        <div class="mf"><label>Email</label><input type="text" id="s-em" value="Greenpetalsoapstore@gmail.com"></div>
+      </div>
+
+      <div class="sg">
+        <h3>🏷️ Product Categories</h3>
+        <p class="snote">Add, rename or delete categories. Updates shop filter instantly.</p>
+        <div id="catListAdmin" style="margin-bottom:14px"></div>
+        <div style="display:flex;gap:10px;align-items:center">
+          <input type="text" id="newCatInput" placeholder="New category name..." style="flex:1;padding:9px 0;border:none;border-bottom:1px solid var(--border);background:transparent;font-family:'Jost',sans-serif;font-size:14px;color:var(--ink);outline:none;font-weight:400" onkeydown="if(event.key==='Enter')addCat()">
+          <button class="aadd" onclick="addCat()">+ Add</button>
         </div>
       </div>
 
       <div class="sg">
         <h3>🔐 Change Admin Password</h3>
-        <p class="snote">Change your admin panel password here.</p>
+        <p class="snote">Change your admin panel login password.</p>
         <div class="sgrow">
-          <div class="mf"><label>New Password</label><input type="password" id="s-np" placeholder="New Password"></div>
+          <div class="mf"><label>New Password</label><input type="password" id="s-np" placeholder="New password"></div>
           <div class="mf"><label>Confirm</label><input type="password" id="s-cp" placeholder="Confirm password"></div>
         </div>
       </div>
 
-      <!-- CATEGORIES MANAGEMENT -->
-      <div class="sg" id="cat-mgmt-section">
-        <h3>🏷️ Product Categories</h3>
-        <p style="font-size:12px;color:var(--mu);font-weight:300;line-height:1.7;margin-bottom:16px">Add, rename or delete product categories. Changes update the shop filter and product form instantly.</p>
-        <div id="catListAdmin" style="margin-bottom:16px"></div>
-        <div style="display:flex;gap:10px;align-items:center">
-          <input type="text" id="newCatInput" placeholder="New category name..." style="flex:1;padding:10px 0;border:none;border-bottom:1px solid var(--bd);background:transparent;font-family:'Jost',sans-serif;font-size:14px;color:var(--ink);outline:none;font-weight:300" onkeydown="if(event.key==='Enter')addCat()">
-          <button class="aadd" onclick="addCat()">+ Add</button>
-        </div>
-      </div>
-
       <button class="aadd" style="margin-top:8px" onclick="saveSett()">Save All Settings →</button>
-    </div>
-
-  </div>
-</div>
-
-<!-- PRODUCT MODAL -->
+    <!-- PRODUCT MODAL -->
 <div class="mod-ov" id="prodMod">
   <div class="mod">
     <button class="mod-x" onclick="closeProdMod()">✕</button>
@@ -835,7 +1051,10 @@ footer{background:var(--ink);padding:80px 56px 36px;color:var(--cream);}
     </div>
     <div class="mrow">
       <div class="mf"><label>Category</label>
-        <select id="p-cat"></select>
+        <select id="p-cat">
+          <option>Artisanal Soaps</option><option>Gift Boxes</option><option>Bath Accessories</option>
+          <option>Shampoo</option><option>Lipcare</option><option>Candles</option>
+        </select>
       </div>
       <div class="mf"><label>Status</label>
         <select id="p-status"><option value="active">Active</option><option value="oos">Out of Stock</option><option value="draft">Draft</option></select>
@@ -848,7 +1067,7 @@ footer{background:var(--ink);padding:80px 56px 36px;color:var(--cream);}
       <div class="img-prevs" id="pImgP"></div>
     </div>
     <div class="mf">
-      <label>hover Image</label>
+      <label>Hover Image</label>
       <div class="img-drop"><input type="file" accept="image/*" onchange="prevImg(this,'pImg2P','pImg2D')"><p>Click to upload hover image</p></div>
       <div class="img-prevs" id="pImg2P"></div>
     </div>
@@ -879,136 +1098,71 @@ footer{background:var(--ink);padding:80px 56px 36px;color:var(--cream);}
   </div>
 </div>
 
-<!-- ═══════════ QR / UPI PAYMENT MODAL ═══════════ -->
+<!-- ═══════════ CHECKOUT / PAYMENT MODAL ═══════════ -->
+<div class="mod-ov" id="checkoutMod" style="align-items:stretch;padding:0;">
+  <div style="position:relative;width:100%;max-width:560px;margin:auto;background:var(--cream);max-height:100vh;overflow-y:auto;display:flex;flex-direction:column;">
+    <button class="mod-x" onclick="closeCheckout()" style="top:18px;right:22px;">✕</button>
 
-<!-- Step 1: Address Modal -->
-<div class="pay-ov" id="addrOv">
-  <div class="pay-box" style="max-width:500px">
-    <div class="pay-header"><h2>Delivery Details</h2><button class="pay-x" onclick="closeAddr()">✕</button></div>
-    <div style="padding:26px 34px 34px">
-      <div id="addrOsum" style="background:var(--cr2);padding:14px 18px;margin-bottom:22px;font-size:13px;border-radius:2px"></div>
-      <div style="display:grid;grid-template-columns:1fr 1fr;gap:16px">
-        <div class="pf"><label>Full Name *</label><input type="text" id="on" placeholder="Your name"></div>
-        <div class="pf"><label>Phone *</label><input type="text" id="oph" placeholder="10-digit mobile"></div>
+    <!-- STEP 1: Customer Details -->
+    <div id="step1" style="padding:48px;">
+      <div style="font-size:10px;letter-spacing:.18em;text-transform:uppercase;color:var(--muted);margin-bottom:8px;font-weight:300;">Step 1 of 3</div>
+      <h2 style="font-family:'Cormorant Garamond',serif;font-size:28px;font-weight:400;margin-bottom:6px;">Your Details</h2>
+      <p style="font-size:12px;color:var(--muted);margin-bottom:28px;font-weight:300;">We'll send your order confirmation to this address.</p>
+
+      <!-- Order Summary mini -->
+      <div style="background:var(--cream2);padding:16px 20px;margin-bottom:24px;" id="co-summary"></div>
+
+      <div class="mf"><label>Full Name *</label><input type="text" id="co-name" placeholder="Your full name"></div>
+      <div class="mrow">
+        <div class="mf"><label>Phone *</label><input type="text" id="co-phone" placeholder="10-digit mobile number"></div>
+        <div class="mf"><label>Email</label><input type="text" id="co-email" placeholder="your@email.com"></div>
       </div>
-      <div class="pf"><label>Email (optional)</label><input type="text" id="oem" placeholder="for order updates"></div>
-      <div class="pf"><label>Delivery Address *</label><textarea id="oad" placeholder="House no, Street, Area" style="min-height:56px;resize:none"></textarea></div>
-      <div style="display:grid;grid-template-columns:1fr 1fr;gap:16px">
-        <div class="pf"><label>City *</label><input type="text" id="oci" placeholder="City"></div>
-        <div class="pf"><label>Pincode *</label><input type="text" id="opi" placeholder="6-digit pincode"></div>
+      <div class="mf"><label>Delivery Address *</label><textarea id="co-addr" style="min-height:72px;" placeholder="House/Flat No., Street, Area..."></textarea></div>
+      <div class="mrow">
+        <div class="mf"><label>City *</label><input type="text" id="co-city" placeholder="City"></div>
+        <div class="mf"><label>Pincode *</label><input type="text" id="co-pin" placeholder="6-digit pincode"></div>
       </div>
-      <div class="pf"><label>State</label><input type="text" id="ost" value="Tamil Nadu"></div>
-      <button onclick="goToQR()" style="width:100%;padding:15px;background:var(--ink);color:var(--cr);border:none;font-family:'Jost',sans-serif;font-size:11px;letter-spacing:.17em;text-transform:uppercase;cursor:pointer;margin-top:8px;transition:background .2s" onmouseover="this.style.background='var(--sgd)'" onmouseout="this.style.background='var(--ink)'">Proceed to Payment →</button>
+      <div class="mf"><label>State</label><input type="text" id="co-state" value="Tamil Nadu"></div>
+      <div class="mf"><label>Order Notes (optional)</label><textarea id="co-notes" style="min-height:56px;" placeholder="Special instructions, gift message..."></textarea></div>
+      <button class="msave" style="width:100%;margin-top:8px;" onclick="goStep2()">Continue to Payment →</button>
+    </div>
+
+    <!-- STEP 2: Payment Method -->
+    <div id="step2" style="padding:48px;display:none;">
+      <div style="font-size:10px;letter-spacing:.18em;text-transform:uppercase;color:var(--muted);margin-bottom:8px;font-weight:300;">Step 2 of 3</div>
+      <h2 style="font-family:'Cormorant Garamond',serif;font-size:28px;font-weight:400;margin-bottom:6px;">Payment Method</h2>
+      <p style="font-size:12px;color:var(--muted);margin-bottom:28px;font-weight:300;">Choose how you'd like to pay.</p>
+
+      <div id="pay-methods-list"></div>
+
+      <div style="display:flex;gap:10px;margin-top:28px;">
+        <button class="mcancel" onclick="backStep1()">← Back</button>
+        <button class="msave" style="flex:1;" onclick="goStep3()">Confirm Payment Method →</button>
+      </div>
+    </div>
+
+    <!-- STEP 3: QR / Confirmation -->
+    <div id="step3" style="padding:48px;display:none;">
+      <div style="font-size:10px;letter-spacing:.18em;text-transform:uppercase;color:var(--muted);margin-bottom:8px;font-weight:300;">Step 3 of 3</div>
+      <h2 style="font-family:'Cormorant Garamond',serif;font-size:28px;font-weight:400;margin-bottom:24px;" id="step3-title">Complete Payment</h2>
+      <div id="step3-content"></div>
     </div>
   </div>
 </div>
 
-<!-- Step 2: QR Payment Modal -->
-<div class="pay-ov" id="qrOv">
-  <div class="pay-box" style="max-width:460px">
-    <div class="pay-header"><h2>Pay via UPI / QR</h2><button class="pay-x" onclick="closeQR()">✕</button></div>
-    <div style="padding:24px 34px 32px">
-
-      <!-- Order summary -->
-      <div id="qrOsum" style="background:var(--cr2);padding:14px 18px;margin-bottom:20px;font-size:13px"></div>
-
-      <!-- QR Code display -->
-      <div style="text-align:center;margin-bottom:18px">
-        <p style="font-size:10px;letter-spacing:.14em;text-transform:uppercase;color:var(--mu);margin-bottom:12px;font-weight:300">Scan & Pay via UPI</p>
-        <div style="display:inline-block;padding:14px;background:#fff;border:1px solid var(--bd)" id="qrImgWrap">
-          <img id="qrCodeImg" src="" alt="QR Code" style="width:200px;height:200px;display:block" onerror="this.style.background='#eee'">
-        </div>
-        <div id="qrNoImg" style="display:none;width:200px;height:200px;background:var(--cr2);border:2px dashed var(--bd);display:flex;align-items:center;justify-content:center;margin:0 auto;font-size:12px;color:var(--mu);font-weight:300;text-align:center;padding:16px">No QR uploaded yet.<br>Set it in Admin → Settings</div>
-        <div style="margin-top:12px">
-          <div style="font-family:'Cormorant Garamond',serif;font-size:18px;font-weight:400" id="qrUpiName">Green Petal</div>
-          <div style="font-size:13px;color:var(--mu);font-weight:300;margin:3px 0 10px" id="qrUpiId">Set UPI ID in Admin Settings</div>
-          <div style="font-family:'Cormorant Garamond',serif;font-size:32px;color:var(--sgd);font-weight:300" id="qrPayAmt">₹0</div>
-        </div>
-      </div>
-
-      <!-- UPI App quick buttons -->
-      <p style="font-size:11px;color:var(--mu);text-align:center;margin-bottom:10px;font-weight:300">Or open directly in UPI app</p>
-      <div style="display:flex;justify-content:center;gap:10px;flex-wrap:wrap;margin-bottom:18px">
-        <button onclick="openUPIApp('gpay')" style="padding:8px 14px;border:1px solid var(--bd);background:#fff;font-size:12px;font-family:'Jost',sans-serif;cursor:pointer;display:flex;align-items:center;gap:5px;font-weight:300">🟡 GPay</button>
-        <button onclick="openUPIApp('phonepe')" style="padding:8px 14px;border:1px solid var(--bd);background:#fff;font-size:12px;font-family:'Jost',sans-serif;cursor:pointer;display:flex;align-items:center;gap:5px;font-weight:300">🟣 PhonePe</button>
-        <button onclick="openUPIApp('paytm')" style="padding:8px 14px;border:1px solid var(--bd);background:#fff;font-size:12px;font-family:'Jost',sans-serif;cursor:pointer;display:flex;align-items:center;gap:5px;font-weight:300">🔵 Paytm</button>
-        <button onclick="openUPIApp('bhim')" style="padding:8px 14px;border:1px solid var(--bd);background:#fff;font-size:12px;font-family:'Jost',sans-serif;cursor:pointer;display:flex;align-items:center;gap:5px;font-weight:300">🟠 BHIM</button>
-      </div>
-
-      <!-- Screenshot upload -->
-      <p style="font-size:11px;color:var(--mu);text-align:center;margin-bottom:10px;font-weight:300">After payment, upload your screenshot</p>
-      <div id="ssUploadBox" style="border:2px dashed var(--bd);padding:24px;text-align:center;cursor:pointer;position:relative;transition:all .2s;margin-bottom:12px" onmouseover="this.style.borderColor='var(--ink)'" onmouseout="this.style.borderColor='var(--bd)'">
-        <input type="file" accept="image/*" onchange="handleSS(this)" style="position:absolute;inset:0;opacity:0;cursor:pointer">
-        <div style="font-size:24px;margin-bottom:6px">📸</div>
-        <p style="font-size:12px;color:var(--mu);font-weight:300">Click to upload payment screenshot</p>
-      </div>
-      <img id="ssPreview" src="" alt="" style="width:100%;max-height:140px;object-fit:contain;display:none;margin-bottom:12px;border:1px solid var(--bd)">
-      <button id="confirmPayBtn" onclick="confirmPayment()" disabled style="width:100%;padding:14px;background:var(--ink);color:var(--cr);border:none;font-family:'Jost',sans-serif;font-size:10px;letter-spacing:.17em;text-transform:uppercase;cursor:not-allowed;opacity:.4;font-weight:300;transition:all .22s">Upload Screenshot to Continue →</button>
-      <button onclick="closeQR();document.getElementById('addrOv').classList.add('on')" style="width:100%;padding:13px;margin-top:9px;background:none;color:var(--mu);border:1px solid var(--bd);font-family:'Jost',sans-serif;font-size:10px;letter-spacing:.13em;text-transform:uppercase;cursor:pointer;font-weight:300">← Back to Details</button>
-    </div>
-  </div>
-</div>
-
-<!-- Step 3: Success Modal -->
-<div class="pay-ov" id="payOv">
-  <div class="pay-box" style="max-width:420px">
-    <div class="pay-header"><h2>Order Placed!</h2><button class="pay-x" onclick="closePayment()">✕</button></div>
-    <div style="padding:32px 34px;text-align:center">
-      <div style="font-size:52px;margin-bottom:14px">🌿</div>
-      <h3 style="font-family:'Cormorant Garamond',serif;font-size:26px;font-weight:300;margin-bottom:12px">Thank You!</h3>
-      <p style="font-size:13px;color:var(--mu);font-weight:300;line-height:1.8;margin-bottom:20px">Your order has been received. We'll verify your payment and confirm within a few minutes.</p>
-      <div style="background:var(--cr2);padding:14px 22px;margin-bottom:22px;font-size:13px">
-        Order ID: <span id="succOid" style="font-family:'Cormorant Garamond',serif;font-size:20px;color:var(--sgd)">#GP0001</span>
-      </div>
-      <button class="pbtn wa" onclick="sendOrdWA()" style="width:100%;padding:14px;background:#25D366;color:#fff;border:none;font-family:'Jost',sans-serif;font-size:10px;letter-spacing:.14em;text-transform:uppercase;cursor:pointer;margin-bottom:10px">View Order on WhatsApp →</button>
-      <button onclick="closePayment();goHome()" style="width:100%;padding:13px;background:none;color:var(--mu);border:1px solid var(--bd);font-family:'Jost',sans-serif;font-size:10px;letter-spacing:.13em;text-transform:uppercase;cursor:pointer">Continue Shopping</button>
-    </div>
-  </div>
-</div>
-
-
-
-<!-- ORDER DETAIL MODAL (Admin) -->
-<div class="ord-detail-mod" id="ordDetailMod">
-  <div class="ord-detail-inner">
-    <button class="od-x" onclick="closeOrdDetail()">✕</button>
-    <h2 id="odTitle">Order #GP0001</h2>
-    <div class="od-section">
-      <h4>Customer Details</h4>
-      <div class="od-row"><span>Name</span><span id="od-name"></span></div>
-      <div class="od-row"><span>Phone</span><span id="od-phone"></span></div>
-      <div class="od-row"><span>Email</span><span id="od-email"></span></div>
-      <div class="od-row"><span>Address</span><span id="od-addr" style="text-align:right;max-width:60%;"></span></div>
-      <div class="od-row"><span>Note</span><span id="od-note" style="color:var(--muted);"></span></div>
-    </div>
-    <div class="od-section">
-      <h4>Order Items</h4>
-      <div id="od-items"></div>
-      <div class="od-row" style="margin-top:10px;border-top:1px solid var(--border);padding-top:10px;"><span style="font-weight:500;">Total</span><span id="od-total" style="font-family:'Cormorant Garamond',serif;font-size:20px;"></span></div>
-    </div>
-    <div class="od-section">
-      <h4>Payment Screenshot</h4>
-      <img class="od-ss" id="od-ss" src="" alt="Payment proof">
-      <p id="od-ss-none" style="font-size:12px;color:var(--muted);font-weight:300;display:none;">No screenshot uploaded</p>
-    </div>
-    <div class="od-section">
-      <h4>Update Order Status</h4>
-      <div style="display:flex;gap:10px;align-items:center;flex-wrap:wrap;">
-        <select class="ord-act-sel" id="od-status-sel" style="flex:1;">
-          <option value="pending">⏳ Pending</option>
-          <option value="confirmed">✅ Payment Confirmed</option>
-          <option value="shipped">🚚 Shipped</option>
-          <option value="delivered">📦 Delivered</option>
-          <option value="cancelled">❌ Cancelled</option>
-        </select>
-        <button class="pay-btn" style="width:auto;padding:10px 22px;margin-top:0;" onclick="updateOrdStatus()">Update →</button>
-        <button class="ord-wa-btn" onclick="sendStatusWA()">📱 Notify Customer</button>
-      </div>
-    </div>
+<!-- Order Success Modal -->
+<div class="mod-ov" id="successMod">
+  <div class="mod" style="text-align:center;max-width:420px;">
+    <div style="font-size:52px;margin-bottom:16px;">🎉</div>
+    <h2 style="font-family:'Cormorant Garamond',serif;font-size:30px;font-weight:400;margin-bottom:10px;">Order Placed!</h2>
+    <p style="font-size:13px;color:var(--muted);line-height:1.7;font-weight:300;margin-bottom:24px;" id="successMsg">Thank you for your order. We'll confirm via WhatsApp shortly!</p>
+    <div id="successWaBtn"></div>
+    <button class="msave" style="width:100%;margin-top:12px;" onclick="closeSuccess()">Continue Shopping →</button>
   </div>
 </div>
 
 <div class="toast" id="toastEl"></div>
+
 
 <script>
 // ════════ SUPABASE ════════
@@ -1021,10 +1175,13 @@ async function sb(table,opts={}){
     let url=SB_URL+'/rest/v1/'+table+'?select=*';
     filters.forEach(f=>url+='&'+f);
     if(order)url+='&order='+order;
-    const r=await fetch(url,{method,headers:{'apikey':SB_KEY,'Authorization':'Bearer '+SB_KEY,'Content-Type':'application/json','Prefer':method==='POST'?'return=representation':''},body:body?JSON.stringify(body):undefined});
-    if(!r.ok)return null;
-    return method==='DELETE'?[]:await r.json();
-  }catch(e){return null;}
+    const heads={'apikey':SB_KEY,'Authorization':'Bearer '+SB_KEY,'Content-Type':'application/json'};
+    if(method==='POST'||method==='PATCH')heads['Prefer']='return=representation';
+    const r=await fetch(url,{method,headers:heads,body:(body&&method!=='GET'&&method!=='DELETE')?JSON.stringify(body):undefined});
+    if(!r.ok){const t=await r.text().catch(()=>'');console.warn('SB',table,method,r.status,t);return null;}
+    if(method==='DELETE'||r.status===204)return[];
+    return await r.json();
+  }catch(e){console.warn('SB err',e);return null;}
 }
 
 // ════════ DATA ════════
@@ -1075,7 +1232,7 @@ async function loadOrdersDB(){
   try{
     const data=await sb('orders',{order:'created_at.desc'});
     if(!data)return;
-    orders=data.map(o=>({id:o.id,nm:o.customer_name,ph:o.phone,em:o.email||'',ad:o.address,no:o.note||'',items:o.items||[],tot:o.total,ss:null,st:o.status,time:new Date(o.created_at).toLocaleString('en-IN')}));
+    orders=data.map(o=>({id:o.id,nm:o.customer_name,ph:o.phone,em:o.email||'',ad:o.address,no:o.note||'',items:o.items||[],tot:o.total,ss:o.screenshot_url||null,st:o.status,time:new Date(o.created_at).toLocaleString('en-IN')}));
     renderAdminOrders();updateDashStats();
   }catch(e){}
 }
@@ -1105,8 +1262,6 @@ async function loadSettingsDB(){
         if(el2)el2.value=s.value;
         if(prev){prev.src=s.value;prev.style.display='block';}
         if(ph)ph.style.display='none';
-        // Store for offline use
-        localStorage.setItem('gp_hero',s.value);
       }
       if(s.key==='categories'&&s.value){
         try{const c=JSON.parse(s.value);if(c&&c.length){ALL_CATS=c;localStorage.setItem('gp_cats',s.value);}}catch(e){}
@@ -1200,7 +1355,7 @@ function cardHTML(p){
         <span>${oos?'Out of Stock':'Add to Bag'}</span>${oos?'':'<span>'+p.price+'</span>'}
       </div>
     </div>
-    <div class="pinfo"><div class="pname">${p.name}</div><div class="pprice">${p.price}${p.op?` <del>${p.op}</del>`:''}</div></div>
+    <div class="pinfo"><div class="pnm">${p.name}</div><div class="ppr">${p.price}${p.op?` <del>${p.op}</del>`:''}</div></div>
   </div>`;
 }
 
@@ -1236,22 +1391,20 @@ function openDetail(id){
   if(p.vars&&p.vars.length){
     if(vb)vb.style.display='';
     const dv=document.getElementById('dVars');
-    if(dv)dv.innerHTML=p.vars.map((v,i)=>`<button class="var-btn${i===0?' on':''}" onclick="selectVar(this,'${v}')">${v}</button>`).join('');
+    if(dv)dv.innerHTML=p.vars.map((v,i)=>`<button class="vbtn${i===0?' on':''}" onclick="selVar(this,'${v}')">${v}</button>`).join('');
   }else{if(vb)vb.style.display='none';}
-  // Update accordion content using static IDs
-  const aiEl=document.getElementById('acc-ingredients');if(aiEl)aiEl.textContent=p.ingr||'All natural ingredients. Full list on packaging.';
-  const auEl=document.getElementById('acc-usage');if(auEl)auEl.textContent=p.use||'Use as directed on packaging.';
+  const acc=document.getElementById('dAccordion');
+  if(acc)acc.innerHTML=`<div class="ai"><button class="ai-btn" onclick="togAcc(this)"><span>Ingredients</span><span class="ai-icon">+</span></button><div class="ai-body">${p.ingr||'All natural.'}</div></div><div class="ai"><button class="ai-btn" onclick="togAcc(this)"><span>How to Use</span><span class="ai-icon">+</span></button><div class="ai-body">${p.use||'Use as directed.'}</div></div><div class="ai"><button class="ai-btn" onclick="togAcc(this)"><span>Shipping & Returns</span><span class="ai-icon">+</span></button><div class="ai-body">Ships across India in 5–7 days. Returns within 7 days for unopened products.</div></div>`;
   const btn=document.getElementById('dAddBtn');
-  if(btn){if(p.status==='oos'){btn.textContent='Out of Stock';btn.style.opacity='.5';btn.style.cursor='not-allowed';btn.onclick=null;}else{btn.textContent='Add to Bag →';btn.style.opacity='1';btn.style.cursor='pointer';btn.onclick=addDetailToCart;}}
+  if(btn){if(p.status==='oos'){btn.textContent='Out of Stock';btn.style.opacity='.5';btn.style.cursor='not-allowed';btn.onclick=null;}else{btn.textContent='Add to Bag →';btn.style.opacity='1';btn.style.cursor='pointer';btn.onclick=addDet;}}
   document.querySelectorAll('.ai').forEach(a=>a.classList.remove('open'));
   showPg('detail');
 }
 function setMainImg(el,src){const m=document.getElementById('dMainImg');if(m)m.src=src;document.querySelectorAll('.dthumb').forEach(t=>t.classList.remove('on'));el.classList.add('on');}
-function selectVar(btn,v){document.querySelectorAll('.var-btn').forEach(b=>b.classList.remove('on'));btn.classList.add('on');detailVar=v;}
+function selVar(btn,v){document.querySelectorAll('.vbtn').forEach(b=>b.classList.remove('on'));btn.classList.add('on');detailVar=v;}
 function changeQty(d){detailQty=Math.max(1,detailQty+d);const e=document.getElementById('detailQty');if(e)e.textContent=detailQty;}
-function toggleAcc(btn){btn.closest('.acc-item').classList.toggle('open');}
-function togAcc(btn){btn.closest('.acc-item').classList.toggle('open');}
-function addDetailToCart(){const p=products.find(x=>x.id===detailId);if(!p||p.status==='oos')return;for(let i=0;i<detailQty;i++)addCart(p.id,null,detailVar);}
+function togAcc(btn){btn.closest('.ai').classList.toggle('open');}
+function addDet(){const p=products.find(x=>x.id===detailId);if(!p||p.status==='oos')return;for(let i=0;i<detailQty;i++)addCart(p.id,null,detailVar);}
 function detailWA(){const p=products.find(x=>x.id===detailId);if(!p)return;const msg=`Hello! I'd like to order:\n\n• ${p.name}${detailVar?' ('+detailVar+')':''} × ${detailQty} — ${p.price}\n\nPlease let me know how to proceed.`;window.open('https://wa.me/'+getWA()+'?text='+encodeURIComponent(msg),'_blank');}
 
 // ════════ CART ════════
@@ -1267,15 +1420,19 @@ function addCart(id,e,variant){
 function rmCart(key){cart=cart.filter(x=>x.key!==key);updateCart();}
 function chQty(key,d){const it=cart.find(x=>x.key===key);if(!it)return;it.qty+=d;if(it.qty<=0)rmCart(key);else updateCart();}
 function updateCart(){
+  // update grand total with no shipping initially
+  const _sub=cart.reduce((s,i)=>s+parseInt(i.price.replace(/\D/g,''))*i.qty,0);
+  const _gg=document.getElementById('cartGrand');if(_gg)_gg.textContent='₹'+_sub.toLocaleString('en-IN');
+  const _cs=document.getElementById('cartShip');if(_cs&&_sub===0)_cs.textContent='Enter state at checkout';
   const n=cart.reduce((s,i)=>s+i.qty,0);
   const cN=document.getElementById('cN');if(cN)cN.textContent=n;
   const bd=document.getElementById('cartBd'),ft=document.getElementById('cartFt');
   if(!bd)return;
   if(!cart.length){
-    bd.innerHTML='<div class="cart-empty-msg"><p>Your ritual awaits.</p><button onclick="closeCart();goShop()">Discover the Collection</button></div>';
+    bd.innerHTML='<div class="cmt"><p>Your ritual awaits.</p><button onclick="closeCart();goShop()">Discover the Collection</button></div>';
     if(ft)ft.style.display='none';
   }else{
-    bd.innerHTML=cart.map(i=>`<div class="c-item"><img src="${i.img}" alt="" onerror="this.style.background='#c8dec9'"><div class="c-info"><div class="c-name">${i.name}</div>${i.variant?`<div class="c-var">${i.variant}</div>`:''}<div class="c-price">${i.price}</div><div class="c-qty"><button class="cqb" onclick="chQty('${i.key}',-1)">−</button><span>${i.qty}</span><button class="cqb" onclick="chQty('${i.key}',1)">+</button></div><button class="c-rm" onclick="rmCart('${i.key}')">Remove</button></div></div>`).join('');
+    bd.innerHTML=cart.map(i=>`<div class="ci"><img src="${i.img}" alt="" onerror="this.style.background='#c8dec9'"><div class="cii"><div class="cinm">${i.name}</div>${i.variant?`<div class="civar">${i.variant}</div>`:''}<div class="cipr">${i.price}</div><div class="ciqr"><button class="ciqb" onclick="chQty('${i.key}',-1)">−</button><span>${i.qty}</span><button class="ciqb" onclick="chQty('${i.key}',1)">+</button></div><button class="cirm" onclick="rmCart('${i.key}')">Remove</button></div></div>`).join('');
     const tot=cart.reduce((s,i)=>s+parseInt(i.price.replace(/\D/g,''))*i.qty,0);
     const ct=document.getElementById('cartTot');if(ct)ct.textContent='₹'+tot.toLocaleString('en-IN');
     if(ft)ft.style.display='block';
@@ -1284,7 +1441,7 @@ function updateCart(){
 function openCart(){document.getElementById('cartOv').classList.add('on');updateCart();}
 function closeCart(){document.getElementById('cartOv').classList.remove('on');}
 function cartOvClick(e){if(e.target===document.getElementById('cartOv'))closeCart();}
-function waCheckout(){
+function waCart(){
   const lines=cart.map(i=>`• ${i.name}${i.variant?' ('+i.variant+')':''} × ${i.qty} — ${i.price}`).join('\n');
   const tot=cart.reduce((s,i)=>s+parseInt(i.price.replace(/\D/g,''))*i.qty,0);
   window.open('https://wa.me/'+getWA()+'?text='+encodeURIComponent(`Hello Green Petal! Order:\n\n${lines}\n\nTotal: ₹${tot.toLocaleString('en-IN')}\n\nPlease confirm.`),'_blank');
@@ -1301,8 +1458,24 @@ function toast(msg){const el=document.getElementById('toastEl');if(!el)return;el
 
 // ════════ ADMIN ════════
 let ac=0,aT=null;
-document.getElementById('adTrig').addEventListener('click',()=>{ac++;if(!aT)aT=setTimeout(()=>{ac=0;aT=null;},3000);if(ac>=5){ac=0;clearTimeout(aT);aT=null;openAdmLogin();}});
-document.getElementById('ftCopy').addEventListener('click',(()=>{let c=0;return()=>{c++;if(c>=3){c=0;openAdmLogin();}setTimeout(()=>{if(c>0)c=0;},2000);}})());
+// Admin trigger - safe init after DOM ready
+(function initAdminTriggers(){
+  const adTrig = document.getElementById('adTrig');
+  if(adTrig) adTrig.addEventListener('click',()=>{
+    ac++;
+    if(!aT) aT=setTimeout(()=>{ac=0;aT=null;},3000);
+    if(ac>=5){ac=0;clearTimeout(aT);aT=null;openAdmLogin();}
+  });
+  const ftEl = document.getElementById('ftCopy') || document.querySelector('footer') || document.querySelector('.ft');
+  if(ftEl){
+    let c=0;
+    ftEl.addEventListener('click',()=>{
+      c++;
+      if(c>=3){c=0;openAdmLogin();}
+      setTimeout(()=>{if(c>0)c=0;},2000);
+    });
+  }
+})();
 
 function openAdmLogin(){document.getElementById('admOv').classList.add('on');setTimeout(()=>document.getElementById('admPw').focus(),100);}
 function closeAdmLogin(){document.getElementById('admOv').classList.remove('on');document.getElementById('admPw').value='';document.getElementById('admErr').style.display='none';}
@@ -1314,7 +1487,7 @@ function doLogin(){
     document.getElementById('admPanel').classList.add('on');
     document.body.style.overflow='hidden';
     renderAdminProds();renderAdminRevs();renderAdminOrders();updateDashStats();
-    loadOrdersDB();loadSettingsDB();renderCatAdmin();updateProdCatSelect();initUPISettings();
+    loadOrdersDB();loadAllSettings();renderCatAdmin();updateProdCatSelect();initUPISettings();loadShippingDB();
   }else{
     document.getElementById('admErr').style.display='block';
     document.getElementById('admPw').value='';
@@ -1328,7 +1501,7 @@ function aTab(n,btn){
   if(n==='products')renderAdminProds();
   if(n==='orders'){renderAdminOrders();updateDashStats();}
   if(n==='reviews')renderAdminRevs();
-  if(n==='settings'){renderCatAdmin();updateProdCatSelect();initUPISettings();}
+  if(n==='settings'){renderCatAdmin();updateProdCatSelect();initUPISettings();renderShippingAdmin();}
 }
 function updateDashStats(){
   const set=(id,v)=>{const e=document.getElementById(id);if(e)e.textContent=v;};
@@ -1349,7 +1522,7 @@ function renderAdminProds(){
     <td style="font-family:'Cormorant Garamond',serif;font-size:16px">${p.price}</td>
     <td style="font-size:11px">${p.cat}</td>
     <td><span class="${p.status==='active'?'ab-active':p.status==='oos'?'ab-oos':'ab-draft'}">${p.status==='active'?'Active':p.status==='oos'?'Out of Stock':'Draft'}</span></td>
-    <td><div style="display:flex;gap:7px"><button class="a-edit" onclick="editProd(${p.id})">Edit</button><button class="a-del" onclick="delProd(${p.id})">Delete</button></div></td>
+    <td><div style="display:flex;gap:7px"><button class="aed" onclick="editProd(${p.id})">Edit</button><button class="adl" onclick="delProd(${p.id})">Delete</button></div></td>
   </tr>`).join('');
 }
 function openProdMod(){
@@ -1431,7 +1604,7 @@ function delProd(id){
 // ── ADMIN ORDERS ──
 function renderAdminOrders(){
   updateDashStats();
-  const el=document.getElementById('ordsGrid');if(!el)return;
+  const el=document.getElementById('aOrderBody');if(!el)return;
   const filt=ordFilt==='all'?orders:orders.filter(o=>o.st===ordFilt);
   if(!filt.length){el.innerHTML='<div style="padding:40px;text-align:center;color:var(--mu);font-size:13px;font-weight:300;font-style:italic">No orders yet.</div>';return;}
   const stLabel={pending:'⏳ Pending',confirmed:'✅ Confirmed',shipped:'🚚 Shipped',delivered:'📦 Delivered',cancelled:'❌ Cancelled'};
@@ -1441,7 +1614,7 @@ function renderAdminOrders(){
     <div><div style="font-size:14px;font-weight:400">${o.nm}</div><div class="ometa">${o.ph}</div><div class="ometa">${(o.items||[]).slice(0,2).map(i=>i.nm||i.name).join(', ')}</div></div>
     <div><div class="otot">₹${(o.tot||0).toLocaleString('en-IN')}</div>${o.ss?`<img class="ossthumb" src="${o.ss}" onclick="openOrdDetail('${o.id}')" title="Screenshot">`:''}</div>
     <div><div style="margin-bottom:7px"><span class="${stBadge[o.st]||'bpend'}">${stLabel[o.st]||o.st}</span></div>
-    <div style="display:flex;gap:7px"><button class="a-edit" onclick="openOrdDetail('${o.id}')">View</button><button class="ord-wa-btn" onclick="notifyCustomer('${o.id}')">📱 WA</button></div></div>
+    <div style="display:flex;gap:7px"><button class="aed" onclick="openOrdDetail('${o.id}')">View</button><button class="awa" onclick="notifyCustomer('${o.id}')">📱 WA</button></div></div>
   </div>`).join('');
 }
 function filtOrds(v){ordFilt=v;renderAdminOrders();}
@@ -1485,7 +1658,7 @@ function renderAdminRevs(){
     <td style="font-size:12px;color:var(--mu);max-width:230px">${r.text.substring(0,70)}…</td>
     <td style="color:var(--sg);letter-spacing:2px">${'★'.repeat(r.stars)}</td>
     <td><span class="${r.status==='active'?'ab-active':'ab-draft'}">${r.status==='active'?'Active':'Hidden'}</span></td>
-    <td><div style="display:flex;gap:7px"><button class="a-edit" onclick="editRev(${r.id})">Edit</button><button class="a-del" onclick="delRev(${r.id})">Delete</button></div></td>
+    <td><div style="display:flex;gap:7px"><button class="aed" onclick="editRev(${r.id})">Edit</button><button class="adl" onclick="delRev(${r.id})">Delete</button></div></td>
   </tr>`).join('');
 }
 function openRevMod(){
@@ -1570,8 +1743,8 @@ function saveSett(){
   if(np){if(np!==cp){toast('Passwords do not match.');return;}localStorage.setItem('gp_pw',np);document.getElementById('s-np').value='';document.getElementById('s-cp').value='';}
   const upi=document.getElementById('s-upi')?.value.trim();
   const uname=document.getElementById('s-uname')?.value.trim();
-  if(upi){localStorage.setItem('gp_upi',upi);saveSettingDB('upi_id',upi);}
-  if(uname){localStorage.setItem('gp_uname',uname);saveSettingDB('upi_name',uname);}
+  if(upi){saveSettingDB('upi_id',upi);localStorage.setItem('gp_upi',upi);}
+  if(uname){saveSettingDB('upi_name',uname);localStorage.setItem('gp_uname',uname);}
   const wa=document.getElementById('s-wa')?.value;
   const ph=document.getElementById('s-ph')?.value;
   const em=document.getElementById('s-em')?.value;
@@ -1584,18 +1757,8 @@ function saveSett(){
 
 // ── HERO IMAGE ──
 function setHeroImg(url){
-  if(url && url.length > 5){
-    // Remove quotes from JSON.stringify to avoid double-quoting
-    const cleanUrl = url.replace(/"/g,'').replace(/'/g,'');
-    document.documentElement.style.setProperty('--hero-img','url("'+cleanUrl+'")');
-    // Also directly set hero-bg background as fallback
-    const bg = document.querySelector('.hero-bg');
-    if(bg) bg.style.backgroundImage = 'url("'+cleanUrl+'")';
-  } else {
-    document.documentElement.style.setProperty('--hero-img','linear-gradient(160deg,#2d4a2f,#1a1714)');
-    const bg = document.querySelector('.hero-bg');
-    if(bg) bg.style.backgroundImage = 'linear-gradient(160deg,#2d4a2f,#1a1714)';
-  }
+  if(url)document.documentElement.style.setProperty('--hero-img','url('+JSON.stringify(url)+')');
+  else document.documentElement.style.setProperty('--hero-img','linear-gradient(160deg,#2d4a2f,#1a1714)');
 }
 function previewHeroUrl(url){
   const prev=document.getElementById('s-hero-preview'),ph=document.getElementById('s-hero-placeholder');
@@ -1616,12 +1779,8 @@ async function saveHeroImg(){
   const el=document.getElementById('s-hero-url');
   const url=el?el.value.trim():'';
   if(!url){toast('Please upload or enter an image URL.');return;}
-  // Apply immediately
+  await saveSettingDB('hero_image',url);
   setHeroImg(url);
-  // Save to localStorage (works offline)
-  localStorage.setItem('gp_hero', url);
-  // Save to DB (works online)
-  await saveSettingDB('hero_image', url);
   toast('Hero image updated! ✅ Live on website now.');
 }
 
@@ -1701,7 +1860,7 @@ function confirmPayment(){
   const ord={id:ordId,nm:g('on'),ph:g('oph'),em:g('oem'),ad:g('oad')+', '+g('oci')+', '+g('ost')+' – '+g('opi'),no:'',items:cart.map(i=>({nm:i.name,vr:i.variant,qty:i.qty,pr:i.price})),tot:tot,ss:ssData,st:'pending',time:new Date().toLocaleString('en-IN')};
   orders.push(ord);currentOrderData=ord;
   const el=document.getElementById('succOid');if(el)el.textContent='#'+ordId;
-  sb('orders',{method:'POST',body:{id:ordId,customer_name:ord.nm,phone:ord.ph,email:ord.em,address:ord.ad,items:ord.items,total:ord.tot,status:'pending'}}).catch(()=>{});
+  sb('orders',{method:'POST',body:{id:ordId,customer_name:ord.nm,phone:ord.ph,email:ord.em||'',address:ord.ad,note:ord.no||'',items:ord.items,total:ord.tot,screenshot_url:ord.ss||null,status:'pending'}}).catch(()=>{});
   cart=[];updateCart();
   document.getElementById('qrOv').classList.remove('on');
   document.getElementById('payOv').classList.add('on');
@@ -1721,12 +1880,183 @@ buildMarquee();updateCart();
 ALL_CATS=(function(){try{return JSON.parse(localStorage.getItem('gp_cats'));}catch(e){}return null;})()||['All','Artisanal Soaps','Gift Boxes','Bath Accessories','Shampoo','Lipcare','Candles'];
 updateProdCatSelect();buildCatRow();buildNavDropdown();
 renderFeat();renderShopGrid();renderTestis();
-// Load hero from localStorage immediately (no wait)
-const _savedHero = localStorage.getItem('gp_hero');
-if(_savedHero) setHeroImg(_savedHero);
 loadDB();
-loadSettingsDB().then(()=>{initUPISettings();});
-</script>
+loadOrdersDB();
+loadAllSettings();
+loadShippingDB();
+// Init cart grand total
+updateCart();
 
+// ════════ SHIPPING ════════
+let shippingZones = [
+  {zone:'Tamil Nadu (Local)', states:['Tamil Nadu'], charge:40, freeAbove:500},
+  {zone:'South India', states:['Kerala','Karnataka','Andhra Pradesh','Telangana','Puducherry'], charge:60, freeAbove:700},
+  {zone:'Rest of India', states:['All Other States'], charge:80, freeAbove:999}
+];
+
+function loadShippingDB(){
+  sb('shipping_zones',{order:'id.asc'}).then(data=>{
+    if(data&&data.length){
+      shippingZones=data.map(z=>({id:z.id,zone:z.zone_name,states:z.states,charge:z.charge,freeAbove:z.free_above}));
+    }
+    renderShippingAdmin();
+  }).catch(()=>renderShippingAdmin());
+}
+
+function getShippingCharge(state){
+  if(!state)return {charge:0,label:'Free'};
+  const st=state.trim().toLowerCase();
+  for(const z of shippingZones){
+    if(z.states.some(s=>s.toLowerCase()===st||s.toLowerCase()==='all other states'))
+      continue; // skip catch-all for now
+    if(z.states.some(s=>s.toLowerCase()===st))
+      return {charge:z.charge,label:'₹'+z.charge,zone:z.zone,freeAbove:z.freeAbove};
+  }
+  // Use catch-all zone
+  const def=shippingZones.find(z=>z.states.some(s=>s.toLowerCase()==='all other states'));
+  if(def)return {charge:def.charge,label:'₹'+def.charge,zone:def.zone,freeAbove:def.freeAbove};
+  return {charge:80,label:'₹80'};
+}
+
+function calcShipping(state){
+  const subtot=cart.reduce((s,i)=>s+parseInt(i.price.replace(/\D/g,''))*i.qty,0);
+  const ship=getShippingCharge(state);
+  const isFree=ship.freeAbove&&subtot>=ship.freeAbove;
+  const shipAmt=isFree?0:ship.charge;
+  const prev=document.getElementById('shippingPreview');
+  if(prev){
+    prev.style.display='block';
+    if(isFree){
+      prev.innerHTML='🎉 <strong>Free Shipping!</strong> (Order above ₹'+ship.freeAbove+')';
+      prev.style.color='var(--sage-d)';
+    } else {
+      prev.innerHTML='🚚 Shipping to <strong>'+(ship.zone||state)+'</strong>: <strong>₹'+shipAmt+'</strong>'+(ship.freeAbove?' (Free above ₹'+ship.freeAbove+')':'');
+      prev.style.color='var(--ink)';
+    }
+  }
+  // Update cart grand total
+  updateCartWithShipping(state);
+  return {amount:shipAmt,isFree,zone:ship.zone};
+}
+
+function updateCartWithShipping(state){
+  const subtot=cart.reduce((s,i)=>s+parseInt(i.price.replace(/\D/g,''))*i.qty,0);
+  const ship=state?getShippingCharge(state):{charge:0};
+  const isFree=ship.freeAbove&&subtot>=ship.freeAbove;
+  const shipAmt=isFree?0:ship.charge;
+  const grand=subtot+shipAmt;
+  const sg=document.getElementById('cartShip');
+  const gg=document.getElementById('cartGrand');
+  if(sg)sg.textContent=shipAmt===0?'Free':'₹'+shipAmt;
+  if(gg)gg.textContent='₹'+grand.toLocaleString('en-IN');
+}
+
+function renderShippingAdmin(){
+  const el=document.getElementById('shippingZonesAdmin');if(!el)return;
+  el.innerHTML=shippingZones.map((z,i)=>`
+    <div style="border:1px solid var(--border);padding:14px;margin-bottom:10px;background:var(--cream)">
+      <div class="sgrow" style="margin-bottom:8px">
+        <div class="mf"><label>Zone Name</label><input type="text" value="${z.zone}" onchange="shippingZones[${i}].zone=this.value" style="width:100%;padding:8px 0;border:none;border-bottom:1px solid var(--border);background:transparent;font-family:'Jost',sans-serif;font-size:14px;font-weight:500;outline:none"></div>
+        <div class="mf"><label>Charge (₹)</label><input type="number" value="${z.charge}" onchange="shippingZones[${i}].charge=parseInt(this.value)||0" style="width:100%;padding:8px 0;border:none;border-bottom:1px solid var(--border);background:transparent;font-family:'Jost',sans-serif;font-size:14px;font-weight:500;outline:none"></div>
+        <div class="mf"><label>Free above (₹)</label><input type="number" value="${z.freeAbove||''}" placeholder="No free shipping" onchange="shippingZones[${i}].freeAbove=parseInt(this.value)||null" style="width:100%;padding:8px 0;border:none;border-bottom:1px solid var(--border);background:transparent;font-family:'Jost',sans-serif;font-size:14px;font-weight:500;outline:none"></div>
+      </div>
+      <div class="mf"><label>States (comma separated — use "All Other States" for default)</label><input type="text" value="${(z.states||[]).join(', ')}" onchange="shippingZones[${i}].states=this.value.split(',').map(s=>s.trim()).filter(Boolean)" style="width:100%;padding:8px 0;border:none;border-bottom:1px solid var(--border);background:transparent;font-family:'Jost',sans-serif;font-size:14px;font-weight:500;outline:none"></div>
+      <button onclick="deleteShippingZone(${i})" style="margin-top:10px;padding:5px 12px;background:none;border:1px solid rgba(192,57,43,.2);color:#c0392b;font-size:10px;cursor:pointer;font-family:'Jost',sans-serif;font-weight:600">Delete Zone</button>
+    </div>`).join('');
+}
+
+function addShippingZone(){
+  shippingZones.push({zone:'New Zone',states:[],charge:80,freeAbove:null});
+  renderShippingAdmin();
+}
+function deleteShippingZone(i){
+  if(!confirm('Delete this zone?'))return;
+  shippingZones.splice(i,1);renderShippingAdmin();
+}
+async function saveShipping(){
+  for(const z of shippingZones){
+    if(z.id){
+      await sb('shipping_zones',{method:'PATCH',body:{zone_name:z.zone,states:z.states,charge:z.charge,free_above:z.freeAbove},filters:['id=eq.'+z.id]}).catch(()=>{});
+    } else {
+      const res=await sb('shipping_zones',{method:'POST',body:{zone_name:z.zone,states:z.states,charge:z.charge,free_above:z.freeAbove}}).catch(()=>{});
+      if(res&&res[0])z.id=res[0].id;
+    }
+  }
+  toast('Shipping zones saved! ✅');
+}
+
+// ════════ JOURNEY PAGE ════════
+function saveJourney(){
+  const title=document.getElementById('s-journey-title')?.value.trim();
+  const body=document.getElementById('s-journey-body')?.value.trim();
+  if(title){
+    saveSettingDB('our_journey_title',title);
+    const h=document.getElementById('journey-heading');
+    if(h)h.innerHTML='Our <em>'+title+'</em><br>Begins Here.';
+  }
+  if(body){
+    saveSettingDB('our_journey_body',body);
+    const bd=document.getElementById('journey-body-display');
+    if(bd)bd.innerHTML=body.split('\n\n').map(p=>`<p style="margin-top:14px">${p}</p>`).join('');
+  }
+  toast('Journey page saved! ✅');
+}
+
+// ════════ CONTACT PAGE ════════
+function saveContact(){
+  const ph=document.getElementById('s-contact-ph')?.value.trim();
+  const hrs=document.getElementById('s-contact-hours')?.value.trim();
+  const em=document.getElementById('s-contact-em')?.value.trim();
+  const addr=document.getElementById('s-contact-addr')?.value.trim();
+  
+  if(ph){saveSettingDB('contact_phone',ph);const el=document.getElementById('cp-ph');if(el){el.textContent=ph;el.href='tel:'+ph;}}
+  if(hrs){saveSettingDB('contact_hours',hrs);const el=document.getElementById('cp-hrs');if(el)el.textContent=hrs;}
+  if(em){saveSettingDB('contact_email',em);const el=document.getElementById('cp-em');if(el){el.textContent=em;el.href='mailto:'+em;}}
+  if(addr){saveSettingDB('contact_address',addr);const el=document.getElementById('cp-addr');if(el)el.innerHTML=addr.replace(/\n/g,'<br>');}
+  const ig=document.getElementById('s-ig')?.value.trim();
+  if(ig){saveSettingDB('instagram',ig);const el=document.getElementById('cp-ig');if(el){el.textContent=ig;el.href='https://instagram.com/'+ig.replace('@','');}}
+  toast('Contact info saved! ✅');
+}
+
+// ════════ LOAD ALL SETTINGS FROM DB ════════
+async function loadAllSettings(){
+  try{
+    const data=await sb('settings');
+    if(!data)return;
+    const map={};data.forEach(s=>map[s.key]=s.value);
+    
+    // UPI/payment
+    if(map.upi_id){localStorage.setItem('gp_upi',map.upi_id);const el=document.getElementById('s-upi');if(el)el.value=map.upi_id;}
+    if(map.upi_name){localStorage.setItem('gp_uname',map.upi_name);const el=document.getElementById('s-uname');if(el)el.value=map.upi_name;}
+    if(map.qr_image&&map.qr_image.length>10){
+      localStorage.setItem('gp_qr',map.qr_image);
+      const prev=document.getElementById('s-qr-preview'),wrap=document.getElementById('qr-admin-preview');
+      if(prev)prev.src=map.qr_image;if(wrap)wrap.style.display='block';
+    }
+    // Hero image
+    if(map.hero_image&&map.hero_image.length>5){
+      setHeroImg(map.hero_image);
+      const el=document.getElementById('s-hero-url'),prev=document.getElementById('s-hero-preview'),ph=document.getElementById('s-hero-placeholder');
+      if(el)el.value=map.hero_image;if(prev){prev.src=map.hero_image;prev.style.display='block';}if(ph)ph.style.display='none';
+    }
+    // Contact
+    if(map.contact_phone){const el=document.getElementById('s-contact-ph');if(el)el.value=map.contact_phone;const dp=document.getElementById('cp-ph');if(dp){dp.textContent=map.contact_phone;dp.href='tel:'+map.contact_phone;}}
+    if(map.contact_hours){const el=document.getElementById('s-contact-hours');if(el)el.value=map.contact_hours;const dp=document.getElementById('cp-hrs');if(dp)dp.textContent=map.contact_hours;}
+    if(map.contact_email){const el=document.getElementById('s-contact-em');if(el)el.value=map.contact_email;const dp=document.getElementById('cp-em');if(dp){dp.textContent=map.contact_email;dp.href='mailto:'+map.contact_email;}}
+    if(map.contact_address){const el=document.getElementById('s-contact-addr');if(el)el.value=map.contact_address;const dp=document.getElementById('cp-addr');if(dp)dp.innerHTML=map.contact_address.replace(/\n/g,'<br>');}
+    // WhatsApp
+    if(map.whatsapp){const el=document.getElementById('s-wa');if(el)el.value=map.whatsapp;}
+    if(map.phone){const el=document.getElementById('s-ph');if(el)el.value=map.phone;}
+    if(map.email){const el=document.getElementById('s-em');if(el)el.value=map.email;}
+    if(map.instagram){const el=document.getElementById('s-ig');if(el)el.value=map.instagram;const dp=document.getElementById('cp-ig');if(dp){dp.textContent=map.instagram;dp.href='https://instagram.com/'+map.instagram.replace('@','');}}
+    // Journey
+    if(map.our_journey_title){const el=document.getElementById('s-journey-title');if(el)el.value=map.our_journey_title;const h=document.getElementById('journey-heading');if(h)h.innerHTML='Our <em>'+map.our_journey_title+'</em><br>Begins Here.';}
+    if(map.our_journey_body){const el=document.getElementById('s-journey-body');if(el)el.value=map.our_journey_body;const bd=document.getElementById('journey-body-display');if(bd)bd.innerHTML=map.our_journey_body.split('\n\n').map(p=>`<p style="margin-top:14px">${p}</p>`).join('');}
+    // Categories
+    if(map.categories){try{const c=JSON.parse(map.categories);if(c&&c.length){ALL_CATS=c;refreshCatUI();}}catch(e){}}
+  }catch(e){console.log('Settings load skipped');}
+}
+
+</script>
 </body>
 </html>
