@@ -53,7 +53,8 @@ li:hover .ddrop{opacity:1;pointer-events:all;}
 
 /* ───── HERO ───── */
 .hero{height:100vh;position:relative;overflow:hidden;display:flex;align-items:flex-end;background:var(--ink);}
-.hero-bg{position:absolute;inset:0;background:url('https://mudandmoon.com/2.webp') center/cover no-repeat;opacity:0.38;transition:transform 10s ease;}
+:root{--hero-img:url('https://mudandmoon.com/2.webp');}
+.hero-bg{position:absolute;inset:0;background:var(--hero-img) center/cover no-repeat;opacity:0.38;transition:transform 10s ease;}
 body:hover .hero-bg{transform:scale(1.03);}
 .hero-txt{position:relative;z-index:2;padding:72px 60px;max-width:680px;}
 .h-eyebrow{font-size:10px;letter-spacing:0.22em;text-transform:uppercase;color:rgba(245,240,232,0.5);margin-bottom:22px;font-weight:300;}
@@ -758,7 +759,7 @@ footer{background:var(--ink);padding:80px 56px 36px;color:var(--cream);}
     </div>
   </div>
   <div class="ft-bot">
-    <span id="ftCopy"><span id="ftCopy">© 2025 green petal. All Rights Reserved.</span></span>
+    <span id="ftCopy">© 2025 green petal. All Rights Reserved.</span>
     <div style="display:flex;gap:22px;"><a href="#">Privacy Policy</a><a href="#">Terms of Service</a></div>
   </div>
 </footer>
@@ -956,6 +957,22 @@ Please confirm availability and share payment details.</textarea></div>
       
 
       <div class="sg">
+        <h3>🖼️ Hero Image</h3>
+        <p class="snote">Change the background image shown on the home page hero section.</p>
+        <div class="mf">
+          <label>Upload Image</label>
+          <div class="imdrop" style="border:1px dashed var(--border);padding:28px;text-align:center;cursor:pointer;position:relative;margin-top:7px;">
+            <input type="file" accept="image/*" onchange="uploadHeroImg(this)" style="position:absolute;inset:0;opacity:0;cursor:pointer;">
+            <p style="font-size:11px;color:var(--muted);letter-spacing:.07em;font-weight:300;">📷 Click to upload hero image</p>
+          </div>
+          <div id="s-hero-placeholder" style="display:none"></div>
+          <img id="s-hero-preview" src="" style="width:100%;max-height:180px;object-fit:cover;margin-top:10px;display:none;border:1px solid var(--border);">
+        </div>
+        <div class="mf"><label>Or paste image URL</label><input type="text" id="s-hero-url" placeholder="https://example.com/image.jpg" oninput="previewHeroUrl(this.value)"></div>
+        <button class="aadd" style="margin-top:4px" onclick="saveHeroImg()">Set as Hero Image →</button>
+      </div>
+
+      <div class="sg">
         <h3>💳 UPI / QR Payment Settings</h3>
         <p class="snote">Set your UPI ID and upload your QR code. Customers will see this at checkout.</p>
         <div class="sgrow">
@@ -1035,7 +1052,12 @@ This is not just skincare. This is a ritual.</textarea></div>
       </div>
 
       <button class="aadd" style="margin-top:8px" onclick="saveSett()">Save All Settings →</button>
-    <!-- PRODUCT MODAL -->
+
+    </div><!-- /asec-settings -->
+  </div><!-- /adm-body -->
+</div><!-- /adm-panel -->
+
+<!-- PRODUCT MODAL -->
 <div class="mod-ov" id="prodMod">
   <div class="mod">
     <button class="mod-x" onclick="closeProdMod()">✕</button>
@@ -1169,7 +1191,21 @@ This is not just skincare. This is a ritual.</textarea></div>
 const SB_URL='https://twtjsnvjvbvetqfdmszl.supabase.co';
 const SB_KEY='eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InR3dGpzbnZqdmJ2ZXRxZmRtc3psIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NzgzMTEzNTcsImV4cCI6MjA5Mzg4NzM1N30.jKJ-ZtJgWBbKuN0TcNWZ90oX5SvtXK0THzF8x1odoXI';
 
+// DB online status — tested once, cached
+let _sbOnline=null;
+async function _sbCheck(){
+  if(_sbOnline!==null)return _sbOnline;
+  try{
+    const r=await fetch(SB_URL+'/rest/v1/',{method:'GET',headers:{'apikey':SB_KEY},signal:AbortSignal.timeout(4000)});
+    _sbOnline=(r.status!==0);
+  }catch(e){_sbOnline=false;}
+  if(!_sbOnline)console.info('ℹ️ Database offline — running in local mode. All data saved in browser.');
+  return _sbOnline;
+}
+
 async function sb(table,opts={}){
+  const online=await _sbCheck();
+  if(!online)return null; // silent — no more console.warn spam
   try{
     const{method='GET',body,filters=[],order=''}=opts;
     let url=SB_URL+'/rest/v1/'+table+'?select=*';
@@ -1178,10 +1214,33 @@ async function sb(table,opts={}){
     const heads={'apikey':SB_KEY,'Authorization':'Bearer '+SB_KEY,'Content-Type':'application/json'};
     if(method==='POST'||method==='PATCH')heads['Prefer']='return=representation';
     const r=await fetch(url,{method,headers:heads,body:(body&&method!=='GET'&&method!=='DELETE')?JSON.stringify(body):undefined});
-    if(!r.ok){const t=await r.text().catch(()=>'');console.warn('SB',table,method,r.status,t);return null;}
+    if(!r.ok){const t=await r.text().catch(()=>'');console.info('DB',table,r.status,t);return null;}
     if(method==='DELETE'||r.status===204)return[];
     return await r.json();
-  }catch(e){console.warn('SB err',e);return null;}
+  }catch(e){_sbOnline=false;return null;}
+}
+
+// ════════ LOCALSTORAGE FALLBACK STORE ════════
+// All data persisted locally when DB is unavailable
+const LS={
+  get(k){try{const v=localStorage.getItem('gp_'+k);return v?JSON.parse(v):null;}catch(e){return null;}},
+  set(k,v){try{localStorage.setItem('gp_'+k,JSON.stringify(v));}catch(e){}},
+  raw(k){try{return localStorage.getItem('gp_'+k)||'';}catch(e){return '';}},
+  rawSet(k,v){try{localStorage.setItem('gp_'+k,v);}catch(e){}}
+};
+
+function lsSaveProducts(){LS.set('products',products);}
+function lsSaveOrders(){LS.set('orders',orders);}
+function lsSaveReviews(){LS.set('reviews',reviews);}
+function lsLoadAll(){
+  const p=LS.get('products');if(p&&p.length){products=p;renderFeat();renderShopGrid();renderAdminProds();}
+  const o=LS.get('orders');if(o&&o.length){orders=o;renderAdminOrders&&renderAdminOrders();updateDashStats&&updateDashStats();}
+  const r=LS.get('reviews');if(r&&r.length){reviews=r;renderTestis();}
+  // Settings
+  const upi=LS.raw('upi');if(upi){const e=document.getElementById('s-upi');if(e)e.value=upi;}
+  const uname=LS.raw('uname');if(uname){const e=document.getElementById('s-uname');if(e)e.value=uname;}
+  const qr=LS.raw('qr');if(qr&&qr.length>10){const prev=document.getElementById('s-qr-preview'),wrap=document.getElementById('qr-admin-preview');if(prev)prev.src=qr;if(wrap)wrap.style.display='block';}
+  const hero=LS.raw('hero');if(hero&&hero.length>5)setHeroImg(hero);
 }
 
 // ════════ DATA ════════
@@ -1225,7 +1284,7 @@ async function loadDB(){
       reviews=rv.map(r=>({id:r.id,name:r.customer_name,loc:r.location||'',text:r.review_text,stars:r.stars,status:r.status}));
       renderTestis();
     }
-  }catch(e){console.log('DB offline, using static data');}
+  }catch(e){}
 }
 
 async function loadOrdersDB(){
@@ -1284,7 +1343,7 @@ async function saveSettingDB(key, value){
 
 // ════════ ROUTING ════════
 const PAGES=['home','shop','detail','philosophy','contact'];
-function showPg(n){PAGES.forEach(p=>document.getElementById('pg-'+p).classList.toggle('on',p===n));document.getElementById('siteFooter').style.display='block';window.scrollTo({top:0,behavior:'smooth'});}
+function showPg(n){PAGES.forEach(p=>document.getElementById('pg-'+p).classList.toggle('on',p===n));const footer=document.getElementById('siteFooter');if(footer)footer.style.display=n==='home'?'none':'block';window.scrollTo({top:0,behavior:'smooth'});}
 function goHome(){showPg('home');}
 function goShop(){renderShopGrid();showPg('shop');}
 function goPage(n){showPg(n);}
@@ -1301,7 +1360,7 @@ let ALL_CATS=(function(){try{return JSON.parse(localStorage.getItem('gp_cats'));
 function buildCatRow(){
   document.getElementById('catRow').innerHTML=ALL_CATS.map(c=>`<button class="ctab${c===curCat?' on':''}" onclick="filterCat('${c}',this)">${c==='All'?'Shop All':c}</button>`).join('');
 }
-function filterCat(cat){curCat=cat;renderShopGrid();}
+function filterCat(cat){curCat=cat;buildCatRow();renderShopGrid();}
 function updateProdCatSelect(){
   const sel=document.getElementById('p-cat');if(!sel)return;
   sel.innerHTML=ALL_CATS.filter(c=>c!=='All').map(c=>`<option value="${c}">${c}</option>`).join('');
@@ -1345,7 +1404,7 @@ function renameCat(idx,newName){
 // ════════ PRODUCT CARDS ════════
 function cardHTML(p){
   const oos=p.status==='oos';
-  const tagCls=p.tag==='Sale'?'ptag sale':p.tag==='New'?'ptag sale':'ptag';
+  const tagCls=p.tag==='Sale'?'ptag sale':p.tag==='New'?'ptag':'ptag';
   return `<div class="pcard${oos?' oos':''}" onclick="openDetail(${p.id})">
     <div class="pimg">
       <img class="pm" src="${p.img}" alt="${p.name}" onerror="this.style.background='#c8dec9'">
@@ -1355,7 +1414,7 @@ function cardHTML(p){
         <span>${oos?'Out of Stock':'Add to Bag'}</span>${oos?'':'<span>'+p.price+'</span>'}
       </div>
     </div>
-    <div class="pinfo"><div class="pnm">${p.name}</div><div class="ppr">${p.price}${p.op?` <del>${p.op}</del>`:''}</div></div>
+    <div class="pinfo"><div class="pname">${p.name}</div><div class="pprice">${p.price}${p.op?` <del>${p.op}</del>`:''}</div></div>
   </div>`;
 }
 
@@ -1420,10 +1479,6 @@ function addCart(id,e,variant){
 function rmCart(key){cart=cart.filter(x=>x.key!==key);updateCart();}
 function chQty(key,d){const it=cart.find(x=>x.key===key);if(!it)return;it.qty+=d;if(it.qty<=0)rmCart(key);else updateCart();}
 function updateCart(){
-  // update grand total with no shipping initially
-  const _sub=cart.reduce((s,i)=>s+parseInt(i.price.replace(/\D/g,''))*i.qty,0);
-  const _gg=document.getElementById('cartGrand');if(_gg)_gg.textContent='₹'+_sub.toLocaleString('en-IN');
-  const _cs=document.getElementById('cartShip');if(_cs&&_sub===0)_cs.textContent='Enter state at checkout';
   const n=cart.reduce((s,i)=>s+i.qty,0);
   const cN=document.getElementById('cN');if(cN)cN.textContent=n;
   const bd=document.getElementById('cartBd'),ft=document.getElementById('cartFt');
@@ -1505,11 +1560,10 @@ function aTab(n,btn){
 }
 function updateDashStats(){
   const set=(id,v)=>{const e=document.getElementById(id);if(e)e.textContent=v;};
-  set('ad-pr',products.filter(p=>p.status!=='draft').length);
-  set('ad-or',orders.length);
-  set('ad-pe',orders.filter(o=>o.st==='pending').length);
+  set('ad-prod',products.filter(p=>p.status!=='draft').length);
+  set('ad-orders',orders.length);
   const rev=orders.filter(o=>o.st!=='cancelled').reduce((s,o)=>s+(o.tot||0),0);
-  set('ad-rv','₹'+rev.toLocaleString('en-IN'));
+  set('ad-rev','₹'+rev.toLocaleString('en-IN'));
 }
 
 // ── ADMIN PRODUCTS ──
@@ -1582,11 +1636,13 @@ function saveProduct(){
   if(eid){
     const ix=products.findIndex(p=>p.id==eid);
     if(ix!==-1)products[ix]={...products[ix],...data};
+    lsSaveProducts();
     closeProdMod();renderAdminProds();renderFeat();renderShopGrid();
     toast('Product updated. ✅');
     sb('products',{method:'PATCH',body:{name:data.name,description:data.desc,ingredients:data.ingr,how_to_use:data.use,price:data.price,original_price:data.op,category:data.cat,status:data.status,variants:data.vars,tag:data.tag,img_url:data.img,img2_url:data.img2,updated_at:new Date().toISOString()},filters:['id=eq.'+eid]}).catch(()=>{});
   }else{
     products.push({id:nid++,...data});
+    lsSaveProducts();
     closeProdMod();renderAdminProds();renderFeat();renderShopGrid();
     toast('Product added. ✅');
     sb('products',{method:'POST',body:{name:data.name,description:data.desc,ingredients:data.ingr,how_to_use:data.use,price:data.price,original_price:data.op,category:data.cat,status:data.status,variants:data.vars,tag:data.tag,img_url:data.img,img2_url:data.img2}}).catch(()=>{});
@@ -1596,6 +1652,7 @@ function delProd(id){
   id=parseInt(id)||id;
   if(!confirm('Delete this product?'))return;
   products=products.filter(p=>p.id!=id);
+  lsSaveProducts();
   renderAdminProds();renderFeat();renderShopGrid();
   toast('Product deleted.');
   sb('products',{method:'DELETE',filters:['id=eq.'+id]}).catch(()=>{});
@@ -1623,7 +1680,7 @@ function openOrdDetail(id){
   currentOrdDetail=o;
   document.getElementById('odTitle').textContent='Order #'+o.id;
   const set=(eid,v)=>{const e=document.getElementById(eid);if(e)e.textContent=v||'—';};
-  set('od-nm',o.nm);set('od-ph',o.ph);set('od-em',o.em);set('od-ad',o.ad);set('od-no',o.no);
+  set('od-name',o.nm);set('od-phone',o.ph);set('od-email',o.em);set('od-addr',o.ad);set('od-note',o.no);
   const items=document.getElementById('od-items');
   if(items)items.innerHTML=(o.items||[]).map(i=>`<div class="odr"><span>${(i.nm||i.name)}${i.vr?' ('+i.vr+')':''} × ${i.qty}</span><span>${i.pr||i.price}</span></div>`).join('');
   const tot=document.getElementById('od-total');if(tot)tot.textContent='₹'+(o.tot||0).toLocaleString('en-IN');
@@ -1638,6 +1695,7 @@ function updOrdSt(){
   if(!currentOrdDetail)return;
   const sel=document.getElementById('od-status-sel');
   currentOrdDetail.st=sel?sel.value:'pending';
+  lsSaveOrders();
   renderAdminOrders();
   sb('orders',{method:'PATCH',body:{status:currentOrdDetail.st,updated_at:new Date().toISOString()},filters:['id=eq.'+currentOrdDetail.id]}).catch(()=>{});
   toast('Status updated. ✅');
@@ -1686,10 +1744,12 @@ function saveReview(){
   if(eid){
     const ix=reviews.findIndex(r=>r.id==eid);
     if(ix!==-1)reviews[ix]={...reviews[ix],...data};
+    lsSaveReviews();
     closeRevMod();renderAdminRevs();renderTestis();toast('Review updated. ✅');
     sb('reviews',{method:'PATCH',body:{customer_name:data.name,location:data.loc,review_text:data.text,stars:data.stars,status:data.status},filters:['id=eq.'+eid]}).catch(()=>{});
   }else{
     reviews.push({id:nid++,...data});
+    lsSaveReviews();
     closeRevMod();renderAdminRevs();renderTestis();toast('Review added. ✅');
     sb('reviews',{method:'POST',body:{customer_name:data.name,location:data.loc,review_text:data.text,stars:data.stars,status:data.status}}).catch(()=>{});
   }
@@ -1698,6 +1758,7 @@ function delRev(id){
   id=parseInt(id)||id;
   if(!confirm('Delete review?'))return;
   reviews=reviews.filter(r=>r.id!=id);
+  lsSaveReviews();
   renderAdminRevs();renderTestis();toast('Deleted.');
   sb('reviews',{method:'DELETE',filters:['id=eq.'+id]}).catch(()=>{});
 }
@@ -1743,12 +1804,12 @@ function saveSett(){
   if(np){if(np!==cp){toast('Passwords do not match.');return;}localStorage.setItem('gp_pw',np);document.getElementById('s-np').value='';document.getElementById('s-cp').value='';}
   const upi=document.getElementById('s-upi')?.value.trim();
   const uname=document.getElementById('s-uname')?.value.trim();
-  if(upi){saveSettingDB('upi_id',upi);localStorage.setItem('gp_upi',upi);}
-  if(uname){saveSettingDB('upi_name',uname);localStorage.setItem('gp_uname',uname);}
+  if(upi){localStorage.setItem('gp_upi',upi);saveSettingDB('upi_id',upi);}
+  if(uname){localStorage.setItem('gp_uname',uname);saveSettingDB('upi_name',uname);}
   const wa=document.getElementById('s-wa')?.value;
   const ph=document.getElementById('s-ph')?.value;
   const em=document.getElementById('s-em')?.value;
-  if(wa)saveSettingDB('whatsapp',wa);
+  if(wa){LS.rawSet('wa',wa);saveSettingDB('whatsapp',wa);}
   if(ph)saveSettingDB('phone',ph);
   if(em)saveSettingDB('email',em);
   saveCats();
@@ -1757,21 +1818,45 @@ function saveSett(){
 
 // ── HERO IMAGE ──
 function setHeroImg(url){
-  if(url)document.documentElement.style.setProperty('--hero-img','url('+JSON.stringify(url)+')');
-  else document.documentElement.style.setProperty('--hero-img','linear-gradient(160deg,#2d4a2f,#1a1714)');
+  const bg=document.querySelector('.hero-bg');
+  if(!bg)return;
+  if(url){
+    bg.style.backgroundImage='url('+JSON.stringify(url)+')';
+    bg.style.backgroundSize='cover';
+    bg.style.backgroundPosition='center';
+    document.documentElement.style.setProperty('--hero-img','url('+JSON.stringify(url)+')');
+  } else {
+    bg.style.backgroundImage='';
+    document.documentElement.style.setProperty('--hero-img',"url('https://mudandmoon.com/2.webp')");
+  }
 }
 function previewHeroUrl(url){
   const prev=document.getElementById('s-hero-preview'),ph=document.getElementById('s-hero-placeholder');
   if(url&&prev){prev.src=url;prev.style.display='block';if(ph)ph.style.display='none';}
   else{if(prev)prev.style.display='none';if(ph)ph.style.display='flex';}
 }
+function compressImg(dataUrl,maxW,quality,cb){
+  const img=new Image();
+  img.onload=function(){
+    const scale=Math.min(1,maxW/img.width);
+    const w=Math.round(img.width*scale),h=Math.round(img.height*scale);
+    const c=document.createElement('canvas');c.width=w;c.height=h;
+    c.getContext('2d').drawImage(img,0,0,w,h);
+    cb(c.toDataURL('image/jpeg',quality));
+  };
+  img.src=dataUrl;
+}
 function uploadHeroImg(input){
   if(!input.files||!input.files[0])return;
   const r=new FileReader();
   r.onload=function(e){
-    const el=document.getElementById('s-hero-url');if(el)el.value=e.target.result;
-    previewHeroUrl(e.target.result);
-    toast('Image ready. Click "Set as Hero Image" to save.');
+    compressImg(e.target.result,1200,0.82,function(compressed){
+      const el=document.getElementById('s-hero-url');if(el)el.value=compressed;
+      const prev=document.getElementById('s-hero-preview');
+      if(prev){prev.src=compressed;prev.style.display='block';}
+      setHeroImg(compressed);
+      toast('Image loaded! Click "Set as Hero Image" to save.');
+    });
   };
   r.readAsDataURL(input.files[0]);
 }
@@ -1779,18 +1864,50 @@ async function saveHeroImg(){
   const el=document.getElementById('s-hero-url');
   const url=el?el.value.trim():'';
   if(!url){toast('Please upload or enter an image URL.');return;}
-  await saveSettingDB('hero_image',url);
-  setHeroImg(url);
-  toast('Hero image updated! ✅ Live on website now.');
+  let toSave=url;
+  if(url.startsWith('data:')&&url.length>200000){
+    await new Promise(res=>compressImg(url,900,0.75,function(c){toSave=c;res();}));
+  }
+  try{
+    localStorage.setItem('gp_hero',toSave);
+    setHeroImg(toSave);
+    toast('Hero image saved! ✅ Live on website now.');
+  }catch(e){
+    await new Promise(res=>compressImg(url,600,0.65,function(c){toSave=c;res();}));
+    try{
+      localStorage.setItem('gp_hero',toSave);
+      setHeroImg(toSave);
+      toast('Hero image saved! ✅');
+    }catch(e2){
+      toast('Storage full! Please use an image URL instead.');
+      return;
+    }
+  }
+  try{await saveSettingDB('hero_image',toSave);}catch(e){}
 }
+
+// Load hero from localStorage on startup (fallback when DB is slow/unavailable)
+(function(){
+  try{
+    const h=localStorage.getItem('gp_hero');
+    if(h&&h.length>5){setHeroImg(h);}
+  }catch(e){}
+})();
 
 // ════════ QR / UPI PAYMENT ════════
 function beginCheckout(){
   if(!cart.length){toast('Your bag is empty!');return;}
   closeCart();
-  buildOrderSummary('addrOsum');
-  ['on','oph','oem','oad','oci','opi'].forEach(id=>{const e=document.getElementById(id);if(e&&id!=='ost')e.value='';});
-  document.getElementById('addrOv').classList.add('on');
+  // Populate order summary in step 1
+  const tot=cart.reduce((s,i)=>s+parseInt(i.price.replace(/\D/g,''))*i.qty,0);
+  const rows=cart.map(i=>`<div style="display:flex;justify-content:space-between;padding:4px 0;border-bottom:1px solid rgba(26,23,20,0.1);font-weight:300;font-size:13px"><span>${i.name}${i.variant?' ('+i.variant+')':''} × ${i.qty}</span><span>₹${(parseInt(i.price.replace(/\D/g,''))*i.qty).toLocaleString('en-IN')}</span></div>`).join('');
+  const sumEl=document.getElementById('co-summary');
+  if(sumEl)sumEl.innerHTML=rows+`<div style="display:flex;justify-content:space-between;padding-top:10px;font-family:'Cormorant Garamond',serif;font-size:18px;font-weight:400;border-top:1px solid var(--ink);margin-top:4px"><span>Total</span><span>₹${tot.toLocaleString('en-IN')}</span></div>`;
+  // Show step 1, hide others
+  document.getElementById('step1').style.display='block';
+  document.getElementById('step2').style.display='none';
+  document.getElementById('step3').style.display='none';
+  document.getElementById('checkoutMod').classList.add('on');
 }
 function buildOrderSummary(tid){
   const tot=cart.reduce((s,i)=>s+parseInt(i.price.replace(/\D/g,''))*i.qty,0);
@@ -1858,7 +1975,7 @@ function confirmPayment(){
   const ordId='GP'+String(ordCounter).padStart(4,'0');ordCounter++;
   const g=id=>document.getElementById(id)?.value||'';
   const ord={id:ordId,nm:g('on'),ph:g('oph'),em:g('oem'),ad:g('oad')+', '+g('oci')+', '+g('ost')+' – '+g('opi'),no:'',items:cart.map(i=>({nm:i.name,vr:i.variant,qty:i.qty,pr:i.price})),tot:tot,ss:ssData,st:'pending',time:new Date().toLocaleString('en-IN')};
-  orders.push(ord);currentOrderData=ord;
+  orders.push(ord);currentOrderData=ord;lsSaveOrders();
   const el=document.getElementById('succOid');if(el)el.textContent='#'+ordId;
   sb('orders',{method:'POST',body:{id:ordId,customer_name:ord.nm,phone:ord.ph,email:ord.em||'',address:ord.ad,note:ord.no||'',items:ord.items,total:ord.tot,screenshot_url:ord.ss||null,status:'pending'}}).catch(()=>{});
   cart=[];updateCart();
@@ -1875,12 +1992,128 @@ function sendOrdWA(){
   window.open('https://wa.me/'+getWA()+'?text='+encodeURIComponent(`🌿 *New Order — Green Petal*\n\n*Order ID:* #${o.id}\n*Customer:* ${o.nm}\n*Phone:* ${o.ph}\n*Address:* ${o.ad}\n\n*Items:*\n${lines}\n\n*Total: ₹${o.tot.toLocaleString('en-IN')}*\n\n📸 Payment screenshot uploaded — please verify.`),'_blank');
 }
 
-// ════════ INIT ════════
+// ════════ CHECKOUT MODAL (3-step) ════════
+let selectedPayMethod='upi';
+
+function openCheckout(){beginCheckout();}
+function closeCheckout(){document.getElementById('checkoutMod').classList.remove('on');}
+function waCheckout(){waCart();}
+
+function goStep2(){
+  const g=id=>document.getElementById(id)?.value.trim()||'';
+  const name=g('co-name'),ph=g('co-phone'),addr=g('co-addr'),city=g('co-city'),pin=g('co-pin');
+  if(!name){toast('Please enter your name.');return;}
+  if(!ph||ph.replace(/\D/g,'').length<10){toast('Please enter a valid phone number.');return;}
+  if(!addr||!city||!pin){toast('Please fill in your delivery address.');return;}
+  // Render payment methods
+  const upi=getUPI();
+  document.getElementById('pay-methods-list').innerHTML=`
+    <div class="pay-method on" id="pm-upi" onclick="selPayMethod('upi')">
+      <div class="pay-radio"><div class="pay-radio-dot"></div></div>
+      <div class="pay-icon">📱</div>
+      <div><div class="pay-label">UPI / QR Payment</div><div class="pay-sublabel">${upi||'Pay via UPI QR code'}</div></div>
+    </div>
+    <div class="pay-method" id="pm-wa" onclick="selPayMethod('wa')">
+      <div class="pay-radio"><div class="pay-radio-dot"></div></div>
+      <div class="pay-icon">💬</div>
+      <div><div class="pay-label">Order via WhatsApp</div><div class="pay-sublabel">Place order & pay via WhatsApp</div></div>
+    </div>`;
+  selectedPayMethod='upi';
+  document.getElementById('step1').style.display='none';
+  document.getElementById('step2').style.display='block';
+}
+
+function backStep1(){
+  document.getElementById('step2').style.display='none';
+  document.getElementById('step1').style.display='block';
+}
+
+function selPayMethod(m){
+  selectedPayMethod=m;
+  document.querySelectorAll('.pay-method').forEach(el=>el.classList.remove('on'));
+  const el=document.getElementById('pm-'+m);if(el)el.classList.add('on');
+}
+
+function goStep3(){
+  document.getElementById('step2').style.display='none';
+  document.getElementById('step3').style.display='block';
+  const g=id=>document.getElementById(id)?.value.trim()||'';
+  const tot=cart.reduce((s,i)=>s+parseInt(i.price.replace(/\D/g,''))*i.qty,0);
+  const sc=document.getElementById('step3-content');
+  const st3title=document.getElementById('step3-title');
+  if(selectedPayMethod==='wa'){
+    if(st3title)st3title.textContent='Order via WhatsApp';
+    if(sc)sc.innerHTML=`<p style="font-size:13px;color:var(--muted);line-height:1.7;font-weight:300;margin-bottom:24px">Click below to send your order details to WhatsApp. We'll confirm and share payment details.</p>
+      <div style="background:var(--cream2);padding:16px 20px;margin-bottom:20px;" id="step3-summary"></div>
+      <button class="msave" style="width:100%;background:#25D366;" onclick="closeCheckout();waCart()">Send Order via WhatsApp →</button>`;
+    buildOrderSummary('step3-summary');
+  } else {
+    if(st3title)st3title.textContent='Complete Payment';
+    const upiId=getUPI(),upiName=getUPIName(),qrImg=getQRImg();
+    const qrSrc=qrImg||(upiId?'https://chart.googleapis.com/chart?chs=200x200&cht=qr&chl='+encodeURIComponent('upi://pay?pa='+encodeURIComponent(upiId)+'&pn='+encodeURIComponent(upiName)+'&am='+tot+'&cu=INR'):'');
+    if(sc)sc.innerHTML=`
+      <div class="qr-box">
+        ${qrSrc?`<img src="${qrSrc}" style="width:190px;height:190px;display:block;margin:0 auto 12px" onerror="this.style.background='#eee'">`:'<div style="width:190px;height:190px;background:var(--cream2);border:2px dashed var(--border);display:flex;align-items:center;justify-content:center;margin:0 auto 12px;font-size:12px;color:var(--muted);text-align:center;padding:12px;box-sizing:border-box">No QR uploaded.<br>Set in Admin → Settings</div>'}
+        <div class="qr-upi">${upiName}</div>
+        <div class="qr-name">${upiId||'UPI ID not configured'}</div>
+        <div style="font-family:'Cormorant Garamond',serif;font-size:28px;color:var(--sage-d);font-weight:300;margin-top:8px">₹${tot.toLocaleString('en-IN')}</div>
+      </div>
+      <div style="margin-bottom:16px">
+        <p style="font-size:12px;color:var(--muted);font-weight:300;margin-bottom:12px">After paying, upload your payment screenshot:</p>
+        <img id="co-ss-preview" src="" style="width:100%;max-height:130px;object-fit:contain;display:none;margin-bottom:10px;border:1px solid var(--border)">
+        <label style="display:block;padding:12px;border:1px dashed var(--border);text-align:center;cursor:pointer;font-size:11px;letter-spacing:.1em;text-transform:uppercase;color:var(--muted);font-weight:300;position:relative">
+          📷 Upload Screenshot
+          <input type="file" accept="image/*" style="position:absolute;inset:0;opacity:0;cursor:pointer" onchange="handleCoSS(this)">
+        </label>
+      </div>
+      <button id="coConfirmBtn" onclick="confirmCoPayment()" disabled style="width:100%;padding:14px;background:var(--ink);color:var(--cream);border:none;font-family:'Jost',sans-serif;font-size:10px;letter-spacing:.17em;text-transform:uppercase;cursor:not-allowed;opacity:.4;font-weight:300">Upload Screenshot to Continue →</button>
+      <button onclick="document.getElementById('step3').style.display='none';document.getElementById('step2').style.display='block'" style="width:100%;padding:11px;margin-top:8px;background:none;color:var(--muted);border:1px solid var(--border);font-family:'Jost',sans-serif;font-size:10px;letter-spacing:.13em;text-transform:uppercase;cursor:pointer;font-weight:300">← Back</button>`;
+    ssData=null;
+  }
+}
+
+function handleCoSS(input){
+  if(!input.files||!input.files[0])return;
+  const r=new FileReader();
+  r.onload=function(e){
+    ssData=e.target.result;
+    const prev=document.getElementById('co-ss-preview');if(prev){prev.src=e.target.result;prev.style.display='block';}
+    const btn=document.getElementById('coConfirmBtn');
+    if(btn){btn.disabled=false;btn.style.opacity='1';btn.style.cursor='pointer';btn.textContent='Confirm Payment →';}
+  };
+  r.readAsDataURL(input.files[0]);
+}
+
+function confirmCoPayment(){
+  if(!ssData){toast('Please upload payment screenshot first.');return;}
+  const g=id=>document.getElementById(id)?.value.trim()||'';
+  const tot=cart.reduce((s,i)=>s+parseInt(i.price.replace(/\D/g,''))*i.qty,0);
+  const shipResult=calcShipping(g('co-state'));
+  const shipAmt=shipResult?shipResult.amount:0;
+  const grandTot=tot+shipAmt;
+  const ordId='GP'+String(ordCounter).padStart(4,'0');ordCounter++;
+  const ord={id:ordId,nm:g('co-name'),ph:g('co-phone'),em:g('co-email'),ad:g('co-addr')+', '+g('co-city')+', '+g('co-state')+' – '+g('co-pin'),no:g('co-notes'),items:cart.map(i=>({nm:i.name,vr:i.variant,qty:i.qty,pr:i.price})),tot:grandTot,ss:ssData,st:'pending',time:new Date().toLocaleString('en-IN')};
+  orders.push(ord);currentOrderData=ord;lsSaveOrders();
+  sb('orders',{method:'POST',body:{id:ordId,customer_name:ord.nm,phone:ord.ph,email:ord.em||'',address:ord.ad,note:ord.no||'',items:ord.items,total:ord.tot,screenshot_url:ord.ss||null,status:'pending'}}).catch(()=>{});
+  cart=[];updateCart();
+  closeCheckout();
+  document.getElementById('successMod').classList.add('on');
+  const sm=document.getElementById('successMsg');if(sm)sm.textContent=`Order #${ordId} placed! Total: ₹${grandTot.toLocaleString('en-IN')}. We'll confirm via WhatsApp shortly!`;
+  const wb=document.getElementById('successWaBtn');if(wb)wb.innerHTML=`<button class="msave" style="width:100%;background:#25D366;margin-bottom:10px" onclick="sendOrdWA()">📱 Notify via WhatsApp</button>`;
+  renderAdminOrders();updateDashStats();
+  toast('Order placed! ✅');
+  setTimeout(()=>sendOrdWA(),500);
+}
+
+function closeSuccess(){document.getElementById('successMod').classList.remove('on');}
+
+
 buildMarquee();updateCart();
 ALL_CATS=(function(){try{return JSON.parse(localStorage.getItem('gp_cats'));}catch(e){}return null;})()||['All','Artisanal Soaps','Gift Boxes','Bath Accessories','Shampoo','Lipcare','Candles'];
 updateProdCatSelect();buildCatRow();buildNavDropdown();
 renderFeat();renderShopGrid();renderTestis();
-loadDB();
+lsLoadAll(); // Load localStorage immediately (instant, no network needed)
+loadDB();    // Then sync from DB if online — overrides local data
 loadOrdersDB();
 loadAllSettings();
 loadShippingDB();
@@ -1906,9 +2139,9 @@ function loadShippingDB(){
 function getShippingCharge(state){
   if(!state)return {charge:0,label:'Free'};
   const st=state.trim().toLowerCase();
+  // First pass: look for exact state match (skip catch-all zones)
   for(const z of shippingZones){
-    if(z.states.some(s=>s.toLowerCase()===st||s.toLowerCase()==='all other states'))
-      continue; // skip catch-all for now
+    if(z.states.some(s=>s.toLowerCase()==='all other states'))continue;
     if(z.states.some(s=>s.toLowerCase()===st))
       return {charge:z.charge,label:'₹'+z.charge,zone:z.zone,freeAbove:z.freeAbove};
   }
@@ -2033,11 +2266,12 @@ async function loadAllSettings(){
       const prev=document.getElementById('s-qr-preview'),wrap=document.getElementById('qr-admin-preview');
       if(prev)prev.src=map.qr_image;if(wrap)wrap.style.display='block';
     }
-    // Hero image
-    if(map.hero_image&&map.hero_image.length>5){
-      setHeroImg(map.hero_image);
+    // Hero image - try DB first, fallback to localStorage
+    const heroUrl=map.hero_image||(()=>{try{return localStorage.getItem('gp_hero');}catch(e){return null;}})();
+    if(heroUrl&&heroUrl.length>5){
+      setHeroImg(heroUrl);
       const el=document.getElementById('s-hero-url'),prev=document.getElementById('s-hero-preview'),ph=document.getElementById('s-hero-placeholder');
-      if(el)el.value=map.hero_image;if(prev){prev.src=map.hero_image;prev.style.display='block';}if(ph)ph.style.display='none';
+      if(el)el.value=heroUrl;if(prev){prev.src=heroUrl;prev.style.display='block';}if(ph)ph.style.display='none';
     }
     // Contact
     if(map.contact_phone){const el=document.getElementById('s-contact-ph');if(el)el.value=map.contact_phone;const dp=document.getElementById('cp-ph');if(dp){dp.textContent=map.contact_phone;dp.href='tel:'+map.contact_phone;}}
@@ -2054,7 +2288,7 @@ async function loadAllSettings(){
     if(map.our_journey_body){const el=document.getElementById('s-journey-body');if(el)el.value=map.our_journey_body;const bd=document.getElementById('journey-body-display');if(bd)bd.innerHTML=map.our_journey_body.split('\n\n').map(p=>`<p style="margin-top:14px">${p}</p>`).join('');}
     // Categories
     if(map.categories){try{const c=JSON.parse(map.categories);if(c&&c.length){ALL_CATS=c;refreshCatUI();}}catch(e){}}
-  }catch(e){console.log('Settings load skipped');}
+  }catch(e){}
 }
 
 </script>
